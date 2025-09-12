@@ -1,0 +1,117 @@
+{
+  "Login": {
+    "title": {
+      "text": "Welcome back",
+      "brand": "Madi",
+      "description": "Sign in with your Google account"
+    },
+    "social": {
+      "google": "Sign in with Google"
+    },
+    "or": "Or sign in with",
+    "form": {
+      "fields": {
+        "email": {
+          "label": "Email",
+          "placeholder": "my-email@gmail.com",
+          "errors": {
+            "required": "Enter a valid email"
+          }
+        }
+      },
+      "errors": {
+        "email_not_found": "The email is not registered",
+        "incorrect_password": "The password is incorrect",
+        "server_error": "The server is not responding"
+      },
+      "submit": "Continue",
+      "register": {
+        "text": "Don’t have an account?",
+        "link": "Sign up"
+      }
+    }
+  },
+  "Register": {
+    "title": {
+      "text": "Sign up",
+      "description": "Sign up with your Google account"
+    },
+    "social": {
+      "google": "Sign up with Google"
+    },
+    "or": "Or sign up with",
+    "form": {
+      "fields": {
+        "email": {
+          "label": "Email",
+          "placeholder": "my-email@gmail.com",
+          "errors": {
+            "required": "Enter a valid email"
+          }
+        }
+      },
+      "submit": "Continue",
+      "register": {
+        "text": "Already have an account?",
+        "link": "Sign in"
+      },
+      "errors": {
+        "email_in_use": "This email is already registered",
+        "server_error": "The server is not responding"
+      }
+    }
+  },
+  "EnterPassword": {
+    "title": "Enter your password",
+    "description": "Enter the password associated with your account.",
+    "field": {
+      "label": "Password",
+      "placeholder": "**********",
+      "errors": {
+        "required": "This field is required."
+      }
+    },
+    "errors": {
+      "incorrect_password": "The password is incorrect",
+      "server_error": "The server is not responding"
+    },
+    "submit": "Sign in"
+  },
+  "CreatePassword": {
+    "title": "Set up your password",
+    "description": "Set a password you will use to access the application",
+    "fields": {
+      "password": {
+        "label": "Password",
+        "placeholder": "***********",
+        "errors": {
+          "required": "This field is required"
+        }
+      },
+      "confirmPassword": {
+        "label": "Confirm your password",
+        "placeholder": "***********",
+        "errors": {
+          "not-match": "Passwords do not match"
+        }
+      }
+    },
+    "submit": "Register"
+  },
+  "Sidebar": {
+    "brand": "Madi",
+    "sections": {
+      "dashboard": "Dashboard",
+      "apartments": "Apartments",
+      "tenants": "Tenants",
+      "payments": "Payments",
+      "bookings": "Bookings",
+      "settings": "Settings"
+    },
+    "main": "General"
+  },
+  "Header": {
+    "greeting": "Welcome ",
+    "brand": "Madi"
+  }
+}

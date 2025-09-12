@@ -1,0 +1,170 @@
+{
+  "Login": {
+    "title": {
+      "text": "Bienvenido de nuevo",
+      "brand": "Madi",
+      "description": "Ingresa con tu cuenta de google"
+    },
+    "social": {
+      "google": "Ingresa con tu google"
+    },
+    "or": "O ingresa con",
+    "form": {
+      "fields": {
+        "email": {
+          "label": "Correo",
+          "placeholder": "mi-correo@gmail.com",
+          "errors": {
+            "required": "Ingresa un correo valido"
+          }
+        }
+      },
+      "errors": {
+        "email_not_found": "El correo no se encontra registrado",
+        "incorrect_password": "La contraseña es incorrecta",
+        "server_error": "El servidor no responde"
+      },
+      "submit": "Continuar",
+      "register": {
+        "text": "No tienes una cuenta ?. ",
+        "link": "Registrate"
+      }
+    }
+  },
+  "Register": {
+    "title": {
+      "text": "Registrate",
+      "description": "Registrate con tu cuenta de google"
+    },
+    "social": {
+      "google": "Registrate con google"
+    },
+    "or": "O registrate con",
+    "form": {
+      "fields": {
+        "email": {
+          "label": "Correo",
+          "placeholder": "mi-correo@gmail.com",
+          "errors": {
+            "required": "Ingresa un correo valido"
+          }
+        }
+      },
+      "submit": "Continuar",
+      "register": {
+        "text": "Ya tienes una cuenta ?. ",
+        "link": " Ingresa"
+      },
+      "errors": {
+        "email_in_use": "El correo ya esta registrado",
+        "server_error": "El servidor no responde"
+      }
+    }
+  },
+  "EnterPassword": {
+    "title": "Ingrese su contraseña",
+    "description": "Ingresa la contraseña asociada a tu cuenta .",
+    "field": {
+      "label": "Contraseña",
+      "placeholder": "**********",
+      "errors": {
+        "required": "Este campo es requerido."
+      }
+    },
+    "errors": {
+      "incorrect_password": "La contraseña es incorrecta",
+      "server_error": "El servidor no responde"
+    },
+    "submit": "Ingresar"
+  },
+  "CreatePassword": {
+    "title": "Configura tu contraseña",
+    "description": "Configura una contraseña con la que ingresaras a la aplicacion",
+    "fields": {
+      "password": {
+        "label": "Contraseña",
+        "placeholder": "***********",
+        "errors": {
+          "required": "Este campo es requerido"
+        }
+      },
+      "confirmPassword": {
+        "label": "Confirma tu contraseña",
+        "placeholder": "***********",
+        "errors": {
+          "not-match": "Las contraseñas no coinciden"
+        }
+      }
+    },
+    "submit": "Registrarse"
+  },
+  "Sidebar": {
+    "brand": "Madi",
+    "sections": {
+      "dashboard": {
+        "label": "Panel de control",
+        "headerText": "Bienvenido"
+      },
+      "apartments": {
+        "label": "Departamentos",
+        "headerText": "Propiedades y departamentos"
+      },
+      "tenants": {
+        "label": "Inquilinos",
+        "headerText": "Inquilinos"
+      },
+      "payments": {
+        "label": "Pagos",
+        "headerText": "Pagos"
+      },
+      "bookings": {
+        "label": "Reservas",
+        "headerText": "Reservas"
+      },
+      "settings": {
+        "label": "Configuracion",
+        "headerText": "Configuracion"
+      }
+    },
+    "main": "General"
+  },
+  "Header": {
+    "greeting": "Bienvenido ",
+    "brand": "Madi",
+    "sections": {
+      "dashboard": {
+        "label": "Panel de control",
+        "headerText": "Bienvenido"
+      },
+      "apartments": {
+        "label": "Departamentos",
+        "headerText": "Propiedades y departamentos"
+      },
+      "tenants": {
+        "label": "Inquilinos",
+        "headerText": "Inquilinos"
+      },
+      "payments": {
+        "label": "Pagos",
+        "headerText": "Pagos"
+      },
+      "bookings": {
+        "label": "Reservas",
+        "headerText": "Reservas"
+      },
+      "settings": {
+        "label": "Configuracion",
+        "headerText": "Configuracion"
+      }
+    }
+  },
+  "Apartments": {
+    "title": "Propiedades y departamentos",
+    "subtitle": "Una lista de los departamentos y propiedades a tu disposicion",
+    "emptyTable": {
+      "title": "Aun no cuentas con ningun departamento o propiedad registrado",
+      "subtitle": "Agrega un departamento haciendo click en el buton debajo",
+      "button": "Agregar"
+    }
+  }
+}
