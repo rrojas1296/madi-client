@@ -1,3 +1,5 @@
+import { IconProps } from "../../types/icon";
+
 const UsersIcon = (props: IconProps) => {
   return (
     <svg

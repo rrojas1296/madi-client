@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose"; // asegúrate de estar usando jose
-import { JWT_ACCESS_SECRET, API_URL } from "@/constants/environments";
+import {
+  JWT_ACCESS_SECRET,
+  NEXT_PUBLIC_API_URL,
+} from "@/constants/environments";
 
 export const auth = async (
   req: NextRequest,
@@ -28,12 +31,13 @@ export const auth = async (
       if (!newAccess) return { isAuthenticated: false, res: null };
 
       const res = NextResponse.next();
+      console.log({ environment: process.env.NODE_ENV });
       res.cookies.set("accessToken", newAccess, {
         httpOnly: true,
-        secure: true,
+        secure: false,
         sameSite: "lax",
         path: "/",
-        maxAge: 60 * 60, // 1h
+        maxAge: 60 * 60 * 2, // 1h
       });
 
       return { isAuthenticated: true, res };
@@ -68,7 +72,7 @@ async function refreshAccessToken(
   refreshToken: string,
 ): Promise<string | null> {
   try {
-    const response = await fetch(`${API_URL}/auth/refreshToken`, {
+    const response = await fetch(`${NEXT_PUBLIC_API_URL}/auth/refreshToken`, {
       method: "POST",
       body: JSON.stringify({ refreshToken }),
       headers: { "Content-Type": "application/json" },

@@ -1,0 +1,11 @@
+
+services:
+  madi-client:
+    container_name: madi_client
+    env_file: .env
+    image: madi-client
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"   
