@@ -1,20 +1,85 @@
 import { ComponentProps, ReactNode } from "react";
 import { cn } from "../../lib/shadcn";
 import Input from "../input/Input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../shadcn/select";
+import { IOption } from "../../types/formfield";
+import { Control, Controller } from "react-hook-form";
+import { Switch } from "../shadcn/switch";
 
 interface Props extends ComponentProps<"input"> {
-  label: string;
+  label: string | ReactNode;
+  options?: IOption[];
+  control?: Control<any>;
+  required?: boolean;
+  placeholder?: string;
   error?: string;
   Icon?: ReactNode;
 }
 
-const FormField = ({ label, error, type, Icon, ...other }: Props) => {
+const FormField = ({
+  label,
+  error,
+  type,
+  required = false,
+  Icon,
+  name,
+  control,
+  options,
+  placeholder,
+  ...other
+}: Props) => {
+  const generateField = () => {
+    switch (type) {
+      case "switch":
+        return <Switch />;
+      case "select":
+        return (
+          <Controller
+            name={name!}
+            control={control}
+            render={({ field }) => (
+              <Select onValueChange={(val) => field.onChange(val)}>
+                <SelectTrigger className="" error={error}>
+                  <SelectValue placeholder={placeholder} />
+                </SelectTrigger>
+                <SelectContent>
+                  {options?.map((opt) => (
+                    <SelectItem value={opt.value.toString()} key={opt.value}>
+                      {opt.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          />
+        );
+
+      default:
+        return (
+          <Input
+            error={error}
+            type={type}
+            Icon={Icon}
+            placeholder={placeholder}
+            name={name}
+            {...other}
+          />
+        );
+    }
+  };
+
   return (
-    <div className="grid gap-2">
+    <div className="flex flex-col gap-2">
       <label className={cn("text-sm text-text-1", error && "text-danger")}>
-        {label}
+        {label} {required && <span className="text-red-500">*</span>}
       </label>
-      <Input error={error} type={type} Icon={Icon} {...other} />
+      {generateField()}
       {error && <p className="text-sm text-danger">{error}</p>}
     </div>
   );

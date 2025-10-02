@@ -166,5 +166,159 @@
       "subtitle": "Agrega un departamento haciendo click en el buton debajo",
       "button": "Agregar"
     }
+  },
+  "CreateApartment": {
+    "title": "Crear nuevo departamento",
+    "headerButton": "Guardar",
+    "form": {
+      "information": {
+        "title": "Informacion del departamento",
+        "description": "Aqui podras ingresar los datos y detalles del departamento .",
+        "fields": {
+          "name": {
+            "label": "Nombre",
+            "placeholder": "Departamento 101",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "address": {
+            "label": "Direccion",
+            "placeholder": "Av principal 101",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "persons": {
+            "label": "Numero de personas",
+            "placeholder": "Ej. 4",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "rooms": {
+            "label": "Numero de cuartos",
+            "placeholder": "Ej. 4",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "floors": {
+            "label": "Numero de pisos",
+            "placeholder": "Ej. 1",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "status": {
+            "label": "Estado",
+            "placeholder": "Ej. disponible, alquilado, mantenimiento",
+            "errors": {
+              "required": "Este campo es nesesario."
+            },
+            "options": {
+              "maintenance": "Mantenimiento",
+              "rented": "Alquilado",
+              "available": "Disponible"
+            }
+          },
+          "furnished": {
+            "label": "Departamento amoblado"
+          },
+          "apartmentType": {
+            "label": "Tipo de departamento",
+            "placeholder": "Ej. Estandar, penthouse, duplex",
+            "errors": {
+              "required": "Este campo es nesesario."
+            },
+            "options": {
+              "standar": "Estandar",
+              "penthouse": "Penthouse",
+              "duplex": "Duplex"
+            }
+          },
+          "bathrooms": {
+            "label": "Numero de baños",
+            "placeholder": "Ej. 4",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          }
+        }
+      },
+      "contract": {
+        "title": "Informacion del contrato",
+        "description": "Aqui podras configurar el contrato del departamento en cuestion .",
+        "fields": {
+          "currency": {
+            "label": "Moneda",
+            "placeholder": "Ej. PEN, EUR, USD",
+            "errors": {
+              "required": "Este campo es nesesario."
+            },
+            "options": {
+              "pen": "Soles",
+              "usd": "Dolares",
+              "eur": "Euros"
+            }
+          },
+          "costRent": {
+            "label": "Monto mensual de alquiler",
+            "placeholder": "Ej. 2000",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "garanty": {
+            "label": "Deposito de garantia",
+            "placeholder": "Ej. 200",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "paymentMethod": {
+            "label": "Metodo de pago",
+            "placeholder": "Ej. Yape, Tarjeta, Deposito, Efectivo",
+            "errors": {
+              "required": "Este campo es nesesario."
+            },
+            "options": {
+              "yape": "Yape",
+              "creditCard": "Tarjeta de credito / debito",
+              "deposit": "Deposito",
+              "cash": "Efectivo"
+            }
+          }
+        }
+      },
+      "administrativeInformation": {
+        "title": "Informacion administrativa",
+        "description": "Aqui se puede introducir la informacion administrativa del departamento como estacionamientos, numeros, etc .",
+        "fields": {
+          "maintenanceFee": {
+            "label": "Cuota de mantenimiento",
+            "placeholder": "Ej. 2000",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "parkings": {
+            "label": "Estacionamiento",
+            "placeholder": "Ej. 4",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "numberParkings": {
+            "label": "Numero de estacionamiento",
+            "placeholder": "Ej. 200",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          }
+        }
+      },
+      "create": "Create Apartment"
+    }
   }
 }

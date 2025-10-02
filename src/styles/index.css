@@ -32,7 +32,8 @@
   --animate-fade-in: fadeInAnimation 0.3s ease-out forwards;
 
   --spacing-header: 4.5rem;
-  --spacing-container-center: calc(100% - 62px - 72px);
+  --spacing-container-height: calc(100% - 62px - 72px);
+  --spacing-container-width: 57rem;
 }
 
 @theme inline {
@@ -146,4 +147,21 @@
 
 .custom-h {
   height: calc(100% - 64px - 72px);
+}
+
+/* For Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* For other browsers (general approach) */
+input[type="number"] {
+  appearance: textfield; /* Fallback for other browsers */
 }

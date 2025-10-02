@@ -27,7 +27,9 @@ const HeaderApp = () => {
   const { setTheme, theme } = useThemeStore();
   const locale = useLocale();
   const pathname = usePathname();
-  const activeSection = links.find((l) => l.href.startsWith(pathname));
+  const activeSection = links.find((l) =>
+    l.href.startsWith("/" + pathname.split("/")[1]),
+  );
   const date = getToday(locale as "en" | "es");
 
   const handleSwitchTheme = () => {

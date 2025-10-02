@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-bg-1">
+    <html lang="en" className="bg-bg-1 overflow-hidden">
       <body className={font.className}>
         <NextIntlClientProvider>
           <ThemeProvider>{children}</ThemeProvider>
