@@ -1,4 +1,5 @@
 import { IControl } from "@/features/shared/types/formfield";
+import { Currency } from "lucide-react";
 import z from "zod";
 
 enum Status {
@@ -13,71 +14,64 @@ enum Currencies {
   EUR = "EUR",
 }
 
-enum ApartmentType {
-  ESTANDAR = "ESTANDAR",
-  PENTHOUSE = "PENTHOUSE",
-  DUPLEX = "DUPLEX",
-}
-
-enum PaymentMethods {
-  YAPE = "YAPE",
-  CREDIT_CARD = "CREDIT_CARD",
-  DEPOSIT = "DEPOSIT",
-  CASH = "CASH",
+enum Condition {
+  NEW = "NEW",
+  GOOD = "GOOD",
+  MAINTENANCE = "MAINTENANCE",
 }
 
 export const createApartmentSchema = z.object({
   name: z.string().min(1, {
-    error: "form.information.fields.name.errors.required",
+    error: "form.apartmentInformation.fields.name.errors.required",
+  }),
+  internalCode: z.string().min(1, {
+    error: "form.apartmentInformation.fields.internalCode.errors.required",
   }),
   address: z.string().min(1, {
-    error: "form.information.fields.address.errors.required",
+    error: "form.apartmentInformation.fields.address.errors.required",
   }),
-  persons: z.number({
-    error: "form.information.fields.persons.errors.required",
+  floor: z.number({
+    error: "form.apartmentInformation.fields.floor.errors.required",
   }),
-  rooms: z.number({
-    error: "form.information.fields.rooms.errors.required",
-  }),
-  floors: z.number({
-    error: "form.information.fields.floors.errors.required",
+  area: z.number({
+    error: "form.apartmentInformation.fields.area.errors.required",
   }),
   status: z.enum(Status, {
-    error: "form.information.fields.status.errors.required",
+    error: "form.apartmentInformation.fields.status.errors.required",
+  }),
+  parking: z.string({
+    error: "form.apartmentInformation.fields.parking.errors.required",
+  }),
+
+  persons: z.number({
+    error: "form.physicalDetails.fields.persons.errors.required",
+  }),
+  rooms: z.number({
+    error: "form.physicalDetails.fields.rooms.errors.required",
+  }),
+  bathrooms: z.number({
+    error: "form.physicalDetails.fields.bathrooms.errors.required",
+  }),
+  floors: z.number({
+    error: "form.physicalDetails.fields.floors.errors.required",
   }),
   furnished: z.boolean().default(false),
-  bathrooms: z.number({
-    error: "form.information.fields.status.errors.required",
+  pets: z.boolean().default(false),
+  condition: z.enum(Condition, {
+    error: "form.physicalDetails.fields.condition.errors.required",
+  }),
+  monthlyFee: z.number({
+    error: "form.financialInformation.fields.monthlyFee.errors.required",
+  }),
+  garanty: z.number({
+    error: "form.financialInformation.fields.garanty.errors.required",
   }),
   currency: z.enum(Currencies, {
-    error: "form.contract.fields.currency.errors.required",
+    error: "form.financialInformation.fields.currency.errors.required",
   }),
-  costRent: z.number({
-    error: "form.contract.fields.costRent.errors.required",
-  }),
-  garanty: z
-    .number({
-      error: "form.contract.fields.garanty.errors.required",
-    })
-    .or(z.nan())
-    .optional(),
   maintenanceFee: z
     .number({
-      error:
-        "form.administrativeInformation.fields.maintenanceFee.errors.required",
-    })
-    .or(z.nan())
-    .optional(),
-  parkings: z
-    .number({
-      error: "form.administrativeInformation.fields.parkings.errors.required",
-    })
-    .or(z.nan())
-    .optional(),
-  numberParkings: z
-    .number({
-      error:
-        "form.administrativeInformation.fields.numberParkings.errors.required",
+      error: "form.financialInformation.fields.maintenanceFee.errors.required",
     })
     .or(z.nan())
     .optional(),
@@ -86,138 +80,177 @@ export const createApartmentSchema = z.object({
 export type SchemaInformation = z.infer<typeof createApartmentSchema>;
 export type SchemaInformationFields = keyof SchemaInformation;
 
-const informationControls: IControl<SchemaInformationFields>[] = [
+const apartmentInformation: IControl<SchemaInformationFields>[] = [
   {
-    label: "form.information.fields.name.label",
-    placeholder: "form.information.fields.name.placeholder",
+    label: "form.apartmentInformation.fields.name.label",
+    placeholder: "form.apartmentInformation.fields.name.placeholder",
     type: "text",
     required: true,
     name: "name",
   },
   {
-    label: "form.information.fields.address.label",
-    placeholder: "form.information.fields.address.placeholder",
+    label: "form.apartmentInformation.fields.internalCode.label",
+    placeholder: "form.apartmentInformation.fields.internalCode.placeholder",
+    type: "text",
+    required: true,
+    name: "internalCode",
+  },
+  {
+    label: "form.apartmentInformation.fields.address.label",
+    placeholder: "form.apartmentInformation.fields.address.placeholder",
     type: "text",
     required: true,
     name: "address",
   },
   {
-    label: "form.information.fields.persons.label",
-    placeholder: "form.information.fields.persons.placeholder",
-    type: "number",
-    required: true,
-    name: "persons",
-  },
-  {
-    label: "form.information.fields.rooms.label",
-    placeholder: "form.information.fields.rooms.placeholder",
+    label: "form.apartmentInformation.fields.floor.label",
+    placeholder: "form.apartmentInformation.fields.floor.placeholder",
     required: true,
     type: "number",
-    name: "rooms",
+    name: "floor",
   },
   {
-    label: "form.information.fields.floors.label",
-    placeholder: "form.information.fields.floors.placeholder",
+    label: "form.apartmentInformation.fields.area.label",
+    placeholder: "form.apartmentInformation.fields.area.placeholder",
     type: "number",
     required: true,
-    name: "floors",
+    name: "area",
   },
   {
-    label: "form.information.fields.status.label",
-    placeholder: "form.information.fields.status.placeholder",
+    label: "form.apartmentInformation.fields.status.label",
+    placeholder: "form.apartmentInformation.fields.status.placeholder",
     type: "select",
     required: true,
     name: "status",
     options: [
       {
-        label: "form.information.fields.status.options.available",
+        label: "form.apartmentInformation.fields.status.options.available",
         value: Status.AVAILABLE,
       },
       {
-        label: "form.information.fields.status.options.rented",
+        label: "form.apartmentInformation.fields.status.options.rented",
         value: Status.RENTED,
       },
       {
-        label: "form.information.fields.status.options.maintenance",
+        label: "form.apartmentInformation.fields.status.options.maintenance",
         value: Status.MAINTENANCE,
       },
     ],
   },
   {
-    label: "form.information.fields.bathrooms.label",
-    placeholder: "form.information.fields.bathrooms.placeholder",
+    label: "form.apartmentInformation.fields.parking.label",
+    placeholder: "form.apartmentInformation.fields.parking.placeholder",
+    type: "text",
+    required: false,
+    name: "parking",
+  },
+];
+
+const physicalDetails: IControl<SchemaInformationFields>[] = [
+  {
+    label: "form.physicalDetails.fields.persons.label",
+    placeholder: "form.physicalDetails.fields.persons.placeholder",
+    type: "number",
+    required: true,
+    name: "persons",
+  },
+  {
+    label: "form.physicalDetails.fields.rooms.label",
+    placeholder: "form.physicalDetails.fields.rooms.placeholder",
+    type: "number",
+    required: true,
+    name: "rooms",
+  },
+  {
+    label: "form.physicalDetails.fields.bathrooms.label",
+    placeholder: "form.physicalDetails.fields.bathrooms.placeholder",
     type: "number",
     required: true,
     name: "bathrooms",
   },
   {
-    label: "form.information.fields.furnished.label",
+    label: "form.physicalDetails.fields.floors.label",
+    placeholder: "form.physicalDetails.fields.floors.placeholder",
+    type: "number",
+    required: true,
+    name: "floors",
+  },
+  {
+    label: "form.physicalDetails.fields.condition.label",
+    placeholder: "form.physicalDetails.fields.condition.placeholder",
+    type: "select",
+    required: true,
+    name: "condition",
+    options: [
+      {
+        value: Condition.NEW,
+        label: "form.physicalDetails.fields.condition.options.good",
+      },
+      {
+        value: Condition.GOOD,
+        label: "form.physicalDetails.fields.condition.options.remoleded",
+      },
+      {
+        value: Condition.MAINTENANCE,
+        label: "form.physicalDetails.fields.condition.options.maintenance",
+      },
+    ],
+  },
+  {
+    label: "form.physicalDetails.fields.furnished.label",
     type: "switch",
     required: true,
     name: "furnished",
   },
+  {
+    label: "form.physicalDetails.fields.pets.label",
+    type: "switch",
+    required: true,
+    name: "pets",
+  },
 ];
 
-const contractControls: IControl<SchemaInformationFields>[] = [
+const financialInformationControls: IControl<SchemaInformationFields>[] = [
   {
-    label: "form.contract.fields.currency.label",
-    placeholder: "form.contract.fields.currency.placeholder",
-    type: "select",
+    label: "form.financialInformation.fields.monthlyFee.label",
+    placeholder: "form.financialInformation.fields.monthlyFee.placeholder",
+    type: "number",
+    name: "monthlyFee",
     required: true,
+  },
+  {
+    label: "form.financialInformation.fields.garanty.label",
+    placeholder: "form.financialInformation.fields.garanty.placeholder",
+    type: "number",
+    name: "garanty",
+    required: true,
+  },
+  {
+    label: "form.financialInformation.fields.currency.label",
+    placeholder: "form.financialInformation.fields.currency.placeholder",
+    type: "select",
     name: "currency",
+    required: true,
     options: [
       {
-        label: "form.contract.fields.currency.options.pen",
+        label: "form.financialInformation.fields.currency.options.pen",
         value: Currencies.PEN,
       },
       {
-        label: "form.contract.fields.currency.options.usd",
+        label: "form.financialInformation.fields.currency.options.usd",
         value: Currencies.USD,
       },
       {
-        label: "form.contract.fields.currency.options.eur",
+        label: "form.financialInformation.fields.currency.options.eur",
         value: Currencies.EUR,
       },
     ],
   },
   {
-    label: "form.contract.fields.costRent.label",
-    placeholder: "form.contract.fields.costRent.placeholder",
-    type: "number",
-    required: true,
-    name: "costRent",
-  },
-  {
-    label: "form.contract.fields.garanty.label",
-    placeholder: "form.contract.fields.garanty.placeholder",
-    type: "number",
-    required: false,
-    name: "garanty",
-  },
-];
-
-const administrativeInformationControls: IControl<SchemaInformationFields>[] = [
-  {
-    label: "form.administrativeInformation.fields.maintenanceFee.label",
-    placeholder:
-      "form.administrativeInformation.fields.maintenanceFee.placeholder",
+    label: "form.financialInformation.fields.maintenanceFee.label",
+    placeholder: "form.financialInformation.fields.maintenanceFee.placeholder",
     type: "number",
     name: "maintenanceFee",
-    required: false,
-  },
-  {
-    label: "form.administrativeInformation.fields.parkings.label",
-    placeholder: "form.administrativeInformation.fields.parkings.placeholder",
-    type: "number",
-    name: "parkings",
-    required: false,
-  },
-  {
-    label: "form.administrativeInformation.fields.numberParkings.label",
-    placeholder:
-      "form.administrativeInformation.fields.numberParkings.placeholder",
-    type: "number",
-    name: "numberParkings",
     required: false,
   },
 ];
@@ -225,20 +258,20 @@ const administrativeInformationControls: IControl<SchemaInformationFields>[] = [
 export const createApartmentSections = [
   {
     id: 1,
-    title: "form.information.title",
-    description: "form.information.description",
-    controls: informationControls,
+    title: "form.apartmentInformation.title",
+    description: "form.apartmentInformation.description",
+    controls: apartmentInformation,
   },
   {
     id: 2,
-    title: "form.contract.title",
-    description: "form.contract.description",
-    controls: contractControls,
+    title: "form.physicalDetails.title",
+    description: "form.physicalDetails.description",
+    controls: physicalDetails,
   },
   {
     id: 3,
-    title: "form.administrativeInformation.title",
-    description: "form.contract.description",
-    controls: administrativeInformationControls,
+    title: "form.financialInformation.title",
+    description: "form.financialInformation.description",
+    controls: financialInformationControls,
   },
 ];

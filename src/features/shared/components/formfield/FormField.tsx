@@ -10,7 +10,7 @@ import {
 } from "../shadcn/select";
 import { IOption } from "../../types/formfield";
 import { Control, Controller } from "react-hook-form";
-import { Switch } from "../shadcn/switch";
+import Switch from "../switch/Switch";
 
 interface Props extends ComponentProps<"input"> {
   label: string | ReactNode;
@@ -37,7 +37,15 @@ const FormField = ({
   const generateField = () => {
     switch (type) {
       case "switch":
-        return <Switch />;
+        return (
+          <Controller
+            name={name!}
+            control={control}
+            render={({ field }) => (
+              <Switch setActive={field.onChange} active={field.value} />
+            )}
+          />
+        );
       case "select":
         return (
           <Controller

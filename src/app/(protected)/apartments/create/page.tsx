@@ -30,23 +30,23 @@ const Page = () => {
   return (
     <form
       onSubmit={handleSubmit(handleCreateApartment)}
-      className="max-w-container-width m-auto pb-8 lg:pb-16"
+      className="max-w-container-width m-auto pb-8 lg:pb-16 animate-fade-in"
     >
       <div className="flex justify-between items-center mt-6">
         <div className="flex items-center gap-4 font-medium text-xl">
           <Link href="/apartments">
             <Button variant="icon">
-              <ArrowLeftIcon className="h-5 w-5 text-text-1 stroke-current" />
+              <ArrowLeftIcon className="h-5 w-5 text-text-2 stroke-current" />
             </Button>
           </Link>
           <h1>{t("title")}</h1>
         </div>
         <Button type="submit" className="hidden lg:flex w-36">
           <SaveIcon className="w-5 h-5 text-text-3 stroke-current" />{" "}
-          {t("headerButton")}
+          {t("headerButton.create")}
         </Button>
       </div>
-      <div className="mt-6 grid gap-10">
+      <div className="mt-6 grid gap-10 lg:gap-12">
         {createApartmentSections.map((section) => {
           return (
             <div
@@ -83,8 +83,22 @@ const Page = () => {
             </div>
           );
         })}
+        <div className="hidden lg:flex justify-between items-center">
+          <div className="flex items-center gap-4 font-medium text-xl">
+            <Link href="/apartments">
+              <Button variant="outline" className="px-4 text-text-2">
+                <ArrowLeftIcon className="h-5 w-5 text-text-2 stroke-current" />
+                Atras
+              </Button>
+            </Link>
+          </div>
+          <Button type="submit" className="lg:flex px-10 w-fit">
+            <SaveIcon className="w-5 h-5 text-text-3 stroke-current" />{" "}
+            {t("headerButton.create")}
+          </Button>
+        </div>
         <Button type="submit" className="lg:hidden">
-          {t("form.create")}
+          {t("headerButton.create")}
         </Button>
       </div>
     </form>

@@ -1,12 +1,12 @@
 {
   "Login": {
     "title": {
-      "text": "Bienvenido de nuevo editado v4",
+      "text": "Bienvenido de nuevo",
       "brand": "Madi",
       "description": "Ingresa con tu cuenta de google"
     },
     "social": {
-      "google": "Ingresa con tu google"
+      "google": "Ingresa con google"
     },
     "or": "O ingresa con",
     "form": {
@@ -169,15 +169,25 @@
   },
   "CreateApartment": {
     "title": "Crear nuevo departamento",
-    "headerButton": "Guardar",
+    "headerButton": {
+      "create": "Crear",
+      "edit": "Editar"
+    },
     "form": {
-      "information": {
-        "title": "Informacion del departamento",
-        "description": "Aqui podras ingresar los datos y detalles del departamento .",
+      "apartmentInformation": {
+        "title": "Información del Departamento",
+        "description": "Detalles basicos sobre el departamento.",
         "fields": {
           "name": {
             "label": "Nombre",
             "placeholder": "Departamento 101",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "internalCode": {
+            "label": "Codigo interno",
+            "placeholder": "A-204",
             "errors": {
               "required": "Este campo es nesesario."
             }
@@ -189,30 +199,23 @@
               "required": "Este campo es nesesario."
             }
           },
-          "persons": {
-            "label": "Numero de personas",
-            "placeholder": "Ej. 4",
+          "floor": {
+            "label": "Piso",
+            "placeholder": "2",
             "errors": {
               "required": "Este campo es nesesario."
             }
           },
-          "rooms": {
-            "label": "Numero de cuartos",
-            "placeholder": "Ej. 4",
-            "errors": {
-              "required": "Este campo es nesesario."
-            }
-          },
-          "floors": {
-            "label": "Numero de pisos",
-            "placeholder": "Ej. 1",
+          "area": {
+            "label": "Área (m²)",
+            "placeholder": "80",
             "errors": {
               "required": "Este campo es nesesario."
             }
           },
           "status": {
             "label": "Estado",
-            "placeholder": "Ej. disponible, alquilado, mantenimiento",
+            "placeholder": "Disponible / Alquilado / Mantenimiento",
             "errors": {
               "required": "Este campo es nesesario."
             },
@@ -222,96 +225,100 @@
               "available": "Disponible"
             }
           },
-          "furnished": {
-            "label": "Departamento amoblado"
-          },
-          "apartmentType": {
-            "label": "Tipo de departamento",
-            "placeholder": "Ej. Estandar, penthouse, duplex",
+          "parking": {
+            "label": "Estacionamiento",
+            "placeholder": "B-201",
             "errors": {
-              "required": "Este campo es nesesario."
-            },
-            "options": {
-              "standar": "Estandar",
-              "penthouse": "Penthouse",
-              "duplex": "Duplex"
-            }
-          },
-          "bathrooms": {
-            "label": "Numero de baños",
-            "placeholder": "Ej. 4",
-            "errors": {
-              "required": "Este campo es nesesario."
+              "required": "Este campo es nesesario"
             }
           }
         }
       },
-      "contract": {
-        "title": "Informacion del contrato",
-        "description": "Aqui podras configurar el contrato del departamento en cuestion .",
+      "physicalDetails": {
+        "title": "Detalles Físicos",
+        "description": "Características internas del departamento, número de ambientes y su condición general.",
         "fields": {
-          "currency": {
-            "label": "Moneda",
-            "placeholder": "Ej. PEN, EUR, USD",
+          "persons": {
+            "label": "Aforo",
+            "placeholder": "4",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "rooms": {
+            "label": "Numero de habitaciones",
+            "placeholder": "4",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "bathrooms": {
+            "label": "Numero de baños",
+            "placeholder": "2",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "floors": {
+            "label": "Numero pisos",
+            "placeholder": "1",
+            "errors": {
+              "required": "Este campo es nesesario."
+            }
+          },
+          "furnished": {
+            "label": "Departamento amoblado"
+          },
+          "pets": {
+            "label": "Se permiten mascotas"
+          },
+          "condition": {
+            "label": "Condicion",
+            "placeholder": "Ej. nuevo, bueno, mantenimiento",
             "errors": {
               "required": "Este campo es nesesario."
             },
             "options": {
-              "pen": "Soles",
-              "usd": "Dolares",
-              "eur": "Euros"
+              "good": "Buena",
+              "remoleded": "Remoledado",
+              "maintenance": "Require mantenimiento"
             }
-          },
-          "costRent": {
-            "label": "Monto mensual de alquiler",
-            "placeholder": "Ej. 2000",
+          }
+        }
+      },
+      "financialInformation": {
+        "title": "Informacion financiera",
+        "description": "Detalles sobre pagos e impuestos asociados al departamento.",
+        "fields": {
+          "monthlyFee": {
+            "label": "Cuota mensual",
+            "placeholder": "1500",
             "errors": {
               "required": "Este campo es nesesario."
             }
           },
           "garanty": {
-            "label": "Deposito de garantia",
-            "placeholder": "Ej. 200",
+            "label": "Garantia",
+            "placeholder": "500",
             "errors": {
               "required": "Este campo es nesesario."
             }
           },
-          "paymentMethod": {
-            "label": "Metodo de pago",
-            "placeholder": "Ej. Yape, Tarjeta, Deposito, Efectivo",
+          "currency": {
+            "label": "Moneda",
+            "placeholder": "USD / PEN / EUR",
             "errors": {
               "required": "Este campo es nesesario."
             },
             "options": {
-              "yape": "Yape",
-              "creditCard": "Tarjeta de credito / debito",
-              "deposit": "Deposito",
-              "cash": "Efectivo"
+              "pen": "PEN",
+              "usd": "USD",
+              "eur": "EUR"
             }
-          }
-        }
-      },
-      "administrativeInformation": {
-        "title": "Informacion administrativa",
-        "description": "Aqui se puede introducir la informacion administrativa del departamento como estacionamientos, numeros, etc .",
-        "fields": {
+          },
           "maintenanceFee": {
             "label": "Cuota de mantenimiento",
-            "placeholder": "Ej. 2000",
-            "errors": {
-              "required": "Este campo es nesesario."
-            }
-          },
-          "parkings": {
-            "label": "Estacionamiento",
-            "placeholder": "Ej. 4",
-            "errors": {
-              "required": "Este campo es nesesario."
-            }
-          },
-          "numberParkings": {
-            "label": "Numero de estacionamiento",
-            "placeholder": "Ej. 200",
+            "placeholder": "1000",
             "errors": {
               "required": "Este campo es nesesario."
             }
