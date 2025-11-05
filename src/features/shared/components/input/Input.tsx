@@ -20,7 +20,7 @@ const Input = ({
       className={cn(
         "flex gap-6 items-center border border-border-1 bg-bg-2 rounded-md focus-within:ring-2 focus-within:ring-shadow/50 transition-all",
         containerClassName,
-
+        Icon && "pr-4",
         error && "border-danger focus-within:ring-danger/50",
       )}
     >
