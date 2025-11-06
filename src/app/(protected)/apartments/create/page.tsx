@@ -4,6 +4,7 @@ import {
   createApartmentSections,
   SchemaInformation,
 } from "@/features/apartments/schemas/createApartment.schema";
+import useCreateApartment from "@/features/hooks/useCreateApartment";
 import Button from "@/features/shared/components/button/button";
 import FormField from "@/features/shared/components/formfield/FormField";
 import ArrowLeftIcon from "@/features/shared/components/icons/ArrowLeftIcon";
@@ -15,6 +16,7 @@ import { useForm } from "react-hook-form";
 
 const Page = () => {
   const t = useTranslations("CreateApartment");
+  const { isPending, mutate } = useCreateApartment();
   const {
     register,
     handleSubmit,
@@ -24,12 +26,15 @@ const Page = () => {
     resolver: zodResolver(createApartmentSchema),
   });
 
-  const handleCreateApartment = (data: SchemaInformation) => {
+  const handleCreateApartment = async (data: SchemaInformation) => {
     console.log({ data });
+    mutate(data);
   };
   return (
     <form
-      onSubmit={handleSubmit(handleCreateApartment)}
+      onSubmit={handleSubmit(handleCreateApartment, () =>
+        console.log("Error", errors),
+      )}
       className="max-w-container-width m-auto pb-8 lg:pb-16 animate-fade-in"
     >
       <div className="flex justify-between items-center mt-6">

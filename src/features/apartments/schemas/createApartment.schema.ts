@@ -1,10 +1,9 @@
 import { IControl } from "@/features/shared/types/formfield";
-import { Currency } from "lucide-react";
 import z from "zod";
 
 enum Status {
   AVAILABLE = "AVAILABLE",
-  RENTED = "RENTED",
+  LEASED = "LEASED",
   MAINTENANCE = "MAINTENANCE",
 }
 
@@ -16,7 +15,7 @@ enum Currencies {
 
 enum Condition {
   NEW = "NEW",
-  GOOD = "GOOD",
+  REMODELED = "REMODELED",
   MAINTENANCE = "MAINTENANCE",
 }
 
@@ -128,8 +127,8 @@ const apartmentInformation: IControl<SchemaInformationFields>[] = [
         value: Status.AVAILABLE,
       },
       {
-        label: "form.apartmentInformation.fields.status.options.rented",
-        value: Status.RENTED,
+        label: "form.apartmentInformation.fields.status.options.leased",
+        value: Status.LEASED,
       },
       {
         label: "form.apartmentInformation.fields.status.options.maintenance",
@@ -184,11 +183,11 @@ const physicalDetails: IControl<SchemaInformationFields>[] = [
     options: [
       {
         value: Condition.NEW,
-        label: "form.physicalDetails.fields.condition.options.good",
+        label: "form.physicalDetails.fields.condition.options.new",
       },
       {
-        value: Condition.GOOD,
-        label: "form.physicalDetails.fields.condition.options.remoleded",
+        value: Condition.REMODELED,
+        label: "form.physicalDetails.fields.condition.options.remodeled",
       },
       {
         value: Condition.MAINTENANCE,

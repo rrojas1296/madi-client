@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "../styles/index.css";
 import ThemeProvider from "@/providers/ThemeProvider";
 import { NextIntlClientProvider } from "next-intl";
+import ReactQueryProvider from "@/providers/ReactQueryProvider";
 
 const font = Montserrat({
   variable: "--font-montserrat",
@@ -22,9 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-bg-1 overflow-hidden">
       <body className={font.className}>
-        <NextIntlClientProvider>
-          <ThemeProvider>{children}</ThemeProvider>
-        </NextIntlClientProvider>
+        <ReactQueryProvider>
+          <NextIntlClientProvider>
+            <ThemeProvider>{children}</ThemeProvider>
+          </NextIntlClientProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );
