@@ -171,9 +171,18 @@
     "title": "Crear nuevo departamento",
     "headerButton": {
       "create": "Crear",
-      "edit": "Editar"
+      "edit": "Editar",
+      "back": "Atras"
     },
     "form": {
+      "errors": {
+        "SERVER_ERROR": "Error de servidor, intentelo mas tarde.",
+        "ERR_NETWORK": "Error de servidor, intentelo mas tarde.",
+        "ERR_BAD_RESPONSE": "Error de servidor, intentelo mas tarde."
+      },
+      "messages": {
+        "SUCCESS": "Departamento creado satisfactoriamente."
+      },
       "apartmentInformation": {
         "title": "Información del Departamento",
         "description": "Detalles basicos sobre el departamento.",
@@ -203,14 +212,16 @@
             "label": "Piso",
             "placeholder": "2",
             "errors": {
-              "required": "Este campo es nesesario."
+              "required": "Este campo es nesesario.",
+              "min": "Debe ser una valor valido."
             }
           },
           "area": {
             "label": "Área (m²)",
             "placeholder": "80",
             "errors": {
-              "required": "Este campo es nesesario."
+              "required": "Este campo es nesesario.",
+              "min": "Debe ser una valor valido."
             }
           },
           "status": {
@@ -242,28 +253,32 @@
             "label": "Aforo",
             "placeholder": "4",
             "errors": {
-              "required": "Este campo es nesesario."
+              "required": "Este campo es nesesario.",
+              "min": "Debe ser una valor valido."
             }
           },
           "rooms": {
             "label": "Numero de habitaciones",
             "placeholder": "4",
             "errors": {
-              "required": "Este campo es nesesario."
+              "required": "Este campo es nesesario.",
+              "min": "Debe ser una valor valido."
             }
           },
           "bathrooms": {
             "label": "Numero de baños",
             "placeholder": "2",
             "errors": {
-              "required": "Este campo es nesesario."
+              "required": "Este campo es nesesario.",
+              "min": "Debe ser una valor valido."
             }
           },
           "floors": {
             "label": "Numero pisos",
             "placeholder": "1",
             "errors": {
-              "required": "Este campo es nesesario."
+              "required": "Este campo es nesesario.",
+              "min": "Debe ser una valor valido."
             }
           },
           "furnished": {
@@ -294,14 +309,16 @@
             "label": "Cuota mensual",
             "placeholder": "1500",
             "errors": {
-              "required": "Este campo es nesesario."
+              "required": "Este campo es nesesario.",
+              "min": "Debe ser una valor valido."
             }
           },
           "garanty": {
             "label": "Garantia",
             "placeholder": "500",
             "errors": {
-              "required": "Este campo es nesesario."
+              "required": "Este campo es nesesario.",
+              "min": "Debe ser una valor valido."
             }
           },
           "currency": {

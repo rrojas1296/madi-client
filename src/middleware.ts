@@ -6,7 +6,6 @@ const publicRoutes: string[] = ["/login", "/register"];
 
 const middleware = async (req: NextRequest) => {
   const { res, isAuthenticated } = await auth(req);
-  console.log({ res, isAuthenticated });
 
   const pathname = req.nextUrl.pathname;
 

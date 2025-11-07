@@ -1,19 +1,19 @@
 import { IControl } from "@/features/shared/types/formfield";
 import z from "zod";
 
-enum Status {
+export enum ApartmentStatus {
   AVAILABLE = "AVAILABLE",
   LEASED = "LEASED",
   MAINTENANCE = "MAINTENANCE",
 }
 
-enum Currencies {
+export enum ApartmentCurrencies {
   PEN = "PEN",
   USD = "USD",
   EUR = "EUR",
 }
 
-enum Condition {
+export enum ApartmentCondition {
   NEW = "NEW",
   REMODELED = "REMODELED",
   MAINTENANCE = "MAINTENANCE",
@@ -29,43 +29,74 @@ export const createApartmentSchema = z.object({
   address: z.string().min(1, {
     error: "form.apartmentInformation.fields.address.errors.required",
   }),
-  floor: z.number({
-    error: "form.apartmentInformation.fields.floor.errors.required",
-  }),
-  area: z.number({
-    error: "form.apartmentInformation.fields.area.errors.required",
-  }),
-  status: z.enum(Status, {
+  floor: z
+    .number({
+      error: "form.apartmentInformation.fields.floor.errors.required",
+    })
+    .min(1, {
+      error: "form.apartmentInformation.fields.floor.errors.min",
+    }),
+  area: z
+    .number({
+      error: "form.apartmentInformation.fields.area.errors.required",
+    })
+    .min(1, {
+      error: "form.apartmentInformation.fields.area.errors.min",
+    }),
+  status: z.enum(ApartmentStatus, {
     error: "form.apartmentInformation.fields.status.errors.required",
   }),
   parking: z.string({
     error: "form.apartmentInformation.fields.parking.errors.required",
   }),
-
-  persons: z.number({
-    error: "form.physicalDetails.fields.persons.errors.required",
-  }),
-  rooms: z.number({
-    error: "form.physicalDetails.fields.rooms.errors.required",
-  }),
-  bathrooms: z.number({
-    error: "form.physicalDetails.fields.bathrooms.errors.required",
-  }),
-  floors: z.number({
-    error: "form.physicalDetails.fields.floors.errors.required",
-  }),
+  persons: z
+    .number({
+      error: "form.physicalDetails.fields.persons.errors.required",
+    })
+    .min(1, {
+      error: "form.physicalDetails.fields.persons.errors.min",
+    }),
+  rooms: z
+    .number({
+      error: "form.physicalDetails.fields.rooms.errors.required",
+    })
+    .min(1, {
+      error: "form.physicalDetails.fields.rooms.errors.min",
+    }),
+  bathrooms: z
+    .number({
+      error: "form.physicalDetails.fields.bathrooms.errors.required",
+    })
+    .min(1, {
+      error: "form.physicalDetails.fields.bathrooms.errors.min",
+    }),
+  floors: z
+    .number({
+      error: "form.physicalDetails.fields.floors.errors.required",
+    })
+    .min(1, {
+      error: "form.physicalDetails.fields.floors.errors.min",
+    }),
   furnished: z.boolean().default(false),
   pets: z.boolean().default(false),
-  condition: z.enum(Condition, {
+  condition: z.enum(ApartmentCondition, {
     error: "form.physicalDetails.fields.condition.errors.required",
   }),
-  monthlyFee: z.number({
-    error: "form.financialInformation.fields.monthlyFee.errors.required",
-  }),
-  garanty: z.number({
-    error: "form.financialInformation.fields.garanty.errors.required",
-  }),
-  currency: z.enum(Currencies, {
+  monthlyFee: z
+    .number({
+      error: "form.financialInformation.fields.monthlyFee.errors.required",
+    })
+    .min(1, {
+      error: "form.financialInformation.fields.monthlyFee.errors.min",
+    }),
+  garanty: z
+    .number({
+      error: "form.financialInformation.fields.garanty.errors.required",
+    })
+    .min(1, {
+      error: "form.financialInformation.fields.garanty.errors.min",
+    }),
+  currency: z.enum(ApartmentCurrencies, {
     error: "form.financialInformation.fields.currency.errors.required",
   }),
   maintenanceFee: z
@@ -124,15 +155,15 @@ const apartmentInformation: IControl<SchemaInformationFields>[] = [
     options: [
       {
         label: "form.apartmentInformation.fields.status.options.available",
-        value: Status.AVAILABLE,
+        value: ApartmentStatus.AVAILABLE,
       },
       {
         label: "form.apartmentInformation.fields.status.options.leased",
-        value: Status.LEASED,
+        value: ApartmentStatus.LEASED,
       },
       {
         label: "form.apartmentInformation.fields.status.options.maintenance",
-        value: Status.MAINTENANCE,
+        value: ApartmentStatus.MAINTENANCE,
       },
     ],
   },
@@ -182,15 +213,15 @@ const physicalDetails: IControl<SchemaInformationFields>[] = [
     name: "condition",
     options: [
       {
-        value: Condition.NEW,
+        value: ApartmentCondition.NEW,
         label: "form.physicalDetails.fields.condition.options.new",
       },
       {
-        value: Condition.REMODELED,
+        value: ApartmentCondition.REMODELED,
         label: "form.physicalDetails.fields.condition.options.remodeled",
       },
       {
-        value: Condition.MAINTENANCE,
+        value: ApartmentCondition.MAINTENANCE,
         label: "form.physicalDetails.fields.condition.options.maintenance",
       },
     ],
@@ -233,15 +264,15 @@ const financialInformationControls: IControl<SchemaInformationFields>[] = [
     options: [
       {
         label: "form.financialInformation.fields.currency.options.pen",
-        value: Currencies.PEN,
+        value: ApartmentCurrencies.PEN,
       },
       {
         label: "form.financialInformation.fields.currency.options.usd",
-        value: Currencies.USD,
+        value: ApartmentCurrencies.USD,
       },
       {
         label: "form.financialInformation.fields.currency.options.eur",
-        value: Currencies.EUR,
+        value: ApartmentCurrencies.EUR,
       },
     ],
   },

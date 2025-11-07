@@ -1,22 +1,31 @@
 "use client";
 import {
+  ApartmentCondition,
+  ApartmentCurrencies,
+  ApartmentStatus,
   createApartmentSchema,
   createApartmentSections,
   SchemaInformation,
 } from "@/features/apartments/schemas/createApartment.schema";
-import useCreateApartment from "@/features/hooks/useCreateApartment";
+import { createApartmentService } from "@/features/apartments/services/createAapartment.service";
 import Button from "@/features/shared/components/button/button";
 import FormField from "@/features/shared/components/formfield/FormField";
 import ArrowLeftIcon from "@/features/shared/components/icons/ArrowLeftIcon";
+import LoadingIcon from "@/features/shared/components/icons/LoadingIcon";
 import SaveIcon from "@/features/shared/components/icons/SaveIcon";
+import SnackBar from "@/features/shared/components/snackBar/SnackBar";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { redirect, useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 const Page = () => {
   const t = useTranslations("CreateApartment");
-  const { isPending, mutate } = useCreateApartment();
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -24,17 +33,33 @@ const Page = () => {
     formState: { errors },
   } = useForm({
     resolver: zodResolver(createApartmentSchema),
+    defaultValues: {
+      status: ApartmentStatus.AVAILABLE,
+      condition: ApartmentCondition.NEW,
+      currency: ApartmentCurrencies.PEN,
+    },
   });
 
   const handleCreateApartment = async (data: SchemaInformation) => {
-    console.log({ data });
-    mutate(data);
+    setIsLoading(true);
+    try {
+      await createApartmentService(data);
+      router.push("/apartments");
+    } catch (err: any) {
+      const code = err.code || "SERVER_ERROR";
+      const message = t(`form.errors.${code}`);
+      toast.custom(() => <SnackBar text={t(message)} type="error" />, {
+        duration: 3000,
+        position: "bottom-center",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
+
   return (
     <form
-      onSubmit={handleSubmit(handleCreateApartment, () =>
-        console.log("Error", errors),
-      )}
+      onSubmit={handleSubmit(handleCreateApartment)}
       className="max-w-container-width m-auto pb-8 lg:pb-16 animate-fade-in"
     >
       <div className="flex justify-between items-center mt-6">
@@ -47,7 +72,11 @@ const Page = () => {
           <h1>{t("title")}</h1>
         </div>
         <Button type="submit" className="hidden lg:flex w-36">
-          <SaveIcon className="w-5 h-5 text-text-3 stroke-current" />{" "}
+          {isLoading ? (
+            <LoadingIcon className="h-5 w-5 animate-spin text-text-3 stroke-current" />
+          ) : (
+            <SaveIcon className="w-5 h-5 text-text-3 stroke-current" />
+          )}
           {t("headerButton.create")}
         </Button>
       </div>
@@ -93,16 +122,25 @@ const Page = () => {
             <Link href="/apartments">
               <Button variant="outline" className="px-4 text-text-2">
                 <ArrowLeftIcon className="h-5 w-5 text-text-2 stroke-current" />
-                Atras
+                {t("headerButton.back")}
               </Button>
             </Link>
           </div>
           <Button type="submit" className="lg:flex px-10 w-fit">
-            <SaveIcon className="w-5 h-5 text-text-3 stroke-current" />{" "}
+            {isLoading ? (
+              <LoadingIcon className="h-5 w-5 animate-spin text-text-3 stroke-current" />
+            ) : (
+              <SaveIcon className="w-5 h-5 text-text-3 stroke-current" />
+            )}
             {t("headerButton.create")}
           </Button>
         </div>
         <Button type="submit" className="lg:hidden">
+          {isLoading ? (
+            <LoadingIcon className="h-5 w-5 animate-spin text-text-3 stroke-current" />
+          ) : (
+            <SaveIcon className="w-5 h-5 text-text-3 stroke-current" />
+          )}
           {t("headerButton.create")}
         </Button>
       </div>

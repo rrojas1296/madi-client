@@ -52,7 +52,10 @@ const FormField = ({
             name={name!}
             control={control}
             render={({ field }) => (
-              <Select onValueChange={(val) => field.onChange(val)}>
+              <Select
+                defaultValue={field.value}
+                onValueChange={(val) => field.onChange(val)}
+              >
                 <SelectTrigger className="" error={error}>
                   <SelectValue placeholder={placeholder} />
                 </SelectTrigger>

@@ -4,6 +4,7 @@ import "../styles/index.css";
 import ThemeProvider from "@/providers/ThemeProvider";
 import { NextIntlClientProvider } from "next-intl";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import { Toaster } from "sonner";
 
 const font = Montserrat({
   variable: "--font-montserrat",
@@ -25,7 +26,10 @@ export default function RootLayout({
       <body className={font.className}>
         <ReactQueryProvider>
           <NextIntlClientProvider>
-            <ThemeProvider>{children}</ThemeProvider>
+            <ThemeProvider>
+              {children}
+              <Toaster />
+            </ThemeProvider>
           </NextIntlClientProvider>
         </ReactQueryProvider>
       </body>

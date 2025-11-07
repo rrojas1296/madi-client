@@ -7,7 +7,6 @@ import { links } from "../../constants/links";
 const BottomNav = () => {
   const pathname = usePathname();
   const router = useRouter();
-  console.log(pathname);
   return (
     <div className="lg:hidden bg-bg-1 fixed bottom-0 left-0 w-full h-16 border-t border-t-border-2 flex justify-between items-center px-8">
       {links.map(({ Icon, id, href, className }) => {

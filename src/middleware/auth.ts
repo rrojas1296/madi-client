@@ -31,7 +31,6 @@ export const auth = async (
       if (!newAccess) return { isAuthenticated: false, res: null };
 
       const res = NextResponse.next();
-      console.log({ environment: process.env.NODE_ENV });
       res.cookies.set("accessToken", newAccess, {
         httpOnly: true,
         secure: false,
