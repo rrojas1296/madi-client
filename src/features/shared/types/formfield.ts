@@ -12,6 +12,7 @@ export interface IControl<T> {
   placeholder?: string;
   type: ComponentProps<"input">["type"];
   className?: string;
+  isFloat?: boolean;
   icon?: ReactNode;
   options?: IOption[];
 }

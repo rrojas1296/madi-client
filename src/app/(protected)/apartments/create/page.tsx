@@ -102,6 +102,7 @@ const Page = () => {
                   <FormField
                     key={ctrl.name}
                     type={ctrl.type}
+                    isFloat={ctrl.isFloat}
                     control={control}
                     options={options}
                     required={ctrl.required}

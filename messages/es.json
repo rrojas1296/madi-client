@@ -165,6 +165,13 @@
       "title": "Aun no cuentas con ningun departamento o propiedad registrado",
       "subtitle": "Agrega un departamento haciendo click en el buton debajo",
       "button": "Agregar"
+    },
+    "apartmentCard": {
+      "status": {
+        "available": "Disponible",
+        "leased": "Alquilado",
+        "maintenance": "En mantenimiento"
+      }
     }
   },
   "CreateApartment": {
@@ -221,7 +228,8 @@
             "placeholder": "80",
             "errors": {
               "required": "Este campo es nesesario.",
-              "min": "Debe ser una valor valido."
+              "min": "Debe ser una valor valido.",
+              "int": "El area debe ser un valor entero."
             }
           },
           "status": {

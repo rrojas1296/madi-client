@@ -1,55 +1,44 @@
+"use client";
+import ApartmentMobileCard from "@/features/apartments/components/ApartmentMobileCard/ApartmentMobileCard";
 import EmptyApartmentsTable from "@/features/apartments/components/emptyApartmentsTable/EmptyApartmentsTable";
+import SearchAndFilters from "@/features/apartments/components/SearchAndFilters/SearchAndFilters";
+import useGetApartments from "@/features/hooks/useGetApartments";
 import Button from "@/features/shared/components/button/button";
+import LoadingIcon from "@/features/shared/components/icons/LoadingIcon";
 import PlusIcon from "@/features/shared/components/icons/PlusIcon";
-import SearchIcon from "@/features/shared/components/icons/SearchIcon";
-import Input from "@/features/shared/components/input/Input";
-import { DownloadIcon, FilterIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 const Page = () => {
   const t = useTranslations("Apartments");
-  const data = [];
+  const { data, isLoading } = useGetApartments();
+
+  if (isLoading) {
+    return (
+      <div className="grid place-items-center h-full w-full">
+        <LoadingIcon className="animate-spin w-7 h-7 text-text-1" />
+      </div>
+    );
+  }
   return (
     <div className="animate-fade-in flex flex-col h-full relative">
-      {data.length > 0 ? (
+      {data && data.length > 0 ? (
         <>
           <h1 className="text-xl lg:hidden font-medium">{t("title")}</h1>
           <p className="text-sm lg:hidden text-text-2 font-medium mt-1">
             {t("subtitle")}
           </p>
-          <div className="flex gap-3 mt-6 lg:justify-between">
-            <Input
-              placeholder="Buscar un departamento"
-              containerClassName="w-full lg:max-w-96"
-              Icon={
-                <SearchIcon className="shrink-0  w-5 h-5 stroke-current text-text-2" />
-              }
-            />
-            <div className="gap-4 hidden lg:flex">
-              <Button variant="outline" className="text-text-2 px-6">
-                <FilterIcon className="w-5 h-5 text-text-2" />
-                Filtrar
-              </Button>
-              <Button variant="outline" className="text-text-2 px-6">
-                <DownloadIcon className="w-5 h-5 text-text-2" />
-                Descargar
-              </Button>
-              <Button className="px-6">
-                <PlusIcon className="w-5 h-5 text-text-3" />
-                Agregar
-              </Button>
-            </div>
-
-            <Button variant="icon" className="lg:hidden">
-              <DownloadIcon className="w-5 h-5 stroke-current text-text-2" />
-            </Button>
-            <Button variant="icon" className="lg:hidden">
-              <FilterIcon className="w-5 h-5 stroke-current text-text-2" />
-            </Button>
+          <SearchAndFilters />
+          <div className="grid gap-3 mt-6 md:grid-cols-2 lg:hidden">
+            {data.map((apartment) => (
+              <ApartmentMobileCard key={apartment.id} apartment={apartment} />
+            ))}
           </div>
-          <Button className="bg-primary lg:hidden hover:bg-primary/90 rounded-2xl w-12 h-12 fixed bottom-[84px] right-5 ">
-            <PlusIcon className="w-5 h-5 text-text-3" />
-          </Button>
+          <Link href="/apartments/create">
+            <Button className="bg-primary lg:hidden hover:bg-primary/90 rounded-2xl w-12 h-12 fixed bottom-[84px] right-5 ">
+              <PlusIcon className="w-5 h-5 text-text-3" />
+            </Button>
+          </Link>
         </>
       ) : (
         <EmptyApartmentsTable />

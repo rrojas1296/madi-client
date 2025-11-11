@@ -42,6 +42,9 @@ export const createApartmentSchema = z.object({
     })
     .min(1, {
       error: "form.apartmentInformation.fields.area.errors.min",
+    })
+    .int({
+      error: "form.apartmentInformation.fields.area.errors.int",
     }),
   status: z.enum(ApartmentStatus, {
     error: "form.apartmentInformation.fields.status.errors.required",
@@ -137,6 +140,7 @@ const apartmentInformation: IControl<SchemaInformationFields>[] = [
     placeholder: "form.apartmentInformation.fields.floor.placeholder",
     required: true,
     type: "number",
+    isFloat: false,
     name: "floor",
   },
   {
@@ -144,6 +148,7 @@ const apartmentInformation: IControl<SchemaInformationFields>[] = [
     placeholder: "form.apartmentInformation.fields.area.placeholder",
     type: "number",
     required: true,
+    isFloat: true,
     name: "area",
   },
   {
@@ -182,12 +187,14 @@ const physicalDetails: IControl<SchemaInformationFields>[] = [
     placeholder: "form.physicalDetails.fields.persons.placeholder",
     type: "number",
     required: true,
+    isFloat: false,
     name: "persons",
   },
   {
     label: "form.physicalDetails.fields.rooms.label",
     placeholder: "form.physicalDetails.fields.rooms.placeholder",
     type: "number",
+    isFloat: false,
     required: true,
     name: "rooms",
   },
@@ -196,6 +203,7 @@ const physicalDetails: IControl<SchemaInformationFields>[] = [
     placeholder: "form.physicalDetails.fields.bathrooms.placeholder",
     type: "number",
     required: true,
+    isFloat: false,
     name: "bathrooms",
   },
   {
@@ -203,6 +211,7 @@ const physicalDetails: IControl<SchemaInformationFields>[] = [
     placeholder: "form.physicalDetails.fields.floors.placeholder",
     type: "number",
     required: true,
+    isFloat: false,
     name: "floors",
   },
   {
@@ -245,6 +254,7 @@ const financialInformationControls: IControl<SchemaInformationFields>[] = [
     label: "form.financialInformation.fields.monthlyFee.label",
     placeholder: "form.financialInformation.fields.monthlyFee.placeholder",
     type: "number",
+    isFloat: true,
     name: "monthlyFee",
     required: true,
   },
@@ -252,6 +262,7 @@ const financialInformationControls: IControl<SchemaInformationFields>[] = [
     label: "form.financialInformation.fields.garanty.label",
     placeholder: "form.financialInformation.fields.garanty.placeholder",
     type: "number",
+    isFloat: true,
     name: "garanty",
     required: true,
   },
@@ -281,6 +292,7 @@ const financialInformationControls: IControl<SchemaInformationFields>[] = [
     placeholder: "form.financialInformation.fields.maintenanceFee.placeholder",
     type: "number",
     name: "maintenanceFee",
+    isFloat: true,
     required: false,
   },
 ];

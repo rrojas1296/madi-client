@@ -18,6 +18,7 @@ interface Props extends ComponentProps<"input"> {
   control?: Control<any>;
   required?: boolean;
   placeholder?: string;
+  isFloat?: boolean;
   error?: string;
   Icon?: ReactNode;
 }
@@ -30,6 +31,7 @@ const FormField = ({
   Icon,
   name,
   control,
+  isFloat,
   options,
   placeholder,
   ...other
@@ -76,6 +78,7 @@ const FormField = ({
           <Input
             error={error}
             type={type}
+            step={isFloat ? "0.01" : undefined}
             Icon={Icon}
             placeholder={placeholder}
             name={name}
