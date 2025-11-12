@@ -172,6 +172,39 @@
         "leased": "Alquilado",
         "maintenance": "En mantenimiento"
       }
+    },
+    "table": {
+      "status": {
+        "available": "Disponible",
+        "leased": "Alquilado",
+        "maintenance": "En mantenimiento"
+      },
+      "columns": {
+        "name": {
+          "header": "Nombre"
+        },
+        "persons": {
+          "header": "Aforo"
+        },
+        "address": {
+          "header": "Direccion"
+        },
+        "rooms": {
+          "header": "Cuartos"
+        },
+        "floors": {
+          "header": "Pisos"
+        },
+        "status": {
+          "header": "Estado"
+        },
+        "createdAt": {
+          "header": "Creado hace"
+        },
+        "updatedAt": {
+          "header": "Actualizado hace"
+        }
+      }
     }
   },
   "CreateApartment": {

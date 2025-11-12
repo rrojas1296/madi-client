@@ -24,4 +24,6 @@ export interface IApartment {
   pets: boolean;
   rooms: number;
   status: ApartmentStatus;
+  createdAt: Date | string;
+  updatedAt: Date | string;
 }

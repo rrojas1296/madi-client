@@ -12,7 +12,6 @@ import { DEFAULT_USER_IMAGE } from "@/constants/defaults";
 import { useLocale, useTranslations } from "next-intl";
 import { getToday } from "../../utils/getToday";
 import { links } from "../../constants/links";
-import { Settings2Icon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,6 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "../shadcn/dropdown-menu";
 import { instance } from "@/api/instance";
+import SettingsIcon from "../icons/SettingsIcon";
 
 const HeaderApp = () => {
   const router = useRouter();
@@ -82,7 +82,7 @@ const HeaderApp = () => {
             className="rounded-md bg-bg-2 hover:bg-bg-1 lg:hidden"
             onClick={() => router.push("/settings")}
           >
-            <Settings2Icon className="w-5 h-5 stroke-current text-text-2" />
+            <SettingsIcon className="w-5 h-5 stroke-current text-text-2" />
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
