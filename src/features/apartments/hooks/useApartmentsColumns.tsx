@@ -7,8 +7,6 @@ import "dayjs/locale/es.js";
 import Badge, { BadgeType } from "@/features/shared/components/Badge/Badge";
 import { ApartmentStatus } from "../schemas/createApartment.schema";
 import CheckBox from "@/features/shared/components/CheckBox/CheckBox";
-import Button from "@/features/shared/components/button/button";
-import { DotSquareIcon } from "lucide-react";
 import DotsIcon from "@/features/shared/components/icons/DotsIcon";
 
 dayjs.extend(relativeTime);
