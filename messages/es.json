@@ -173,6 +173,12 @@
         "maintenance": "En mantenimiento"
       }
     },
+    "searchAndFilters": {
+      "inputPlaceholder": "Buscar un departamento",
+      "filter": "Filtros",
+      "download": "Descargar",
+      "add": "Agregar"
+    },
     "table": {
       "status": {
         "available": "Disponible",
@@ -197,6 +203,12 @@
         },
         "status": {
           "header": "Estado"
+        },
+        "bathrooms": {
+          "header": "Baños"
+        },
+        "area": {
+          "header": "Área (m²)"
         },
         "createdAt": {
           "header": "Creado hace"

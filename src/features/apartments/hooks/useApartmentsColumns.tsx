@@ -75,6 +75,18 @@ const useApartmentsColumns = () => {
       header: () => t("table.columns.status.header"),
     },
     {
+      id: "bathrooms",
+      accessorKey: "bathrooms",
+      cell: (info) => info.getValue(),
+      header: () => t("table.columns.bathrooms.header"),
+    },
+    {
+      id: "area",
+      accessorKey: "area",
+      cell: (info) => info.getValue(),
+      header: () => t("table.columns.area.header"),
+    },
+    {
       id: "createdAt",
       accessorKey: "createdAt",
       header: () => t("table.columns.createdAt.header"),
