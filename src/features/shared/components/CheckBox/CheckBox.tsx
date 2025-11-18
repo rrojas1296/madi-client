@@ -12,7 +12,7 @@ const CheckBox = ({ active, setActive }: Props) => {
       onClick={setActive}
       type="button"
       className={cn(
-        "border border-border-1 transition-colors rounded-sm cursor-pointer grid place-items-center outline-none bg-bg-1 h-5 w-5",
+        "border border-border-1 transition-colors rounded-md cursor-pointer grid place-items-center outline-none bg-bg-1 h-5 w-5",
         active && "bg-primary border-primary",
       )}
     >

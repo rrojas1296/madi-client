@@ -11,6 +11,8 @@ import {
 import { IOption } from "../../types/formfield";
 import { Control, Controller } from "react-hook-form";
 import Switch from "../switch/Switch";
+import SelectMultiBadge from "../SelectMultiBadge/SelectMultiBadge";
+import InputRange from "../InputRange/InputRange";
 
 interface Props extends ComponentProps<"input"> {
   label: string | ReactNode;
@@ -18,6 +20,8 @@ interface Props extends ComponentProps<"input"> {
   control?: Control<any>;
   required?: boolean;
   placeholder?: string;
+  placeholderMin?: string;
+  placeholderMax?: string;
   isFloat?: boolean;
   error?: string;
   Icon?: ReactNode;
@@ -32,6 +36,8 @@ const FormField = ({
   name,
   control,
   isFloat,
+  placeholderMax,
+  placeholderMin,
   options,
   placeholder,
   ...other
@@ -48,6 +54,35 @@ const FormField = ({
             )}
           />
         );
+      case "select-badge":
+        return (
+          <Controller
+            name={name!}
+            control={control}
+            render={({ field }) => (
+              <SelectMultiBadge
+                onChange={(val) => field.onChange(val)}
+                values={field.value}
+                options={options!}
+              />
+            )}
+          />
+        );
+      case "input-range":
+        return (
+          <Controller
+            name={name!}
+            control={control}
+            render={({ field }) => (
+              <InputRange
+                onChange={field.onChange}
+                value={field.value}
+                placeholderMin={placeholderMin!}
+                placeholderMax={placeholderMax!}
+              />
+            )}
+          />
+        );
       case "select":
         return (
           <Controller
@@ -58,7 +93,7 @@ const FormField = ({
                 defaultValue={field.value}
                 onValueChange={(val) => field.onChange(val)}
               >
-                <SelectTrigger className="" error={error}>
+                <SelectTrigger error={error}>
                   <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
                 <SelectContent>

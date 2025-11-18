@@ -98,6 +98,34 @@
     },
     "submit": "Registrarse"
   },
+  "BottomNav": {
+    "sections": {
+      "dashboard": {
+        "label": "Panel",
+        "headerText": "Bienvenido"
+      },
+      "apartments": {
+        "label": "Propiedades",
+        "headerText": "Propiedades y departamentos"
+      },
+      "tenants": {
+        "label": "Inquilinos",
+        "headerText": "Inquilinos"
+      },
+      "payments": {
+        "label": "Pagos",
+        "headerText": "Pagos"
+      },
+      "bookings": {
+        "label": "Reservas",
+        "headerText": "Reservas"
+      },
+      "settings": {
+        "label": "Configuracion",
+        "headerText": "Configuracion"
+      }
+    }
+  },
   "Sidebar": {
     "brand": "Madi",
     "sections": {
@@ -173,11 +201,71 @@
         "maintenance": "En mantenimiento"
       }
     },
+    "filters": {
+      "header": {
+        "title": "Filtros",
+        "description": "Aqui puedes gestionar los filtros para aplicarlos en la tabla de departamentos"
+      },
+      "buttons": {
+        "reset": "Reestablecer",
+        "apply": "Aplicar"
+      },
+      "status": {
+        "label": "Estatus",
+        "options": {
+          "available": "Disponible",
+          "leased": "Alquilado",
+          "maintenance": "En mantenimiento"
+        }
+      },
+      "currency": {
+        "label": "Moneda",
+        "options": {
+          "pen": "Soles",
+          "usd": "Dolares",
+          "eur": "Euros"
+        }
+      },
+      "monthlyFee": {
+        "label": "Precio Mensual",
+        "placeholderMin": "Min",
+        "placeholderMax": "Max",
+        "errors": {
+          "negative": "Ingrese un numero mayor a 0",
+          "invalidRange": "El maximo debe ser mayor al minimo"
+        }
+      },
+      "rooms": {
+        "label": "Cuartos",
+        "placeholderMin": "Min",
+        "placeholderMax": "Max",
+        "errors": {
+          "negative": "Ingrese un numero mayor a 0",
+          "invalidRange": "El maximo debe ser mayor al minimo"
+        }
+      },
+      "area": {
+        "label": "Área (m²)",
+        "placeholderMin": "Min",
+        "placeholderMax": "Max",
+        "errors": {
+          "negative": "Ingrese un numero mayor a 0",
+          "invalidRange": "El maximo debe ser mayor al minimo"
+        }
+      },
+      "pets": {
+        "label": "Se permiten mascotas"
+      },
+      "furnished": {
+        "label": "Departamento amoblado"
+      }
+    },
     "searchAndFilters": {
       "inputPlaceholder": "Buscar un departamento",
       "filter": "Filtros",
-      "download": "Descargar",
-      "add": "Agregar"
+      "columns": "Columnas",
+      "export": "Exportar",
+      "add": "Crear"
     },
     "table": {
       "status": {

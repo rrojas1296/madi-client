@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import BuildingIcon from "../icons/BuildingIcon";
+import BuildingFilledIcon from "../icons/BuildingFilledIcon";
 import Button from "../button/button";
 import { usePathname, useRouter } from "next/navigation";
 import SunIcon from "../icons/SunIcon";
@@ -19,7 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "../shadcn/dropdown-menu";
 import { instance } from "@/api/instance";
-import SettingsIcon from "../icons/SettingsIcon";
+import SettingsOutlinedIcon from "../icons/SettingsOutlinedIcon";
 
 const HeaderApp = () => {
   const router = useRouter();
@@ -44,7 +44,7 @@ const HeaderApp = () => {
     <div className="h-header shrink-0 z-10 sticky flex items-center top-0 left-0 px-5 bg-bg-1 w-full lg:h-20 lg:px-6 lg:border-b lg:border-b-border-2 ">
       <div className="flex flex-1 justify-between items-center">
         <Link href="/dashboard" className="flex items-center gap-3 lg:hidden">
-          <BuildingIcon className="h-5 w-5 fill-current text-primary" />
+          <BuildingFilledIcon className="h-5 w-5 fill-current text-primary" />
           <span className="font-semibold text-xl">{"brand"}</span>
         </Link>
         <div className="gap-1 hidden lg:grid">
@@ -62,13 +62,13 @@ const HeaderApp = () => {
         <div className="flex items-center gap-4">
           <Button
             variant="icon"
-            className="hidden lg:flex rounded-md bg-bg-2 hover:bg-bg-1"
+            className="hidden lg:flex bg-bg-2 hover:bg-bg-1"
           >
             <BellIcon className="w-5 h-5 stroke-current text-text-2" />
           </Button>
           <Button
             variant="icon"
-            className="rounded-md hidden lg:flex bg-bg-2 hover:bg-bg-1"
+            className="hidden lg:flex bg-bg-2 hover:bg-bg-1"
             onClick={handleSwitchTheme}
           >
             {theme === "dark" ? (
@@ -79,10 +79,10 @@ const HeaderApp = () => {
           </Button>
           <Button
             variant="icon"
-            className="rounded-md bg-bg-2 hover:bg-bg-1 lg:hidden"
+            className="bg-bg-2 hover:bg-bg-1 lg:hidden"
             onClick={() => router.push("/settings")}
           >
-            <SettingsIcon className="w-5 h-5 stroke-current text-text-2" />
+            <SettingsOutlinedIcon className="w-5 h-5 stroke-current text-text-2" />
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

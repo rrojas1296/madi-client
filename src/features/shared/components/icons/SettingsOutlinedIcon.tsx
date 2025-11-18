@@ -1,6 +1,6 @@
 import { IconProps } from "../../types/icon";
 
-const SettingsIcon = (props: IconProps) => {
+const SettingsOutlinedIcon = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,4 +21,4 @@ const SettingsIcon = (props: IconProps) => {
   );
 };
 
-export default SettingsIcon;
+export default SettingsOutlinedIcon;

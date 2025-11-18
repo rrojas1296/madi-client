@@ -5,12 +5,20 @@ export interface IOption {
   value: string | number;
 }
 
+type InputType =
+  | ComponentProps<"input">["type"]
+  | "select"
+  | "select-badge"
+  | "input-range";
+
 export interface IControl<T> {
   name: T;
   label: string;
   required?: boolean;
   placeholder?: string;
-  type: ComponentProps<"input">["type"];
+  placeholderMin?: string;
+  placeholderMax?: string;
+  type: InputType;
   className?: string;
   isFloat?: boolean;
   icon?: ReactNode;

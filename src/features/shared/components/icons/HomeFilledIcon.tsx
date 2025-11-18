@@ -1,6 +1,6 @@
 import { IconProps } from "../../types/icon";
 
-const DashboardIcon = (props: IconProps) => {
+const HomeFilledIcon = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16,4 +16,4 @@ const DashboardIcon = (props: IconProps) => {
   );
 };
 
-export default DashboardIcon;
+export default HomeFilledIcon;

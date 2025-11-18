@@ -1,6 +1,6 @@
 import { IconProps } from "../../types/icon";
 
-const FiltersIcon = (props: IconProps) => {
+const BookingsOutlinedIcon = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,9 +15,9 @@ const FiltersIcon = (props: IconProps) => {
       {...props}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z" />
+      <path d="M18 7v14l-6 -4l-6 4v-14a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4z" />
     </svg>
   );
 };
 
-export default FiltersIcon;
+export default BookingsOutlinedIcon;

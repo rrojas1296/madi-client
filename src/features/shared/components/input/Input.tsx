@@ -18,7 +18,7 @@ const Input = ({
   return (
     <div
       className={cn(
-        "flex gap-6 items-center border border-border-1 bg-bg-2 rounded-md focus-within:ring-2 focus-within:ring-shadow/50 transition-all",
+        "flex gap-6 items-center border border-border-1 h-9 bg-bg-2 rounded-lg focus-within:ring-2 focus-within:ring-shadow/50 transition-all",
         containerClassName,
         Icon && "pr-4",
         error && "border-danger focus-within:ring-danger/50",
@@ -27,7 +27,7 @@ const Input = ({
       <input
         type={type}
         className={cn(
-          "placeholder:text-text-2 flex-1 text-sm h-9 outline-none w-full px-4",
+          "placeholder:text-text-2 flex-1 text-sm h-full outline-none w-full px-4",
           className,
         )}
         {...other}

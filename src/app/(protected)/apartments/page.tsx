@@ -8,14 +8,16 @@ import useGetApartments from "@/features/hooks/useGetApartments";
 import Button from "@/features/shared/components/button/button";
 import LoadingIcon from "@/features/shared/components/icons/LoadingIcon";
 import PlusIcon from "@/features/shared/components/icons/PlusIcon";
+import { useSidebar } from "@/features/shared/hooks/useSidebar";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Page = () => {
   const t = useTranslations("Apartments");
   const { data, isLoading } = useGetApartments();
+  const { setElement } = useSidebar();
   const { columns } = useApartmentsColumns();
   const [rowSelection, setRowSelection] = useState({});
   const table = useReactTable({
@@ -28,6 +30,7 @@ const Page = () => {
     enableRowSelection: true,
     getCoreRowModel: getCoreRowModel(),
   });
+  useEffect(() => () => setElement(null), []);
 
   if (isLoading) {
     return (
@@ -37,7 +40,7 @@ const Page = () => {
     );
   }
   return (
-    <div className="animate-fade-in flex flex-col h-full relative">
+    <div className="animate-fade-in flex flex-col h-full">
       {data && data.length > 0 ? (
         <>
           <h1 className="text-xl lg:hidden font-medium">{t("title")}</h1>
@@ -52,7 +55,7 @@ const Page = () => {
           </div>
           <TableApartments table={table} />
           <Link href="/apartments/create">
-            <Button className="bg-primary lg:hidden hover:bg-primary/90 rounded-2xl w-12 h-12 fixed bottom-[84px] right-5 ">
+            <Button className="bg-primary lg:hidden hover:bg-primary/90 rounded-xl w-12 h-12 fixed bottom-[84px] right-5 ">
               <PlusIcon className="w-5 h-5 text-text-3" />
             </Button>
           </Link>
