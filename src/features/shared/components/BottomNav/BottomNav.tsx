@@ -1,5 +1,5 @@
 "use client";
-import Button from "../button/button";
+import Button from "../Button/Button";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "../../lib/shadcn";
 import { links } from "../../constants/links";

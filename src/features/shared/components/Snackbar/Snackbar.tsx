@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import { cn } from "../../lib/shadcn";
-import SuccessIcon from "../icons/SuccessIcon";
-import ErrorIcon from "../icons/ErrorIcon";
-import WarningIcon from "../icons/WarningIcon";
+import SuccessIcon from "../Icons/SuccessIcon";
+import ErrorIcon from "../Icons/ErrorIcon";
+import WarningIcon from "../Icons/WarningIcon";
 
 type SnackBarType = "success" | "error" | "warning";
 
@@ -16,7 +16,7 @@ const icons: Record<SnackBarType, ReactNode> = {
   error: <ErrorIcon className="w-5 h-5 text-danger" />,
   warning: <WarningIcon className="w-5 h-5 text-warning" />,
 };
-const SnackBar = ({ className, text, type = "success" }: Props) => {
+const Snackbar = ({ className, text, type = "success" }: Props) => {
   return (
     <div
       className={cn(
@@ -30,4 +30,4 @@ const SnackBar = ({ className, text, type = "success" }: Props) => {
   );
 };
 
-export default SnackBar;
+export default Snackbar;

@@ -1,5 +1,5 @@
 import { cn } from "../../lib/shadcn";
-import CheckIcon from "../icons/CheckIcon";
+import CheckIcon from "../Icons/CheckIcon";
 
 interface Props {
   active: boolean;
@@ -12,7 +12,7 @@ const CheckBox = ({ active, setActive }: Props) => {
       onClick={setActive}
       type="button"
       className={cn(
-        "border border-border-1 transition-colors rounded-md cursor-pointer grid place-items-center outline-none bg-bg-1 h-5 w-5",
+        "border border-border-1 transition-colors rounded-md cursor-pointer grid place-items-center outline-none bg-bg-2 h-6 w-6",
         active && "bg-primary border-primary",
       )}
     >

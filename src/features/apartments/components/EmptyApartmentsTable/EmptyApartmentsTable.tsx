@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import BuildingVector from "../vectors/buildingVector";
-import Button from "@/features/shared/components/button/button";
-import PlusIcon from "@/features/shared/components/icons/PlusIcon";
+import Button from "@/features/shared/components/Button/Button";
+import PlusIcon from "@/features/shared/components/Icons/PlusIcon";
 import Link from "next/link";
 
 const EmptyApartmentsTable = () => {

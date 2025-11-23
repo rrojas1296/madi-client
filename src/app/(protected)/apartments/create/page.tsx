@@ -8,17 +8,16 @@ import {
   SchemaInformation,
 } from "@/features/apartments/schemas/createApartment.schema";
 import { createApartmentService } from "@/features/apartments/services/createAapartment.service";
-import Button from "@/features/shared/components/button/button";
-import FormField from "@/features/shared/components/formfield/FormField";
-import ArrowLeftIcon from "@/features/shared/components/icons/ArrowLeftIcon";
-import LoadingIcon from "@/features/shared/components/icons/LoadingIcon";
-import SaveIcon from "@/features/shared/components/icons/SaveIcon";
-import SnackBar from "@/features/shared/components/snackBar/SnackBar";
-import { useURLSearchParams } from "@/features/shared/hooks/useURLSearchParams";
+import Button from "@/features/shared/components/Button/Button";
+import FormField from "@/features/shared/components/FormField/FormField";
+import ArrowLeftIcon from "@/features/shared/components/Icons/ArrowLeftIcon";
+import LoadingIcon from "@/features/shared/components/Icons/LoadingIcon";
+import SaveIcon from "@/features/shared/components/Icons/SaveIcon";
+import SnackBar from "@/features/shared/components/Snackbar/Snackbar";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";

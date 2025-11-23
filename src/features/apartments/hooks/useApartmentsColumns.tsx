@@ -6,8 +6,11 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/es.js";
 import Badge, { BadgeType } from "@/features/shared/components/Badge/Badge";
 import { ApartmentStatus } from "../schemas/createApartment.schema";
+import Button from "@/features/shared/components/Button/Button";
 import CheckBox from "@/features/shared/components/CheckBox/CheckBox";
-import DotsIcon from "@/features/shared/components/icons/DotsIcon";
+import DotsIcon from "@/features/shared/components/Icons/DotsIcon";
+import TrashIcon from "@/features/shared/components/Icons/TrashIcon";
+import EditIcon from "@/features/shared/components/Icons/EditIcon";
 
 dayjs.extend(relativeTime);
 const badgeType: Record<ApartmentStatus, BadgeType> = {
@@ -107,9 +110,15 @@ const useApartmentsColumns = () => {
     {
       id: "actions",
       cell: () => (
-        <button className="p-2 outline-none cursor-pointer transition-colors hover:text-text-2 text-text-1">
-          <DotsIcon className="w-5 h-5" />
-        </button>
+        <div className="flex gap-2">
+          <Button variant="ghost" className="w-9 h-9">
+            <TrashIcon className="w-5 h-5 shrink-0" />
+          </Button>
+
+          <Button variant="ghost" className="w-9 h-9">
+            <EditIcon className="w-5 h-5 shrink-0" />
+          </Button>
+        </div>
       ),
     },
   ];

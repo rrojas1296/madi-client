@@ -1,12 +1,14 @@
 "use client";
+import MoonIcon from "../Icons/MoonIcon";
+import SunIcon from "../Icons/SunIcon";
+import BellIcon from "../Icons/BellIcon";
+import BuildingFilledIcon from "../Icons/BuildingFilledIcon";
+import SettingsOutlinedIcon from "../Icons/SettingsOutlinedIcon";
+
 import Link from "next/link";
-import BuildingFilledIcon from "../icons/BuildingFilledIcon";
-import Button from "../button/button";
+import Button from "../Button/Button";
 import { usePathname, useRouter } from "next/navigation";
-import SunIcon from "../icons/SunIcon";
-import BellIcon from "../icons/BellIcon";
 import { useThemeStore } from "@/store/theme.store";
-import MoonIcon from "../icons/MoonIcon";
 import Image from "next/image";
 import { DEFAULT_USER_IMAGE } from "@/constants/defaults";
 import { useLocale, useTranslations } from "next-intl";
@@ -19,7 +21,6 @@ import {
   DropdownMenuTrigger,
 } from "../shadcn/dropdown-menu";
 import { instance } from "@/api/instance";
-import SettingsOutlinedIcon from "../icons/SettingsOutlinedIcon";
 
 const HeaderApp = () => {
   const router = useRouter();
@@ -60,15 +61,12 @@ const HeaderApp = () => {
           <p className="text-sm text-text-2">{date}</p>
         </div>
         <div className="flex items-center gap-4">
-          <Button
-            variant="icon"
-            className="hidden lg:flex bg-bg-2 hover:bg-bg-1"
-          >
+          <Button variant="icon" className="hidden lg:flex">
             <BellIcon className="w-5 h-5 stroke-current text-text-2" />
           </Button>
           <Button
             variant="icon"
-            className="hidden lg:flex bg-bg-2 hover:bg-bg-1"
+            className="hidden lg:flex"
             onClick={handleSwitchTheme}
           >
             {theme === "dark" ? (

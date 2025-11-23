@@ -8,16 +8,16 @@ interface Props {
 const TableApartments = ({ table }: Props) => {
   return (
     <div className="hidden lg:block mt-4 border border-border-2 rounded-md overflow-x-auto custom-scroll">
-      <table className="w-[1800px] 2xl:w-full">
+      <table className="w-[2400px] 2xl:w-full">
         <thead className="bg-bg-2">
           {table.getHeaderGroups().map((hg) => (
-            <tr key={hg.id}>
+            <tr key={hg.id} className="border-b border-b-border-2">
               {hg.headers.map((h, i) => (
                 <th
                   key={h.id}
                   className={cn(
-                    "font-semibold text-sm py-3 text-left",
-                    i === 0 && "pl-9",
+                    "font-semibold text-sm h-14 text-left",
+                    i === 0 && "pl-8",
                   )}
                 >
                   {h.isPlaceholder
@@ -34,7 +34,11 @@ const TableApartments = ({ table }: Props) => {
               {row.getVisibleCells().map((cell, i) => (
                 <td
                   key={cell.id}
-                  className={cn("text-sm py-3", i === 0 && "pl-9")}
+                  className={cn(
+                    "text-sm h-14",
+                    i === 0 && "pl-8",
+                    i === row.getVisibleCells().length - 1 && "pr-8",
+                  )}
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>

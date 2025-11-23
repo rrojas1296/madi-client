@@ -20,7 +20,7 @@ const Sidebar = () => {
       />
       <div
         className={cn(
-          "w-full h-screen bg-bg-1 max-w-md md:bg-bg-2 top-0 transition-transform right-0 absolute",
+          "w-full h-screen bg-bg-1 max-w-md md:border-l md:border-l-border-2 top-0 transition-transform right-0 absolute",
           open ? "translate-x-0" : "translate-x-full",
         )}
       >

@@ -4,7 +4,7 @@ import { links } from "../../constants/links";
 import { useState } from "react";
 import { cn } from "../../lib/shadcn";
 import { usePathname, useRouter } from "next/navigation";
-import BuildingFilledIcon from "../icons/BuildingFilledIcon";
+import BuildingFilledIcon from "../Icons/BuildingFilledIcon";
 
 const SideMenu = () => {
   const t = useTranslations("Sidebar");

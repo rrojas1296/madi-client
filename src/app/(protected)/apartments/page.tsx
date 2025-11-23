@@ -1,13 +1,13 @@
 "use client";
+import LoadingIcon from "@/features/shared/components/Icons/LoadingIcon";
+import PlusIcon from "@/features/shared/components/Icons/PlusIcon";
 import ApartmentMobileCard from "@/features/apartments/components/ApartmentMobileCard/ApartmentMobileCard";
-import EmptyApartmentsTable from "@/features/apartments/components/emptyApartmentsTable/EmptyApartmentsTable";
+import EmptyApartmentsTable from "@/features/apartments/components/EmptyApartmentsTable/EmptyApartmentsTable";
 import SearchAndFilters from "@/features/apartments/components/SearchAndFilters/SearchAndFilters";
 import TableApartments from "@/features/apartments/components/TableApartments/TableApartments";
 import useApartmentsColumns from "@/features/apartments/hooks/useApartmentsColumns";
 import useGetApartments from "@/features/hooks/useGetApartments";
-import Button from "@/features/shared/components/button/button";
-import LoadingIcon from "@/features/shared/components/icons/LoadingIcon";
-import PlusIcon from "@/features/shared/components/icons/PlusIcon";
+import Button from "@/features/shared/components/Button/Button";
 import useDebounce from "@/features/shared/hooks/useDebounce";
 import { useSidebar } from "@/features/shared/hooks/useSidebar";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";

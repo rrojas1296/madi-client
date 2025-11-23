@@ -1,4 +1,4 @@
-import Button from "@/features/shared/components/button/button";
+import Button from "@/features/shared/components/Button/Button";
 import { useSidebar } from "@/features/shared/hooks/useSidebar";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,12 +8,31 @@ import {
   filtersSchema,
 } from "../../schemas/filterApartments.schema";
 import { useTranslations } from "next-intl";
-import FormField from "@/features/shared/components/formfield/FormField";
+import FormField from "@/features/shared/components/FormField/FormField";
 import { useURLSearchParams } from "@/features/shared/hooks/useURLSearchParams";
 import { filtersToQueryParams } from "../../utils/filtersToQueryParams";
-import XIcon from "@/features/shared/components/icons/XIcon";
+import XIcon from "@/features/shared/components/Icons/XIcon";
 import { useSearchParams } from "next/navigation";
 import { getDefaultFiltersValues } from "../../utils/getDefaultFiltersValues";
+
+const undefinedFields = {
+  area: {
+    max: undefined,
+    min: undefined,
+  },
+  monthlyFee: {
+    max: undefined,
+    min: undefined,
+  },
+  rooms: {
+    max: undefined,
+    min: undefined,
+  },
+  status: undefined,
+  currency: undefined,
+  pets: undefined,
+  furnished: undefined,
+};
 
 const FiltersApartmentsForm = () => {
   const { setOpen } = useSidebar();
@@ -21,10 +40,11 @@ const FiltersApartmentsForm = () => {
   const setParams = useURLSearchParams();
   const p = useSearchParams();
   const defaultValues = getDefaultFiltersValues(p);
+
   const {
     handleSubmit,
     formState: { errors },
-
+    reset,
     register,
     control,
   } = useForm({
@@ -34,6 +54,10 @@ const FiltersApartmentsForm = () => {
   const setFiltersHandler = (data: FiltersSchema) => {
     const params = filtersToQueryParams(data);
     setParams(params);
+  };
+
+  const resetHandler = () => {
+    reset(undefinedFields);
   };
 
   return (
@@ -80,7 +104,7 @@ const FiltersApartmentsForm = () => {
           );
         })}
         <div className="flex gap-4 absolute bottom-5 left-1/2 -translate-x-1/2 w-full px-5">
-          <Button variant="outline" type="button">
+          <Button variant="outline" onClick={resetHandler} type="button">
             {t("filters.buttons.reset")}
           </Button>
           <Button variant="filled" type="submit">

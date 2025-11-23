@@ -1,15 +1,15 @@
 "use client";
+import EmailIcon from "@/features/shared/components/Icons/EmailIcon";
+import GoogleIcon from "@/features/shared/components/Icons/GoogleIcon";
+import LoadingIcon from "@/features/shared/components/Icons/LoadingIcon";
 import {
   schema,
   SchemaType,
 } from "@/features/auth/schemas/registerEmail.schema";
 import { validateEmail } from "@/features/auth/services/register/validateEmail";
-import AlertMessage from "@/features/shared/components/alertMessage/AlertMessage";
-import Button from "@/features/shared/components/button/button";
-import FormField from "@/features/shared/components/formfield/FormField";
-import EmailIcon from "@/features/shared/components/icons/EmailIcon";
-import GoogleIcon from "@/features/shared/components/icons/GoogleIcon";
-import LoadingIcon from "@/features/shared/components/icons/LoadingIcon";
+import AlertMessage from "@/features/shared/components/AlertMessage/AlertMessage";
+import Button from "@/features/shared/components/Button/Button";
+import FormField from "@/features/shared/components/FormField/FormField";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import Link from "next/link";

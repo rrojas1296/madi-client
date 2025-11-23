@@ -1,15 +1,15 @@
 import React from "react";
-import Button from "@/features/shared/components/button/button";
-import FiltersIcon from "@/features/shared/components/icons/FiltersIcon";
-import PlusIcon from "@/features/shared/components/icons/PlusIcon";
-import SearchIcon from "@/features/shared/components/icons/SearchIcon";
-import Input from "@/features/shared/components/input/Input";
+import Button from "@/features/shared/components/Button/Button";
+import FiltersIcon from "@/features/shared/components/Icons/FiltersIcon";
+import PlusIcon from "@/features/shared/components/Icons/PlusIcon";
+import SearchIcon from "@/features/shared/components/Icons/SearchIcon";
+import Input from "@/features/shared/components/Input/Input";
 import { useSidebar } from "@/features/shared/hooks/useSidebar";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import FiltersApartmentsForm from "../FiltersApartmentsForm/FiltersApartmentsForm";
-import FileOutlinedIcon from "@/features/shared/components/icons/FileOutlinedIcon";
-import TableOutlinedIcon from "@/features/shared/components/icons/TableOutlinedIcon";
+import FileOutlinedIcon from "@/features/shared/components/Icons/FileOutlinedIcon";
+import TableOutlinedIcon from "@/features/shared/components/Icons/TableOutlinedIcon";
 
 interface Props {
   setText: (text: string) => void;

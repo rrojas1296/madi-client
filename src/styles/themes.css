@@ -1,6 +1,6 @@
 .light {
   --bg-1: #ffffff;
-  --bg-2: #f9fafd;
+  --bg-2: #f2f4f7;
 
   --overlay: rgba(0, 0, 0, 0.5);
 
@@ -30,7 +30,7 @@
 
 .dark {
   --bg-1: #0c0d10;
-  --bg-2: #14161b;
+  --bg-2: #16181f;
 
   --switch: #2a3041;
 

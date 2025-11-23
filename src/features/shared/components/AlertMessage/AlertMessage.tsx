@@ -1,4 +1,4 @@
-import AlertIcon from "../icons/AlertIcon";
+import AlertIcon from "../Icons/AlertIcon";
 import { cn } from "../../lib/shadcn";
 
 interface Props {

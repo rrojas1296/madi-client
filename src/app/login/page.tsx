@@ -1,17 +1,17 @@
 "use client";
-import GoogleIcon from "@/features/shared/components/icons/GoogleIcon";
-import Button from "@/features/shared/components/button/button";
-import EmailIcon from "@/features/shared/components/icons/EmailIcon";
+import GoogleIcon from "@/features/shared/components/Icons/GoogleIcon";
+import EmailIcon from "@/features/shared/components/Icons/EmailIcon";
+import LoadingIcon from "@/features/shared/components/Icons/LoadingIcon";
+import Button from "@/features/shared/components/Button/Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema, SchemaType } from "@/features/auth/schemas/loginEmail.schema";
 import { useState } from "react";
-import LoadingIcon from "@/features/shared/components/icons/LoadingIcon";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import FormField from "@/features/shared/components/formfield/FormField";
+import FormField from "@/features/shared/components/FormField/FormField";
 import { useRouter } from "next/navigation";
-import AlertMessage from "@/features/shared/components/alertMessage/AlertMessage";
+import AlertMessage from "@/features/shared/components/AlertMessage/AlertMessage";
 import { validateEmail } from "@/features/auth/services/login/validateEmail";
 
 let timeout: NodeJS.Timeout;

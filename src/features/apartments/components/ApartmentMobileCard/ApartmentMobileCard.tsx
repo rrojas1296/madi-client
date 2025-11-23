@@ -1,8 +1,8 @@
-import BedIcon from "@/features/shared/components/icons/BedIcon";
 import { IApartment } from "../../types/apartments";
-import PersonsIcon from "@/features/shared/components/icons/PersonsIcon";
 import Badge, { BadgeType } from "@/features/shared/components/Badge/Badge";
 import { ApartmentStatus } from "../../schemas/createApartment.schema";
+import PersonsIcon from "@/features/shared/components/Icons/PersonsIcon";
+import BedIcon from "@/features/shared/components/Icons/BedIcon";
 import { useTranslations } from "next-intl";
 
 interface Props {

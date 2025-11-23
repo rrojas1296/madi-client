@@ -9,8 +9,9 @@ const variants = cva(
       variant: {
         filled: "bg-primary text-text-3 hover:bg-primary/80",
         outline:
-          "border border-border-1 bg-2 bg-bg-2 text-text-2 hover:bg-bg-1",
-        icon: "border border-border-1 shrink-0 text-text-2 h-9 w-9 bg-bg-2 hover:bg-bg-1",
+          "border border-border-1 bg-transparent text-text-2 hover:bg-bg-2",
+        icon: "border border-border-1 shrink-0 text-text-2 h-9 w-9 bg-transparent hover:bg-bg-2",
+        ghost: "bg-bg-1 hover:bg-bg-2 text-text-2 w-fit px-3",
       },
     },
     defaultVariants: {

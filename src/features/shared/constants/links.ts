@@ -1,15 +1,15 @@
-import BookingsFilledIcon from "../components/icons/BookingsFilledIcon";
-import BookingsOutlinedIcon from "../components/icons/BookingsOutlinedIcon";
-import BuildingFilledIcon from "../components/icons/BuildingFilledIcon";
-import BuildingOutlinedIcon from "../components/icons/BuildingOutlinedIcon";
-import CreditCardFilledIcon from "../components/icons/CreditCardFilledIcon";
-import CreditCardOutlinedIcon from "../components/icons/CreditCardOutlinedIcon";
-import HomeFilledIcon from "../components/icons/HomeFilledIcon";
-import HomeOutlinedIcon from "../components/icons/HomeOutlinedIcon";
-import SettingsFilledIcon from "../components/icons/SettingsFilledIcon";
-import SettingsOutlinedIcon from "../components/icons/SettingsOutlinedIcon";
-import UsersFilledIcon from "../components/icons/UsersFilledIcon";
-import UsersOutlinedIcon from "../components/icons/UsersOutlinedIcon";
+import BookingsFilledIcon from "../components/Icons/BookingsFilledIcon";
+import BookingsOutlinedIcon from "../components/Icons/BookingsOutlinedIcon";
+import BuildingFilledIcon from "../components/Icons/BuildingFilledIcon";
+import BuildingOutlinedIcon from "../components/Icons/BuildingOutlinedIcon";
+import CreditCardFilledIcon from "../components/Icons/CreditCardFilledIcon";
+import CreditCardOutlinedIcon from "../components/Icons/CreditCardOutlinedIcon";
+import HomeFilledIcon from "../components/Icons/HomeFilledIcon";
+import HomeOutlinedIcon from "../components/Icons/HomeOutlinedIcon";
+import SettingsFilledIcon from "../components/Icons/SettingsFilledIcon";
+import SettingsOutlinedIcon from "../components/Icons/SettingsOutlinedIcon";
+import UsersFilledIcon from "../components/Icons/UsersFilledIcon";
+import UsersOutlinedIcon from "../components/Icons/UsersOutlinedIcon";
 
 export const links = [
   {

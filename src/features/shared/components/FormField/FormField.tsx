@@ -1,6 +1,6 @@
 import { ComponentProps, ReactNode } from "react";
 import { cn } from "../../lib/shadcn";
-import Input from "../input/Input";
+import Input from "../Input/Input";
 import {
   Select,
   SelectContent,
@@ -10,7 +10,7 @@ import {
 } from "../shadcn/select";
 import { IOption } from "../../types/formfield";
 import { Control, Controller } from "react-hook-form";
-import Switch from "../switch/Switch";
+import Switch from "../Switch/Switch";
 import SelectMultiBadge from "../SelectMultiBadge/SelectMultiBadge";
 import InputRange from "../InputRange/InputRange";
 

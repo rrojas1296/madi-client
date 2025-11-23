@@ -1,4 +1,4 @@
-import Input from "../input/Input";
+import Input from "../Input/Input";
 
 interface Props {
   placeholderMin: string;
