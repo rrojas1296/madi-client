@@ -1,5 +1,4 @@
 import Button from "@/features/shared/components/button/button";
-import ArrowLeftIcon from "@/features/shared/components/icons/ArrowLeftIcon";
 import { useSidebar } from "@/features/shared/hooks/useSidebar";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,19 +11,25 @@ import { useTranslations } from "next-intl";
 import FormField from "@/features/shared/components/formfield/FormField";
 import { useURLSearchParams } from "@/features/shared/hooks/useURLSearchParams";
 import { filtersToQueryParams } from "../../utils/filtersToQueryParams";
-import ArrowRightIcon from "@/features/shared/components/icons/ArrowRightIcon";
+import XIcon from "@/features/shared/components/icons/XIcon";
+import { useSearchParams } from "next/navigation";
+import { getDefaultFiltersValues } from "../../utils/getDefaultFiltersValues";
 
 const FiltersApartmentsForm = () => {
   const { setOpen } = useSidebar();
   const t = useTranslations("Apartments");
   const setParams = useURLSearchParams();
+  const p = useSearchParams();
+  const defaultValues = getDefaultFiltersValues(p);
   const {
     handleSubmit,
     formState: { errors },
+
     register,
     control,
   } = useForm({
     resolver: zodResolver(filtersSchema),
+    defaultValues,
   });
   const setFiltersHandler = (data: FiltersSchema) => {
     const params = filtersToQueryParams(data);
@@ -39,7 +44,7 @@ const FiltersApartmentsForm = () => {
       <header className="flex justify-between items-center ">
         <h1 className="text-xl font-semibold">{t("filters.header.title")}</h1>
         <Button variant="icon" onClick={() => setOpen(false)}>
-          <ArrowRightIcon className="w-5 h-5 stroke-current" />
+          <XIcon className="w-5 h-5 stroke-current" />
         </Button>
       </header>
       <p className="text-sm text-text-2 mt-2">

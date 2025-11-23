@@ -27,11 +27,13 @@ const InputRange = ({
     <div className="flex gap-4">
       <Input
         type="number"
+        value={value?.min || ""}
         placeholder={placeholderMin}
         onChange={(val) => handleChange("min", parseInt(val.target.value))}
       />
       <Input
         type="number"
+        value={value?.max || ""}
         placeholder={placeholderMax}
         onChange={(val) => handleChange("max", parseInt(val.target.value))}
       />

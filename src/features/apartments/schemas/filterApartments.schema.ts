@@ -38,8 +38,8 @@ export const filtersSchema = z.object({
   monthlyFee: rangeSchema("filters.monthlyFee.errors").optional(),
   rooms: rangeSchema("filters.rooms.errors").optional(),
   area: rangeSchema("filters.area.errors").optional(),
-  pets: z.boolean().optional(),
-  furnished: z.boolean().optional(),
+  pets: z.array(z.enum(["true", "false"])).optional(),
+  furnished: z.array(z.enum(["true", "false"])).optional(),
 });
 
 export type FiltersSchema = z.infer<typeof filtersSchema>;
@@ -108,11 +108,31 @@ export const filterControls: IControl<FiltersSchemaFields>[] = [
   {
     name: "pets",
     label: "filters.pets.label",
-    type: "switch",
+    type: "select-badge",
+    options: [
+      {
+        label: "filters.pets.options.true",
+        value: "true",
+      },
+      {
+        label: "filters.pets.options.false",
+        value: "false",
+      },
+    ],
   },
   {
     name: "furnished",
     label: "filters.furnished.label",
-    type: "switch",
+    type: "select-badge",
+    options: [
+      {
+        label: "filters.furnished.options.true",
+        value: "true",
+      },
+      {
+        label: "filters.furnished.options.false",
+        value: "false",
+      },
+    ],
   },
 ];

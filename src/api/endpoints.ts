@@ -1,6 +1,6 @@
 export const ENDPOINTS = {
   apartments: {
     create: "/apartments",
-    get: "/apartments/table",
+    getTable: "/apartments/table",
   },
 };

@@ -18,9 +18,8 @@ export const filtersToQueryParams = (data: FiltersSchema) => {
     }
   }
 
-  if (data.pets !== undefined) params.pets = data.pets ? "true" : "false";
-  if (data.furnished !== undefined)
-    params.furnished = data.furnished ? "true" : "false";
+  if (data.pets?.length) params.pets = data.pets?.join(",");
+  if (data.furnished?.length) params.furnished = data.furnished?.join(",");
 
   return params;
 };

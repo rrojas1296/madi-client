@@ -254,10 +254,18 @@
         }
       },
       "pets": {
-        "label": "Se permiten mascotas"
+        "label": "Se permiten mascotas",
+        "options": {
+          "true": "Si",
+          "false": "No"
+        }
       },
       "furnished": {
-        "label": "Departamento amoblado"
+        "label": "Departamento amoblado",
+        "options": {
+          "true": "Si",
+          "false": "No"
+        }
       }
     },
     "searchAndFilters": {

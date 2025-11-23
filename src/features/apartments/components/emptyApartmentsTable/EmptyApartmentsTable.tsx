@@ -7,7 +7,7 @@ import Link from "next/link";
 const EmptyApartmentsTable = () => {
   const t = useTranslations("Apartments.emptyTable");
   return (
-    <div className="grid place-items-center h-container-height lg:h-full overflow-hidden">
+    <div className="grid animate-fade-in place-items-center h-container-height lg:h-full overflow-hidden">
       <div className="flex flex-col items-center gap-4 max-w-[300px] lg:max-w-[460px] w-full">
         <BuildingVector className="max-w-52 lg:max-w-72" />
         <h1 className="font-medium text-xl text-text-1 text-center">

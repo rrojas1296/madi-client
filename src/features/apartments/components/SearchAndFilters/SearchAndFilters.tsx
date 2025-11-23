@@ -1,3 +1,4 @@
+import React from "react";
 import Button from "@/features/shared/components/button/button";
 import FiltersIcon from "@/features/shared/components/icons/FiltersIcon";
 import PlusIcon from "@/features/shared/components/icons/PlusIcon";
@@ -10,8 +11,14 @@ import FiltersApartmentsForm from "../FiltersApartmentsForm/FiltersApartmentsFor
 import FileOutlinedIcon from "@/features/shared/components/icons/FileOutlinedIcon";
 import TableOutlinedIcon from "@/features/shared/components/icons/TableOutlinedIcon";
 
-const SearchAndFilters = () => {
+interface Props {
+  setText: (text: string) => void;
+  searchText: string;
+}
+
+const SearchAndFilters = ({ searchText, setText }: Props) => {
   const t = useTranslations("Apartments");
+
   const { setOpen, setElement } = useSidebar();
 
   const openSidebar = () => {
@@ -23,6 +30,8 @@ const SearchAndFilters = () => {
       <Input
         placeholder={t("searchAndFilters.inputPlaceholder")}
         containerClassName="w-full lg:max-w-96"
+        value={searchText}
+        onChange={(e) => setText(e.target.value)}
         Icon={
           <SearchIcon className="shrink-0  w-5 h-5 stroke-current text-text-2" />
         }
@@ -62,4 +71,4 @@ const SearchAndFilters = () => {
   );
 };
 
-export default SearchAndFilters;
+export default React.memo(SearchAndFilters);
