@@ -5,16 +5,18 @@ import ApartmentMobileCard from "@/features/apartments/components/ApartmentMobil
 import EmptyApartmentsTable from "@/features/apartments/components/EmptyApartmentsTable/EmptyApartmentsTable";
 import SearchAndFilters from "@/features/apartments/components/SearchAndFilters/SearchAndFilters";
 import TableApartments from "@/features/apartments/components/TableApartments/TableApartments";
-import useApartmentsColumns from "@/features/apartments/hooks/useApartmentsColumns";
 import useGetApartments from "@/features/hooks/useGetApartments";
 import Button from "@/features/shared/components/Button/Button";
 import useDebounce from "@/features/shared/hooks/useDebounce";
 import { useSidebar } from "@/features/shared/hooks/useSidebar";
-import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import { PaginationState } from "@tanstack/react-table";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import useApartmentsTable from "@/features/apartments/hooks/useApartmentsTable";
+import { cn } from "@/features/shared/lib/shadcn";
+import TrashIcon from "@/features/shared/components/Icons/TrashIcon";
 
 const Page = () => {
   const t = useTranslations("Apartments");
@@ -22,22 +24,22 @@ const Page = () => {
   const query = params.toString();
   const [searchText, setSearchText] = useState("");
   const debouncedText = useDebounce(searchText, 300);
-  const { data, isLoading } = useGetApartments(debouncedText, query);
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageSize: 10,
+    pageIndex: 0,
+  });
+  const { data, isLoading } = useGetApartments({
+    search: debouncedText,
+    query,
+    pagination,
+  });
+  const { table, rowSelection } = useApartmentsTable(data?.apartments || []);
+  const itemsSelected = Object.keys(rowSelection).length;
 
   const { setElement } = useSidebar();
-  const { columns } = useApartmentsColumns();
-  const [rowSelection, setRowSelection] = useState({});
-  const table = useReactTable({
-    columns,
-    data: data?.apartments || [],
-    state: {
-      rowSelection,
-    },
-    onRowSelectionChange: setRowSelection,
-    enableRowSelection: true,
-    getCoreRowModel: getCoreRowModel(),
-  });
   useEffect(() => () => setElement(null), []);
+
+  useEffect(() => {}, [rowSelection]);
 
   if (isLoading) {
     return (
@@ -61,12 +63,32 @@ const Page = () => {
               <ApartmentMobileCard key={apartment.id} apartment={apartment} />
             ))}
           </div>
-          <TableApartments table={table} />
+          {data.pages && (
+            <TableApartments
+              totalPages={data.pages}
+              setPagination={setPagination}
+              table={table}
+            />
+          )}
           <Link href="/apartments/create">
             <Button className="bg-primary lg:hidden hover:bg-primary/90 rounded-xl w-12 h-12 fixed bottom-[84px] right-5 ">
               <PlusIcon className="w-5 h-5 text-text-3" />
             </Button>
           </Link>
+          <div
+            className={cn(
+              "border text-sm border-border-1 justify-between w-82 rounded-xl bg-bg-2 fixed -bottom-20 transition-[bottom] ease-in-out left-1/2 -translate-x-1/2 px-4 h-12 flex items-center",
+              itemsSelected > 0 && "bottom-8",
+            )}
+          >
+            <p className="flex gap-3">
+              <span className="font-bold">{itemsSelected}</span>
+              <span>items fueron seleccionados</span>
+            </p>
+            <Button variant="ghost" className="bg-bg-2 hover:bg-bg-1">
+              <TrashIcon className="w-5 h-5 text-danger stroke-current" />
+            </Button>
+          </div>
         </div>
       ) : (
         <EmptyApartmentsTable />
