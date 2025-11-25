@@ -1,12 +1,12 @@
 "use client";
 import { schema, SchemaType } from "@/features/auth/schemas/createPassword";
 import { createUser } from "@/features/auth/services/register/createUser";
-import Button from "@/features/shared/components/button/button";
-import FormField from "@/features/shared/components/formfield/FormField";
-import ArrowLeftIcon from "@/features/shared/components/icons/ArrowLeftIcon";
-import CloseEyeIcon from "@/features/shared/components/icons/CloseEyeIcon";
-import LoadingIcon from "@/features/shared/components/icons/LoadingIcon";
-import OpenEyeIcon from "@/features/shared/components/icons/OpenEyeIcon";
+import Button from "@/features/shared/components/Button/Button";
+import FormField from "@/features/shared/components/FormField/FormField";
+import ArrowLeftIcon from "@/features/shared/components/Icons/ArrowLeftIcon";
+import CloseEyeIcon from "@/features/shared/components/Icons/CloseEyeIcon";
+import LoadingIcon from "@/features/shared/components/Icons/LoadingIcon";
+import OpenEyeIcon from "@/features/shared/components/Icons/OpenEyeIcon";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { redirect, useRouter, useSearchParams } from "next/navigation";

@@ -19,7 +19,7 @@ const TableApartments = ({
   return (
     <div>
       <div className="hidden lg:block mt-4 border border-border-2 rounded-md overflow-x-auto custom-x-scroll">
-        <table className="w-[2500px] 2xl:w-full">
+        <table className="w-[2500px] 3xl:w-full">
           <thead className="bg-bg-2">
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id} className="border-b border-b-border-2">

@@ -37,6 +37,8 @@
   --spacing-header: 4.5rem;
   --spacing-container-height: calc(100% - 62px - 72px);
   --spacing-container-width: 57rem;
+
+  --breakpoint-3xl: 120rem;
 }
 
 @theme inline {
