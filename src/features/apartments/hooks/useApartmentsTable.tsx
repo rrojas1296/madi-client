@@ -1,14 +1,27 @@
-import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import {
+  getCoreRowModel,
+  PaginationState,
+  useReactTable,
+} from "@tanstack/react-table";
 import useApartmentsColumns from "./useApartmentsColumns";
 import { useState } from "react";
-import { IApartment } from "../types/apartments";
+import useGetApartments from "@/features/hooks/useGetApartments";
 
-function useApartmentsTable(data: IApartment[]) {
+function useApartmentsTable(
+  debouncedText: string,
+  query: string,
+  pagination: PaginationState,
+) {
   const { columns } = useApartmentsColumns();
   const [rowSelection, setRowSelection] = useState({});
+  const { data, isLoading } = useGetApartments({
+    search: debouncedText,
+    query,
+    pagination,
+  });
   const table = useReactTable({
     columns,
-    data,
+    data: data?.apartments || [],
     state: {
       rowSelection,
     },
@@ -17,7 +30,7 @@ function useApartmentsTable(data: IApartment[]) {
     enableRowSelection: true,
     getCoreRowModel: getCoreRowModel(),
   });
-  return { table, rowSelection, setRowSelection };
+  return { table, rowSelection, setRowSelection, isLoading, data };
 }
 
 export default useApartmentsTable;

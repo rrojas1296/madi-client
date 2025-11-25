@@ -13,58 +13,69 @@ interface ColumnsState {
 }
 const initialState: Column[] = [
   {
-    label: "Nombre",
+    label: "selectColumns.columns.name",
     selected: true,
     key: "name",
   },
   {
-    label: "Direccion",
+    label: "selectColumns.columns.address",
     selected: true,
     key: "address",
   },
   {
-    label: "Status",
+    label: "selectColumns.columns.monthlyFee",
+    selected: true,
+    key: "monthlyFee",
+  },
+  {
+    label: "selectColumns.columns.currency",
+    selected: true,
+    key: "currency",
+  },
+
+  {
+    label: "selectColumns.columns.status",
     selected: true,
     key: "status",
   },
   {
-    label: "Aforo",
+    label: "selectColumns.columns.persons",
     selected: true,
     key: "persons",
   },
   {
-    label: "Cuartos",
+    label: "selectColumns.columns.rooms",
     selected: true,
     key: "rooms",
   },
   {
-    label: "Banos",
+    label: "selectColumns.columns.bathrooms",
     selected: true,
     key: "bathrooms",
   },
   {
-    label: "Pisos",
+    label: "selectColumns.columns.floors",
     selected: true,
     key: "floors",
   },
   {
-    label: "Area",
+    label: "selectColumns.columns.area",
     selected: true,
     key: "area",
   },
   {
-    label: "Amoblado",
+    label: "selectColumns.columns.furnished",
     selected: true,
     key: "furnished",
   },
   {
-    label: "Mascotas",
+    label: "selectColumns.columns.pets",
     selected: true,
     key: "pets",
   },
 ];
 
-export const useColumns = create<ColumnsState>((set) => ({
+export const useColumnsStore = create<ColumnsState>((set) => ({
   columns: initialState,
   setColumns: (columns) => set((state) => ({ ...state, columns })),
 }));

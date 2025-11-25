@@ -16,7 +16,7 @@ import {
   PopoverTrigger,
 } from "@/features/shared/components/shadcn/popover";
 import CheckBox from "@/features/shared/components/CheckBox/CheckBox";
-import { useColumns } from "../../store/useColumns";
+import { useColumnsStore } from "../../store/useColumns";
 
 interface Props {
   setText: (text: string) => void;
@@ -27,7 +27,7 @@ const SearchAndFilters = ({ searchText, setText }: Props) => {
   const t = useTranslations("Apartments");
 
   const { setOpen, setElement } = useSidebar();
-  const { columns, setColumns } = useColumns();
+  const { columns, setColumns } = useColumnsStore();
 
   const openSidebar = () => {
     setElement(<FiltersApartmentsForm />);
@@ -61,10 +61,8 @@ const SearchAndFilters = ({ searchText, setText }: Props) => {
             </Button>
           </PopoverTrigger>
           <PopoverContent>
-            <h1 className="font-medium">Columnas</h1>
-            <p className="text-text-2 text-sm">
-              Marca las columnas que deseas visualizar
-            </p>
+            <h1 className="font-medium">{t("selectColumns.title")}</h1>
+            <p className="text-text-2 text-sm">{t("selectColumns.subtitle")}</p>
             <div className="grid grid-cols-2 gap-2 mt-3">
               {columns.map((co) => (
                 <div key={co.label} className="flex items-center gap-2">
@@ -72,7 +70,7 @@ const SearchAndFilters = ({ searchText, setText }: Props) => {
                     active={co.selected}
                     setActive={() => setActiveColumn(co.label)}
                   />
-                  <span className="text-sm">{co.label}</span>
+                  <span className="text-sm">{t(co.label)}</span>
                 </div>
               ))}
             </div>

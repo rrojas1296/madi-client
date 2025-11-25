@@ -11,6 +11,7 @@ import ArrowLeftIcon from "../Icons/ArrowLeftIcon";
 import ArrowRightIcon from "../Icons/ArrowRightIcon";
 import Button from "../Button/Button";
 import { cn } from "../../lib/shadcn";
+import { useTranslations } from "next-intl";
 
 interface Props {
   setPagination: Dispatch<SetStateAction<PaginationState>>;
@@ -26,14 +27,17 @@ const TablePagination = ({
   className,
 }: Props) => {
   const leftActive = pagination.pageIndex !== 0;
+  const t = useTranslations("Apartments");
   const rightActive = pagination.pageIndex < totalPages - 1;
   return (
-    <div className={cn("flex items-center lg:justify-between", className)}>
-      <p className="text-sm text-text-1">
-        Pagina {pagination.pageIndex + 1} de {totalPages}
+    <div className={cn("items-center lg:justify-between flex", className)}>
+      <p className="text-sm text-text-1 hidden lg:block">
+        {t("pagination.page")
+          .replace(":page", (pagination.pageIndex + 1).toString())
+          .replace(":total", totalPages.toString())}
       </p>
       <div className="flex items-center gap-4">
-        <span className="text-sm">Mostar</span>
+        <span className="text-sm">{t("pagination.show")}</span>
         <Select
           defaultValue="10"
           onValueChange={(val) => {

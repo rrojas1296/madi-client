@@ -5,7 +5,6 @@ import ApartmentMobileCard from "@/features/apartments/components/ApartmentMobil
 import EmptyApartmentsTable from "@/features/apartments/components/EmptyApartmentsTable/EmptyApartmentsTable";
 import SearchAndFilters from "@/features/apartments/components/SearchAndFilters/SearchAndFilters";
 import TableApartments from "@/features/apartments/components/TableApartments/TableApartments";
-import useGetApartments from "@/features/hooks/useGetApartments";
 import Button from "@/features/shared/components/Button/Button";
 import useDebounce from "@/features/shared/hooks/useDebounce";
 import { useSidebar } from "@/features/shared/hooks/useSidebar";
@@ -27,18 +26,19 @@ const Page = () => {
     pageSize: 10,
     pageIndex: 0,
   });
-  const { data, isLoading } = useGetApartments({
-    search: debouncedText,
-    query,
-    pagination,
-  });
-  const { table, rowSelection } = useApartmentsTable(data?.apartments || []);
+  const { table, rowSelection, setRowSelection, isLoading, data } =
+    useApartmentsTable(debouncedText, query, pagination);
   const itemsSelected = Object.keys(rowSelection).length;
 
   const { setElement } = useSidebar();
+
   useEffect(() => () => setElement(null), []);
 
-  console.log("Here", searchText);
+  useEffect(() => {
+    setPagination((prev) => ({ ...prev, pageIndex: 0 }));
+    setRowSelection({});
+  }, [debouncedText]);
+
   if (isLoading) {
     return (
       <div className="h-full w-full grid place-items-center">

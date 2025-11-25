@@ -199,6 +199,33 @@
         "available": "Disponible",
         "leased": "Alquilado",
         "maintenance": "En mantenimiento"
+      },
+      "items": {
+        "persons": "Personas",
+        "rooms": "Habitaciones",
+        "bathrooms": "Baños"
+      }
+    },
+    "pagination": {
+      "page": "Pagina :page de :total",
+      "show": "Mostrar"
+    },
+    "selectColumns": {
+      "title": "Columnas",
+      "subtitle": "Marca las columnas que deseas visualizar",
+      "columns": {
+        "name": "Nombre",
+        "monthlyFee": "Mensualidad",
+        "status": "Estado",
+        "rooms": "Habitaciones",
+        "floors": "Pisos",
+        "furnished": "Amoblado",
+        "address": "Direccion",
+        "currency": "Moneda",
+        "persons": "Aforo",
+        "bathrooms": "Baños",
+        "area": "Area",
+        "pets": "Mascotas"
       }
     },
     "filters": {

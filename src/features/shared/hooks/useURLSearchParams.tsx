@@ -2,7 +2,7 @@
 
 import { useRouter, usePathname } from "next/navigation";
 
-export function useURLSearchParams() {
+export const useURLSearchParams = () => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -19,4 +19,4 @@ export function useURLSearchParams() {
   };
 
   return setParams;
-}
+};

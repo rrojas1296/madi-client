@@ -1,4 +1,3 @@
-import React from "react";
 import { flexRender, PaginationState, Table } from "@tanstack/react-table";
 import { IApartment } from "../../types/apartments";
 import { cn } from "@/features/shared/lib/shadcn";
@@ -70,4 +69,4 @@ const TableApartments = ({
   );
 };
 
-export default React.memo(TableApartments);
+export default TableApartments;
