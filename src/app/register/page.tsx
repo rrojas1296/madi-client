@@ -89,7 +89,7 @@ const RegisterPage = () => {
         </Button>
         <p className="text-sm lg:text-center">
           {t("form.register.text")}
-          <Link href="/login" className="text-primary font-semibold">
+          <Link href="/login" className="text-primary-500 font-semibold">
             {t("form.register.link")}
           </Link>
         </p>

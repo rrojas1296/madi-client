@@ -1,3 +1,4 @@
+import React from "react";
 import { flexRender, PaginationState, Table } from "@tanstack/react-table";
 import { IApartment } from "../../types/apartments";
 import { cn } from "@/features/shared/lib/shadcn";
@@ -7,13 +8,19 @@ import TablePagination from "@/features/shared/components/TablePagination/TableP
 interface Props {
   table: Table<IApartment>;
   setPagination: Dispatch<SetStateAction<PaginationState>>;
+  pagination: PaginationState;
   totalPages: number;
 }
-const TableApartments = ({ table, setPagination, totalPages }: Props) => {
+const TableApartments = ({
+  table,
+  pagination,
+  setPagination,
+  totalPages,
+}: Props) => {
   return (
     <div>
       <div className="hidden lg:block mt-4 border border-border-2 rounded-md overflow-x-auto custom-x-scroll">
-        <table className="w-[2400px] 2xl:w-full">
+        <table className="w-[2500px] 2xl:w-full">
           <thead className="bg-bg-2">
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id} className="border-b border-b-border-2">
@@ -55,6 +62,7 @@ const TableApartments = ({ table, setPagination, totalPages }: Props) => {
       </div>
       <TablePagination
         setPagination={setPagination}
+        pagination={pagination}
         totalPages={totalPages}
         className="mt-8"
       />
@@ -62,4 +70,4 @@ const TableApartments = ({ table, setPagination, totalPages }: Props) => {
   );
 };
 
-export default TableApartments;
+export default React.memo(TableApartments);

@@ -10,7 +10,7 @@ const Switch = ({ active, setActive }: Props) => {
     <div
       className={cn(
         "rounded-[20px] h-6 w-10 border border-border-1 relative cursor-pointer",
-        active ? "bg-primary border-primary" : "bg-bg-2",
+        active ? "bg-primary-500 border-primary-500" : "bg-bg-2",
       )}
       onClick={() => setActive(!active)}
     >

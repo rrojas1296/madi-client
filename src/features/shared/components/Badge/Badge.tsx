@@ -14,7 +14,10 @@ const Badge = ({ text, type }: Props) => {
   const borderColor = s[type];
   return (
     <div
-      className={cn("rounded-md w-fit border px-3 py-1 text-xs", borderColor)}
+      className={cn(
+        "rounded-md w-fit border px-3 py-1 text-xs text-nowrap",
+        borderColor,
+      )}
     >
       {text}
     </div>

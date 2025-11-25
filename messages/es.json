@@ -300,6 +300,22 @@
         "status": {
           "header": "Estado"
         },
+        "furnished": {
+          "header": "Amoblado",
+          "yes": "Si",
+          "no": "No"
+        },
+        "pets": {
+          "header": "Se permiten mascotas",
+          "yes": "Si",
+          "no": "No"
+        },
+        "monthlyFee": {
+          "header": "Cuota Mensual"
+        },
+        "currency": {
+          "header": "Moneda"
+        },
         "bathrooms": {
           "header": "Baños"
         },

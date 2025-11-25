@@ -1,8 +1,4 @@
-import {
-  getCoreRowModel,
-  PaginationState,
-  useReactTable,
-} from "@tanstack/react-table";
+import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import useApartmentsColumns from "./useApartmentsColumns";
 import { useState } from "react";
 import { IApartment } from "../types/apartments";

@@ -13,7 +13,7 @@ const Layout = ({ children }: Props) => {
     <div className="w-screen h-screen">
       <div className="h-full w-full overflow-y-auto pb-16 lg:pb-0 custom-scroll flex flex-col lg:pl-[68px]">
         <Header />
-        <div className="px-5 flex-1">{children}</div>
+        <div className="px-5 flex-1 pb-5">{children}</div>
       </div>
       <BottomNav />
       <SideMenu />

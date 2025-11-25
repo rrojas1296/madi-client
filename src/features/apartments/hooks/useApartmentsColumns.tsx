@@ -8,9 +8,10 @@ import Badge, { BadgeType } from "@/features/shared/components/Badge/Badge";
 import { ApartmentStatus } from "../schemas/createApartment.schema";
 import Button from "@/features/shared/components/Button/Button";
 import CheckBox from "@/features/shared/components/CheckBox/CheckBox";
-import DotsIcon from "@/features/shared/components/Icons/DotsIcon";
 import TrashIcon from "@/features/shared/components/Icons/TrashIcon";
 import EditIcon from "@/features/shared/components/Icons/EditIcon";
+import { useColumns } from "../store/useColumns";
+import { useEffect, useState } from "react";
 
 dayjs.extend(relativeTime);
 const badgeType: Record<ApartmentStatus, BadgeType> = {
@@ -20,11 +21,15 @@ const badgeType: Record<ApartmentStatus, BadgeType> = {
 };
 
 const useApartmentsColumns = () => {
+  const { columns } = useColumns();
   const t = useTranslations("Apartments");
+  const [c, setColumns] = useState<ColumnDef<IApartment, any>[]>([]);
   const locale = useLocale();
-  const columns: ColumnDef<IApartment, any>[] = [
+  const fixedColumns: ColumnDef<IApartment, any>[] = [
     {
       id: "select",
+      enableSorting: false,
+      enableHiding: false,
       cell: ({ row }) => (
         <div className="p-2">
           <CheckBox
@@ -42,73 +47,11 @@ const useApartmentsColumns = () => {
         </div>
       ),
     },
-    {
-      id: "name",
-      accessorKey: "name",
-      cell: (info) => info.getValue(),
-      header: () => t("table.columns.name.header"),
-    },
-    {
-      id: "address",
-      accessorKey: "address",
-      cell: (info) => info.getValue(),
-      header: () => t("table.columns.address.header"),
-    },
-    {
-      id: "rooms",
-      accessorKey: "rooms",
-      cell: (info) => info.getValue(),
-      header: () => t("table.columns.rooms.header"),
-    },
-    {
-      id: "floors",
-      accessorKey: "floors",
-      cell: (info) => info.getValue(),
-      header: () => t("table.columns.floors.header"),
-    },
-    {
-      id: "status",
-      accessorKey: "status",
-      cell: (info) => (
-        <Badge
-          type={badgeType[info.getValue() as ApartmentStatus]}
-          text={t(`table.status.${info.getValue().toLowerCase()}`)}
-        />
-      ),
-      header: () => t("table.columns.status.header"),
-    },
-    {
-      id: "bathrooms",
-      accessorKey: "bathrooms",
-      cell: (info) => info.getValue(),
-      header: () => t("table.columns.bathrooms.header"),
-    },
-    {
-      id: "area",
-      accessorKey: "area",
-      cell: (info) => info.getValue(),
-      header: () => t("table.columns.area.header"),
-    },
-    {
-      id: "createdAt",
-      accessorKey: "createdAt",
-      header: () => t("table.columns.createdAt.header"),
-      cell: (info) => {
-        const time = dayjs(info.getValue());
-        return time.locale(locale).fromNow();
-      },
-    },
-    {
-      id: "updatedAt",
-      accessorKey: "updatedAt",
-      header: () => t("table.columns.updatedAt.header"),
-      cell: (info) => {
-        const time = dayjs(info.getValue());
-        return time.locale(locale).fromNow();
-      },
-    },
+
     {
       id: "actions",
+      enableSorting: false,
+      enableHiding: false,
       cell: () => (
         <div className="flex gap-2">
           <Button variant="ghost" className="w-9 h-9">
@@ -122,7 +65,110 @@ const useApartmentsColumns = () => {
       ),
     },
   ];
-  return { columns };
+
+  // 🔹 Columnas dinámicas (se pueden mostrar/ocultar)
+  const dynamicColumns: ColumnDef<IApartment, any>[] = [
+    {
+      id: "name",
+      accessorKey: "name",
+      header: () => t("table.columns.name.header"),
+      cell: (info) => info.getValue(),
+    },
+    {
+      id: "address",
+      accessorKey: "address",
+      header: () => t("table.columns.address.header"),
+      cell: (info) => info.getValue(),
+    },
+    {
+      id: "monthlyFee",
+      accessorKey: "monthlyFee",
+      header: () => t("table.columns.monthlyFee.header"),
+      cell: (info) => <span>{info.getValue()}</span>,
+    },
+    {
+      id: "currency",
+      accessorKey: "currency",
+      header: () => t("table.columns.currency.header"),
+      cell: (info) => info.getValue(),
+    },
+    {
+      id: "rooms",
+      accessorKey: "rooms",
+      header: () => t("table.columns.rooms.header"),
+      cell: (info) => info.getValue(),
+    },
+    {
+      id: "floors",
+      accessorKey: "floors",
+      header: () => t("table.columns.floors.header"),
+      cell: (info) => info.getValue(),
+    },
+    {
+      id: "furnished",
+      accessorKey: "furnished",
+      header: () => t("table.columns.furnished.header"),
+      cell: (info) =>
+        info.getValue()
+          ? t("table.columns.furnished.yes")
+          : t("table.columns.furnished.no"),
+    },
+    {
+      id: "pets",
+      accessorKey: "pets",
+      header: () => t("table.columns.pets.header"),
+      cell: (info) =>
+        info.getValue()
+          ? t("table.columns.pets.yes")
+          : t("table.columns.pets.no"),
+    },
+    {
+      id: "status",
+      accessorKey: "status",
+      header: () => t("table.columns.status.header"),
+      cell: (info) => (
+        <Badge
+          type={badgeType[info.getValue() as ApartmentStatus]}
+          text={t(`table.status.${info.getValue().toLowerCase()}`)}
+        />
+      ),
+    },
+    {
+      id: "bathrooms",
+      accessorKey: "bathrooms",
+      header: () => t("table.columns.bathrooms.header"),
+      cell: (info) => info.getValue(),
+    },
+    {
+      id: "area",
+      accessorKey: "area",
+      header: () => t("table.columns.area.header"),
+      cell: (info) => info.getValue(),
+    },
+    {
+      id: "createdAt",
+      accessorKey: "createdAt",
+      header: () => t("table.columns.createdAt.header"),
+      cell: (info) => dayjs(info.getValue()).locale(locale).fromNow(),
+    },
+    {
+      id: "updatedAt",
+      accessorKey: "updatedAt",
+      header: () => t("table.columns.updatedAt.header"),
+      cell: (info) => dayjs(info.getValue()).locale(locale).fromNow(),
+    },
+  ];
+  useEffect(() => {
+    const selectedColumns = columns
+      .filter((cl) => cl.selected)
+      .map((cl) => cl.key);
+    const filteredColumns = dynamicColumns.filter((dc) =>
+      selectedColumns.includes(dc.id as keyof IApartment),
+    );
+    setColumns([fixedColumns[0], ...filteredColumns, fixedColumns[1]]);
+  }, [columns]);
+
+  return { columns: c };
 };
 
 export default useApartmentsColumns;

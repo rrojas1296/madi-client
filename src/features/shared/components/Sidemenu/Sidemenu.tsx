@@ -21,7 +21,7 @@ const SideMenu = () => {
       onMouseLeave={() => setOpen(false)}
     >
       <div className="flex items-center gap-3 px-6 mb-10">
-        <BuildingFilledIcon className="h-5 w-5 shrink-0 fill-current text-primary" />
+        <BuildingFilledIcon className="h-5 w-5 shrink-0 fill-current text-primary-500" />
         <p
           className={cn(
             "font-semibold text-xl shrink-0 transition-opacity",
@@ -51,7 +51,7 @@ const SideMenu = () => {
                 onClick={() => router.push(link.href)}
                 className={cn(
                   "flex items-center cursor-pointer transition-all w-full text-text-2 gap-3 h-9 px-3 rounded-md",
-                  isActive && "bg-primary text-text-3",
+                  isActive && "bg-primary-500 text-text-3",
                   !open && "w-11",
                   !isActive && "hover:text-text-1",
                 )}

@@ -13,7 +13,7 @@ const BadgeOption = ({ isActive, label, handleChange, value }: Props) => {
       type="button"
       className={cn(
         "border outline-none border-border-1 lg:text-sm text-text-1 text-xs rounded-md bg-transparent cursor-pointer px-3 py-2 w-fit",
-        isActive && "bg-primary border-primary text-text-3",
+        isActive && "bg-primary-500 border-primary-500 text-text-3",
       )}
     >
       {label}

@@ -21,9 +21,9 @@ const BottomNav = () => {
             variant="icon"
             onClick={() => router.push(href)}
             className={cn(
-              "border-none bg-bg-1 flex-col gap-1 text-text-2",
+              "border-none bg-bg-1 flex-col gap-1 text-text-2 hover:bg-transparent",
               className,
-              isActive && "text-primary-light",
+              isActive && "text-primary-400",
             )}
           >
             {isActive ? (

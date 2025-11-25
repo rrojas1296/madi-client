@@ -10,6 +10,13 @@ import Link from "next/link";
 import FiltersApartmentsForm from "../FiltersApartmentsForm/FiltersApartmentsForm";
 import FileOutlinedIcon from "@/features/shared/components/Icons/FileOutlinedIcon";
 import TableOutlinedIcon from "@/features/shared/components/Icons/TableOutlinedIcon";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/features/shared/components/shadcn/popover";
+import CheckBox from "@/features/shared/components/CheckBox/CheckBox";
+import { useColumns } from "../../store/useColumns";
 
 interface Props {
   setText: (text: string) => void;
@@ -20,10 +27,19 @@ const SearchAndFilters = ({ searchText, setText }: Props) => {
   const t = useTranslations("Apartments");
 
   const { setOpen, setElement } = useSidebar();
+  const { columns, setColumns } = useColumns();
 
   const openSidebar = () => {
     setElement(<FiltersApartmentsForm />);
     setOpen(true);
+  };
+
+  const setActiveColumn = (label: string) => {
+    const newColumns = columns.map((c) => {
+      if (c.label === label) return { ...c, selected: !c.selected };
+      return c;
+    });
+    setColumns(newColumns);
   };
   return (
     <div className="flex gap-3 mt-6 lg:justify-between">
@@ -37,10 +53,31 @@ const SearchAndFilters = ({ searchText, setText }: Props) => {
         }
       />
       <div className="gap-4 hidden lg:flex">
-        <Button variant="outline" className="text-text-2 px-3">
-          <TableOutlinedIcon className="w-5 h-5 text-text-2" />
-          {t("searchAndFilters.columns")}
-        </Button>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="outline" className="text-text-2 px-3">
+              <TableOutlinedIcon className="w-5 h-5 text-text-2" />
+              {t("searchAndFilters.columns")}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent>
+            <h1 className="font-medium">Columnas</h1>
+            <p className="text-text-2 text-sm">
+              Marca las columnas que deseas visualizar
+            </p>
+            <div className="grid grid-cols-2 gap-2 mt-3">
+              {columns.map((co) => (
+                <div key={co.label} className="flex items-center gap-2">
+                  <CheckBox
+                    active={co.selected}
+                    setActive={() => setActiveColumn(co.label)}
+                  />
+                  <span className="text-sm">{co.label}</span>
+                </div>
+              ))}
+            </div>
+          </PopoverContent>
+        </Popover>
         <Button
           variant="outline"
           className="text-text-2 px-3"

@@ -12,8 +12,9 @@ import FormField from "@/features/shared/components/FormField/FormField";
 import { useURLSearchParams } from "@/features/shared/hooks/useURLSearchParams";
 import { filtersToQueryParams } from "../../utils/filtersToQueryParams";
 import XIcon from "@/features/shared/components/Icons/XIcon";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { getDefaultFiltersValues } from "../../utils/getDefaultFiltersValues";
+import { useEffect } from "react";
 
 const undefinedFields = {
   area: {
@@ -39,6 +40,7 @@ const FiltersApartmentsForm = () => {
   const t = useTranslations("Apartments");
   const setParams = useURLSearchParams();
   const p = useSearchParams();
+  const router = useRouter();
   const defaultValues = getDefaultFiltersValues(p);
 
   const {
@@ -49,16 +51,22 @@ const FiltersApartmentsForm = () => {
     control,
   } = useForm({
     resolver: zodResolver(filtersSchema),
-    defaultValues,
   });
   const setFiltersHandler = (data: FiltersSchema) => {
     const params = filtersToQueryParams(data);
     setParams(params);
+    setOpen(false);
   };
 
   const resetHandler = () => {
+    router.replace("/apartments");
+    setOpen(false);
     reset(undefinedFields);
   };
+
+  useEffect(() => {
+    reset(defaultValues);
+  }, []);
 
   return (
     <form

@@ -15,8 +15,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import useApartmentsTable from "@/features/apartments/hooks/useApartmentsTable";
-import { cn } from "@/features/shared/lib/shadcn";
-import TrashIcon from "@/features/shared/components/Icons/TrashIcon";
+import SnackbarTable from "@/features/apartments/components/SnackbarTable/SnackbarTable";
 
 const Page = () => {
   const t = useTranslations("Apartments");
@@ -39,8 +38,7 @@ const Page = () => {
   const { setElement } = useSidebar();
   useEffect(() => () => setElement(null), []);
 
-  useEffect(() => {}, [rowSelection]);
-
+  console.log("Here", searchText);
   if (isLoading) {
     return (
       <div className="h-full w-full grid place-items-center">
@@ -63,32 +61,20 @@ const Page = () => {
               <ApartmentMobileCard key={apartment.id} apartment={apartment} />
             ))}
           </div>
-          {data.pages && (
+          {data.pages > 0 && (
             <TableApartments
               totalPages={data.pages}
               setPagination={setPagination}
+              pagination={pagination}
               table={table}
             />
           )}
           <Link href="/apartments/create">
-            <Button className="bg-primary lg:hidden hover:bg-primary/90 rounded-xl w-12 h-12 fixed bottom-[84px] right-5 ">
+            <Button className="bg-primary-500 lg:hidden hover:bg-primary-400 rounded-xl w-12 h-12 fixed bottom-[84px] right-5 ">
               <PlusIcon className="w-5 h-5 text-text-3" />
             </Button>
           </Link>
-          <div
-            className={cn(
-              "border text-sm border-border-1 justify-between w-82 rounded-xl bg-bg-2 fixed -bottom-20 transition-[bottom] ease-in-out left-1/2 -translate-x-1/2 px-4 h-12 flex items-center",
-              itemsSelected > 0 && "bottom-8",
-            )}
-          >
-            <p className="flex gap-3">
-              <span className="font-bold">{itemsSelected}</span>
-              <span>items fueron seleccionados</span>
-            </p>
-            <Button variant="ghost" className="bg-bg-2 hover:bg-bg-1">
-              <TrashIcon className="w-5 h-5 text-danger stroke-current" />
-            </Button>
-          </div>
+          <SnackbarTable itemsSelected={itemsSelected} />
         </div>
       ) : (
         <EmptyApartmentsTable />

@@ -13,7 +13,7 @@ const CheckBox = ({ active, setActive }: Props) => {
       type="button"
       className={cn(
         "border border-border-1 transition-colors rounded-md cursor-pointer grid place-items-center outline-none bg-bg-2 h-6 w-6",
-        active && "bg-primary border-primary",
+        active && "bg-primary-500 border-primary-500",
       )}
     >
       {active && <CheckIcon className="text-text-3 h-4 w-4" />}
