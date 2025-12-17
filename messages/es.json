@@ -159,6 +159,9 @@
   "Header": {
     "greeting": "Bienvenido ",
     "brand": "Madi",
+    "actions": {
+      "exit": "Salir"
+    },
     "sections": {
       "dashboard": {
         "label": "Panel de control",

@@ -45,7 +45,7 @@ const HeaderApp = () => {
     <div className="h-header shrink-0 z-10 sticky flex items-center top-0 left-0 px-5 bg-bg-1 w-full lg:h-20 lg:px-6 lg:border-b lg:border-b-border-2 ">
       <div className="flex flex-1 justify-between items-center">
         <Link href="/dashboard" className="flex items-center gap-3 lg:hidden">
-          <BuildingFilledIcon className="h-5 w-5 fill-current text-primary" />
+          <BuildingFilledIcon className="h-5 w-5 fill-current text-primary-400" />
           <span className="font-semibold text-xl">{"brand"}</span>
         </Link>
         <div className="gap-1 hidden lg:grid">
@@ -77,7 +77,7 @@ const HeaderApp = () => {
           </Button>
           <Button
             variant="icon"
-            className="bg-bg-2 hover:bg-bg-1 lg:hidden"
+            className="hover:bg-bg-1 lg:hidden"
             onClick={() => router.push("/settings")}
           >
             <SettingsOutlinedIcon className="w-5 h-5 stroke-current text-text-2" />
@@ -94,7 +94,7 @@ const HeaderApp = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem onClick={handleSignOut}>
-                Salir{" "}
+                {t("actions.exit")}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
