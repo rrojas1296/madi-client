@@ -46,7 +46,7 @@ const HeaderApp = () => {
       <div className="flex flex-1 justify-between items-center">
         <Link href="/dashboard" className="flex items-center gap-3 lg:hidden">
           <BuildingFilledIcon className="h-5 w-5 fill-current text-primary-400" />
-          <span className="font-semibold text-xl">{"brand"}</span>
+          <span className="font-semibold text-xl">{t("brand")}</span>
         </Link>
         <div className="gap-1 hidden lg:grid">
           {activeSection?.href === "/dashboard" ? (
@@ -62,7 +62,7 @@ const HeaderApp = () => {
         </div>
         <div className="flex items-center gap-4">
           <Button variant="icon" className="hidden lg:flex">
-            <BellIcon className="w-5 h-5 stroke-current text-text-2" />
+            <BellIcon className="w-5 h-5 shrink-0 stroke-current text-text-2" />
           </Button>
           <Button
             variant="icon"
@@ -70,17 +70,17 @@ const HeaderApp = () => {
             onClick={handleSwitchTheme}
           >
             {theme === "dark" ? (
-              <MoonIcon className="w-5 h-5 stroke-current text-text-2" />
+              <MoonIcon className="w-5 h-5 stroke-current shrink-0 text-text-2" />
             ) : (
-              <SunIcon className="w-5 h-5 stroke-current text-text-2" />
+              <SunIcon className="w-5 h-5 stroke-current shrink-0 text-text-2" />
             )}
           </Button>
           <Button
             variant="icon"
-            className="hover:bg-bg-1 lg:hidden"
+            className="lg:hidden"
             onClick={() => router.push("/settings")}
           >
-            <SettingsOutlinedIcon className="w-5 h-5 stroke-current text-text-2" />
+            <SettingsOutlinedIcon className="w-5 h-5 stroke-current text-text-2 shrink-0" />
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

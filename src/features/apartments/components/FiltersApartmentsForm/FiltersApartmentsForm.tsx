@@ -75,8 +75,12 @@ const FiltersApartmentsForm = () => {
     >
       <header className="flex justify-between items-center ">
         <h1 className="text-xl font-semibold">{t("filters.header.title")}</h1>
-        <Button variant="icon" onClick={() => setOpen(false)}>
-          <XIcon className="w-5 h-5 stroke-current" />
+        <Button
+          variant="ghost"
+          className="w-9 h-9"
+          onClick={() => setOpen(false)}
+        >
+          <XIcon className="w-5 h-5 stroke-current shrink-0" />
         </Button>
       </header>
       <p className="text-sm text-text-2 mt-2">

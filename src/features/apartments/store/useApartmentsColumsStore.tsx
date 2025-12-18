@@ -75,7 +75,7 @@ const initialState: Column[] = [
   },
 ];
 
-export const useColumnsStore = create<ColumnsState>((set) => ({
+export const useApartmentsColumnsStore = create<ColumnsState>((set) => ({
   columns: initialState,
   setColumns: (columns) => set((state) => ({ ...state, columns })),
 }));

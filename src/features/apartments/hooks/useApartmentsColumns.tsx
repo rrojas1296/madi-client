@@ -10,7 +10,7 @@ import Button from "@/features/shared/components/Button/Button";
 import CheckBox from "@/features/shared/components/CheckBox/CheckBox";
 import TrashIcon from "@/features/shared/components/Icons/TrashIcon";
 import EditIcon from "@/features/shared/components/Icons/EditIcon";
-import { useColumnsStore } from "../store/useColumns";
+import { useApartmentsColumnsStore } from "../store/useApartmentsColumsStore";
 import { useEffect, useState } from "react";
 
 dayjs.extend(relativeTime);
@@ -21,7 +21,7 @@ const badgeType: Record<ApartmentStatus, BadgeType> = {
 };
 
 const useApartmentsColumns = () => {
-  const { columns } = useColumnsStore();
+  const { columns } = useApartmentsColumnsStore();
   const t = useTranslations("Apartments");
   const [c, setColumns] = useState<ColumnDef<IApartment, any>[]>([]);
   const locale = useLocale();

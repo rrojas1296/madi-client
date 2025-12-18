@@ -17,7 +17,7 @@ const ApartmentMobileCard = ({ apartment }: Props) => {
   return (
     <div className="border border-border-2 bg-bg-2 rounded-lg p-[14px] flex flex-col">
       <div className="flex flex-col gap-1">
-        <div className="flex items-center justify-between">
+        <div className="flex items-start justify-between">
           <h1 className="font-medium">{name}</h1>
           <Badge
             type={badgeType[status]}

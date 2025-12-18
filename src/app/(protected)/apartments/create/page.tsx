@@ -66,12 +66,12 @@ const Page = () => {
         <div className="flex items-center gap-4 font-medium text-xl">
           <Link href="/apartments">
             <Button variant="icon">
-              <ArrowLeftIcon className="h-5 w-5 text-text-2 stroke-current" />
+              <ArrowLeftIcon className="h-5 w-5 text-text-2 stroke-current shrink-0" />
             </Button>
           </Link>
           <h1>{t("title")}</h1>
         </div>
-        <Button type="submit" className="hidden lg:flex w-36">
+        <Button type="submit" className="hidden lg:flex w-fit">
           {isLoading ? (
             <LoadingIcon className="h-5 w-5 animate-spin text-text-3 stroke-current" />
           ) : (
@@ -127,7 +127,7 @@ const Page = () => {
               </Button>
             </Link>
           </div>
-          <Button type="submit" className="lg:flex px-10 w-fit">
+          <Button type="submit" className="lg:flex px-3 w-fit">
             {isLoading ? (
               <LoadingIcon className="h-5 w-5 animate-spin text-text-3 stroke-current" />
             ) : (

@@ -16,7 +16,7 @@ import {
   PopoverTrigger,
 } from "@/features/shared/components/shadcn/popover";
 import CheckBox from "@/features/shared/components/CheckBox/CheckBox";
-import { useColumnsStore } from "../../store/useColumns";
+import { useApartmentsColumnsStore } from "../../store/useApartmentsColumsStore";
 
 interface Props {
   setText: (text: string) => void;
@@ -27,7 +27,7 @@ const SearchAndFilters = ({ searchText, setText }: Props) => {
   const t = useTranslations("Apartments");
 
   const { setOpen, setElement } = useSidebar();
-  const { columns, setColumns } = useColumnsStore();
+  const { columns, setColumns } = useApartmentsColumnsStore();
 
   const openSidebar = () => {
     setElement(<FiltersApartmentsForm />);
@@ -97,13 +97,13 @@ const SearchAndFilters = ({ searchText, setText }: Props) => {
       </div>
 
       <Button variant="icon" className="lg:hidden">
-        <FileOutlinedIcon className="w-5 h-5 stroke-current text-text-2" />
+        <FileOutlinedIcon className="w-5 h-5 stroke-current text-text-2 shrink-0" />
       </Button>
       <Button variant="icon" className="lg:hidden" onClick={openSidebar}>
-        <FiltersIcon className="w-5 h-5 stroke-current text-text-2" />
+        <FiltersIcon className="w-5 h-5 stroke-current text-text-2 shrink-0" />
       </Button>
     </div>
   );
 };
 
-export default React.memo(SearchAndFilters);
+export default SearchAndFilters;

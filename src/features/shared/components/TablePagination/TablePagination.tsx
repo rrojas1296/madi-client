@@ -37,28 +37,29 @@ const TablePagination = ({
           .replace(":total", totalPages.toString())}
       </p>
       <div className="flex items-center gap-4">
-        <span className="text-sm">{t("pagination.show")}</span>
-        <Select
-          defaultValue="10"
-          onValueChange={(val) => {
-            setPagination({
-              pageSize: parseInt(val),
-              pageIndex: 0,
-            });
-          }}
-        >
-          <SelectTrigger className="dark:bg-transparent">
-            <SelectValue placeholder="Page" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="10">10</SelectItem>
-            <SelectItem value="30">30</SelectItem>
-            <SelectItem value="50">50</SelectItem>
-          </SelectContent>
-        </Select>
+        <div className="flex items-center gap-2">
+          <span className="text-sm">{t("pagination.show")}</span>
+          <Select
+            defaultValue="10"
+            onValueChange={(val) => {
+              setPagination({
+                pageSize: parseInt(val),
+                pageIndex: 0,
+              });
+            }}
+          >
+            <SelectTrigger className="dark:bg-transparent">
+              <SelectValue placeholder="Page" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="10">10</SelectItem>
+              <SelectItem value="30">30</SelectItem>
+              <SelectItem value="50">50</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
         <Button
-          variant="icon"
-          className={cn(!leftActive && "border-border-2")}
+          variant={!leftActive ? "disabled" : "icon"}
           disabled={!leftActive}
           onClick={() =>
             setPagination((prev) => ({
@@ -71,9 +72,8 @@ const TablePagination = ({
           <ArrowLeftIcon className="w-5 h-5 shrink-0" />
         </Button>
         <Button
-          variant="icon"
+          variant={!rightActive ? "disabled" : "icon"}
           disabled={!rightActive}
-          className={cn(!rightActive && "border-border-2")}
           onClick={() =>
             setPagination((prev) => ({
               ...prev,

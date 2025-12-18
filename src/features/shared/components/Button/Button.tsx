@@ -3,7 +3,7 @@ import { ComponentProps } from "react";
 import { cn } from "../../lib/shadcn";
 
 const variants = cva(
-  "rounded-lg font-medium outline-none h-9 w-full text-sm flex items-center gap-[10px] justify-center transition-colors cursor-pointer",
+  "rounded-lg font-medium outline-none h-9 px-3 w-full text-sm flex items-center gap-[10px] justify-center transition-colors cursor-pointer",
   {
     variants: {
       variant: {
@@ -12,6 +12,8 @@ const variants = cva(
           "border border-border-1 bg-transparent text-text-2 hover:bg-bg-2",
         icon: "border border-border-1 shrink-0 text-text-2 h-9 w-9 bg-transparent hover:bg-bg-2",
         ghost: "bg-bg-1 hover:bg-bg-2 text-text-2 w-fit px-3",
+        disabled:
+          "cursor-not-allowed bg-bg-2 text-text-2 h-9 w-9 border-border-2 border",
       },
     },
     defaultVariants: {
