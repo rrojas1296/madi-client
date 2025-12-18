@@ -4,8 +4,8 @@ import BuildingFilledIcon from "../components/Icons/BuildingFilledIcon";
 import BuildingOutlinedIcon from "../components/Icons/BuildingOutlinedIcon";
 import CreditCardFilledIcon from "../components/Icons/CreditCardFilledIcon";
 import CreditCardOutlinedIcon from "../components/Icons/CreditCardOutlinedIcon";
-import HomeFilledIcon from "../components/Icons/HomeFilledIcon";
-import HomeOutlinedIcon from "../components/Icons/HomeOutlinedIcon";
+import DashboardFilledIcon from "../components/Icons/DashboardFilledIcon";
+import DashboardOutlinedIcon from "../components/Icons/DashboardOutlinedIcon";
 import SettingsFilledIcon from "../components/Icons/SettingsFilledIcon";
 import SettingsOutlinedIcon from "../components/Icons/SettingsOutlinedIcon";
 import UsersFilledIcon from "../components/Icons/UsersFilledIcon";
@@ -14,8 +14,8 @@ import UsersOutlinedIcon from "../components/Icons/UsersOutlinedIcon";
 export const links = [
   {
     id: 1,
-    filledIcon: HomeFilledIcon,
-    outlinedIcon: HomeOutlinedIcon,
+    filledIcon: DashboardFilledIcon,
+    outlinedIcon: DashboardOutlinedIcon,
     label: "sections.dashboard.label",
     headerText: "sections.dashboard.headerText",
     href: "/dashboard",
