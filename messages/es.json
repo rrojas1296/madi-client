@@ -210,7 +210,7 @@
       }
     },
     "pagination": {
-      "page": "Pagina :page de :total",
+      "pages": "Total de paginas: ",
       "show": "Mostrar"
     },
     "selectColumns": {

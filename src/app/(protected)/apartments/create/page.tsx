@@ -65,7 +65,7 @@ const Page = () => {
       <div className="flex justify-between items-center mt-6">
         <div className="flex items-center gap-4 font-medium text-xl">
           <Link href="/apartments">
-            <Button variant="icon">
+            <Button variant="ghost" isIcon>
               <ArrowLeftIcon className="h-5 w-5 text-text-2 stroke-current shrink-0" />
             </Button>
           </Link>
@@ -121,7 +121,7 @@ const Page = () => {
         <div className="hidden lg:flex justify-between items-center">
           <div className="flex items-center gap-4 font-medium text-xl">
             <Link href="/apartments">
-              <Button variant="outline" className="px-4 text-text-2">
+              <Button variant="ghost" className="text-text-2">
                 <ArrowLeftIcon className="h-5 w-5 text-text-2 stroke-current" />
                 {t("headerButton.back")}
               </Button>

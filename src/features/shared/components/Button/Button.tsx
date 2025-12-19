@@ -22,18 +22,23 @@ const variants = cva(
   },
 );
 
-type Props = ComponentProps<"button"> & VariantProps<typeof variants>;
+interface Props
+  extends ComponentProps<"button">,
+    VariantProps<typeof variants> {
+  isIcon?: boolean;
+}
 
 const Button = ({
   children,
   variant,
   className,
+  isIcon = false,
   type = "button",
   ...other
 }: Props) => {
   return (
     <button
-      className={cn(variants({ variant, className }))}
+      className={cn(variants({ variant, className }), isIcon && "w-9 h-9")}
       type={type}
       {...other}
     >

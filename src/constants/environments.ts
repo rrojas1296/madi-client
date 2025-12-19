@@ -7,5 +7,5 @@ const NODE_ENV = process.env.NODE_ENV;
 export { NEXT_PUBLIC_API_URL, JWT_ACCESS_SECRET, JWT_REFRESH_SECRET };
 
 if (NODE_ENV !== "production") {
-  console.log({ NEXT_PUBLIC_API_URL });
+  console.log({ NEXT_PUBLIC_API_URL, JWT_ACCESS_SECRET, JWT_REFRESH_SECRET });
 }
