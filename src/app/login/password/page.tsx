@@ -57,7 +57,7 @@ const Page = () => {
         onClick={() => router.push("/login")}
         variant="icon"
       >
-        <ArrowLeftIcon className="w-5 h-5 text-text-1 stroke-current" />
+        <ArrowLeftIcon className="w-5 h-5  stroke-current shrink-0" />
       </Button>
       <form
         onSubmit={handleSubmit(handleLogin)}

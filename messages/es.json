@@ -197,6 +197,23 @@
       "subtitle": "Agrega un departamento haciendo click en el buton debajo",
       "button": "Agregar"
     },
+    "snackbar": {
+      "text": "items fueron seleccionados."
+    },
+    "deleteDialogs": {
+      "single": {
+        "title": "Eliminar departamento",
+        "description": "Al eliminar este departamento, también se eliminarán los datos relacionados, como contratos, inquilinos y pagos asociados.",
+        "cancel": "Cancelar",
+        "delete": "Confirmar"
+      },
+      "multiple": {
+        "title": "Confirmar eliminación múltiple",
+        "description": "Confirma la eliminación de los departamentos seleccionados. Esta acción afectará los registros vinculados dentro del condominio.",
+        "cancel": "Cancelar",
+        "delete": "Confirmar"
+      }
+    },
     "apartmentCard": {
       "status": {
         "available": "Disponible",

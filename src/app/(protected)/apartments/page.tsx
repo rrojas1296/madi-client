@@ -15,6 +15,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import useApartmentsTable from "@/features/apartments/hooks/useApartmentsTable";
 import SnackbarTable from "@/features/apartments/components/SnackbarTable/SnackbarTable";
+import DeleteMultipleApartments from "@/features/apartments/components/DeleteMultipleApartments/DeleteMultipleApartments";
 
 const Page = () => {
   const t = useTranslations("Apartments");
@@ -74,7 +75,16 @@ const Page = () => {
               <PlusIcon className="w-5 h-5 text-text-3" />
             </Button>
           </Link>
-          <SnackbarTable itemsSelected={itemsSelected} />
+          <SnackbarTable
+            itemsSelected={itemsSelected}
+            text={t("snackbar.text")}
+            dialogContent={
+              <DeleteMultipleApartments
+                ids={Object.keys(rowSelection)}
+                setRowSelection={setRowSelection}
+              />
+            }
+          />
         </div>
       ) : (
         <EmptyApartmentsTable />

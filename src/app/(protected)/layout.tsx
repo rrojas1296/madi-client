@@ -1,4 +1,5 @@
 import BottomNav from "@/features/shared/components/BottomNav/BottomNav";
+import Dialog from "@/features/shared/components/Dialog/Dialog";
 import Header from "@/features/shared/components/Header/Header";
 import Sidebar from "@/features/shared/components/Sidebar/Sidebar";
 import SideMenu from "@/features/shared/components/Sidemenu/Sidemenu";
@@ -18,6 +19,7 @@ const Layout = ({ children }: Props) => {
       <BottomNav />
       <SideMenu />
       <Sidebar />
+      <Dialog />
     </div>
   );
 };

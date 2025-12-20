@@ -1,11 +1,16 @@
 import Button from "@/features/shared/components/Button/Button";
 import TrashIcon from "@/features/shared/components/Icons/TrashIcon";
+import { useDialog } from "@/features/shared/hooks/useDialog";
 import { cn } from "@/features/shared/lib/shadcn";
+import { JSX } from "react";
 
 interface Props {
   itemsSelected: number;
+  text: string;
+  dialogContent: JSX.Element;
 }
-const SnackbarTable = ({ itemsSelected }: Props) => {
+const SnackbarTable = ({ itemsSelected, text, dialogContent }: Props) => {
+  const { setOpen, setContent } = useDialog();
   return (
     <div
       className={cn(
@@ -15,9 +20,16 @@ const SnackbarTable = ({ itemsSelected }: Props) => {
     >
       <p className="flex gap-3">
         <span className="font-bold">{itemsSelected}</span>
-        <span>items fueron seleccionados</span>
+        <span>{text}</span>
       </p>
-      <Button variant="ghost" className="bg-bg-2 hover:bg-bg-1">
+      <Button
+        variant="ghost"
+        onClick={() => {
+          setContent(dialogContent);
+          setOpen(true);
+        }}
+        className="bg-bg-2 hover:bg-bg-1"
+      >
         <TrashIcon className="w-5 h-5 text-danger stroke-current" />
       </Button>
     </div>

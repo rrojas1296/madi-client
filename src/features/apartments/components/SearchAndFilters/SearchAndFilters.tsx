@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "@/features/shared/components/Button/Button";
 import FiltersIcon from "@/features/shared/components/Icons/FiltersIcon";
 import PlusIcon from "@/features/shared/components/Icons/PlusIcon";
@@ -68,6 +67,7 @@ const SearchAndFilters = ({ searchText, setText }: Props) => {
                 <div key={co.label} className="flex items-center gap-2">
                   <CheckBox
                     active={co.selected}
+                    size="sm"
                     setActive={() => setActiveColumn(co.label)}
                   />
                   <span className="text-sm">{t(co.label)}</span>

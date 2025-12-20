@@ -12,6 +12,8 @@ import TrashIcon from "@/features/shared/components/Icons/TrashIcon";
 import EditIcon from "@/features/shared/components/Icons/EditIcon";
 import { useApartmentsColumnsStore } from "../store/useApartmentsColumsStore";
 import { useEffect, useState } from "react";
+import { useDialog } from "@/features/shared/hooks/useDialog";
+import DeleteSingleApartment from "../components/DeleteSingleApartment/DeleteSingleApartment";
 
 dayjs.extend(relativeTime);
 const badgeType: Record<ApartmentStatus, BadgeType> = {
@@ -24,7 +26,9 @@ const useApartmentsColumns = () => {
   const { columns } = useApartmentsColumnsStore();
   const t = useTranslations("Apartments");
   const [c, setColumns] = useState<ColumnDef<IApartment, any>[]>([]);
+  const { setOpen, setContent } = useDialog();
   const locale = useLocale();
+
   const fixedColumns: ColumnDef<IApartment, any>[] = [
     {
       id: "select",
@@ -52,21 +56,32 @@ const useApartmentsColumns = () => {
       id: "actions",
       enableSorting: false,
       enableHiding: false,
-      cell: () => (
-        <div className="flex gap-2">
-          <Button variant="ghost" className="w-9 h-9">
-            <TrashIcon className="w-5 h-5 shrink-0" />
-          </Button>
+      cell: (info) => {
+        const name = info.row.original.name;
+        const id = info.row.original.id;
 
-          <Button variant="ghost" className="w-9 h-9">
-            <EditIcon className="w-5 h-5 shrink-0" />
-          </Button>
-        </div>
-      ),
+        return (
+          <div className="flex gap-2">
+            <Button
+              variant="ghost"
+              onClick={() => {
+                setOpen(true);
+                setContent(<DeleteSingleApartment name={name} id={id} />);
+              }}
+              className="w-9 h-9"
+            >
+              <TrashIcon className="w-5 h-5 shrink-0" />
+            </Button>
+
+            <Button variant="ghost" className="w-9 h-9">
+              <EditIcon className="w-5 h-5 shrink-0" />
+            </Button>
+          </div>
+        );
+      },
     },
   ];
 
-  // 🔹 Columnas dinámicas (se pueden mostrar/ocultar)
   const dynamicColumns: ColumnDef<IApartment, any>[] = [
     {
       id: "name",

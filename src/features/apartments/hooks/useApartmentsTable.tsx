@@ -14,7 +14,7 @@ function useApartmentsTable(
 ) {
   const { columns } = useApartmentsColumns();
   const [rowSelection, setRowSelection] = useState({});
-  const { data, isLoading } = useGetApartments({
+  const { data, isLoading, isFetching } = useGetApartments({
     search: debouncedText,
     query,
     pagination,
@@ -30,7 +30,14 @@ function useApartmentsTable(
     enableRowSelection: true,
     getCoreRowModel: getCoreRowModel(),
   });
-  return { table, rowSelection, setRowSelection, isLoading, data };
+  return {
+    table,
+    rowSelection,
+    setRowSelection,
+    isLoading,
+    data,
+    isFetching,
+  };
 }
 
 export default useApartmentsTable;

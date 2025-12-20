@@ -49,7 +49,7 @@ const TablePagination = ({
     <div className={cn("items-center lg:justify-between flex", className)}>
       <p className="text-sm text-text-1 hidden lg:block">
         {t("pagination.pages")}
-        {totalPages}
+        <span className="font-bold"> {totalPages}</span>
       </p>
       <div className="gap-3 hidden lg:flex">
         <Button
@@ -96,7 +96,7 @@ const TablePagination = ({
         <div className="flex items-center gap-2 lg:gap-4">
           <span className="text-sm">{t("pagination.show")}</span>
           <Select
-            defaultValue="10"
+            defaultValue={pagination.pageSize.toString()}
             onValueChange={(val) => {
               setPagination({
                 pageSize: parseInt(val),
