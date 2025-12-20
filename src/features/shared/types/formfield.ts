@@ -9,6 +9,7 @@ type InputType =
   | ComponentProps<"input">["type"]
   | "select"
   | "select-badge"
+  | "switch"
   | "input-range";
 
 export interface IControl<T> {

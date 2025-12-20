@@ -31,8 +31,8 @@ const undefinedFields = {
   },
   status: undefined,
   currency: undefined,
-  pets: undefined,
-  furnished: undefined,
+  pets: false,
+  furnished: false,
 };
 
 const FiltersApartmentsForm = () => {

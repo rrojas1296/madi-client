@@ -70,7 +70,12 @@ const SearchAndFilters = ({ searchText, setText }: Props) => {
                     size="sm"
                     setActive={() => setActiveColumn(co.label)}
                   />
-                  <span className="text-sm">{t(co.label)}</span>
+                  <label
+                    onClick={() => setActiveColumn(co.label)}
+                    className="text-sm"
+                  >
+                    {t(co.label)}
+                  </label>
                 </div>
               ))}
             </div>

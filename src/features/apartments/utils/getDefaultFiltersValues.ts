@@ -12,11 +12,8 @@ export const getDefaultFiltersValues = (filters: ReadonlyURLSearchParams) => {
   const rooms = getRangeFilter("rooms", filters);
   const area = getRangeFilter("area", filters);
 
-  const pets = filters.get("pets")?.split(",") as ("true" | "false")[];
-  const furnished = filters.get("furnished")?.split(",") as (
-    | "true"
-    | "false"
-  )[];
+  const pets = filters.get("pets") === "true";
+  const furnished = filters.get("furnished") === "true";
 
   return { status, currency, monthlyFee, rooms, area, pets, furnished };
 };
