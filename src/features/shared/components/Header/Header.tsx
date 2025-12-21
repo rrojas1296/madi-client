@@ -42,7 +42,7 @@ const HeaderApp = () => {
     router.push("/login");
   };
   return (
-    <div className="h-header shrink-0 z-10 sticky flex items-center top-0 left-0 px-5 bg-bg-1 w-full lg:h-20 lg:px-6 lg:border-b lg:border-b-border-2 ">
+    <div className="h-header shrink-0 z-10 sticky flex py-4 border-b border-b-border-2 top-0 left-0 px-5 bg-bg-1 w-full lg:h-20 lg:px-6 lg:border-b lg:border-b-border-2 ">
       <div className="flex flex-1 justify-between items-center">
         <Link href="/dashboard" className="flex items-center gap-3 lg:hidden">
           <BuildingFilledIcon className="h-5 w-5 fill-current text-primary-400" />

@@ -71,7 +71,7 @@ const FiltersApartmentsForm = () => {
   return (
     <form
       onSubmit={handleSubmit(setFiltersHandler)}
-      className="px-5 pt-6 pb-18 lg:pb-6 h-full overflow-y-auto custom-scroll "
+      className="px-5 pt-6 h-full overflow-y-auto custom-scroll grid grid-rows-[auto_auto_auto_1fr_auto]"
     >
       <header className="flex justify-between items-center ">
         <h1 className="text-xl font-semibold">{t("filters.header.title")}</h1>
@@ -115,14 +115,15 @@ const FiltersApartmentsForm = () => {
             />
           );
         })}
-        <div className="flex gap-4 absolute bottom-5 left-1/2 -translate-x-1/2 w-full px-5">
-          <Button variant="outline" onClick={resetHandler} type="button">
-            {t("filters.buttons.reset")}
-          </Button>
-          <Button variant="filled" type="submit">
-            {t("filters.buttons.apply")}
-          </Button>
-        </div>
+      </div>
+      <div />
+      <div className="gap-4 flex h-16 items-center justify-center bg-bg-1">
+        <Button variant="outline" onClick={resetHandler} type="button">
+          {t("filters.buttons.reset")}
+        </Button>
+        <Button variant="filled" type="submit">
+          {t("filters.buttons.apply")}
+        </Button>
       </div>
     </form>
   );

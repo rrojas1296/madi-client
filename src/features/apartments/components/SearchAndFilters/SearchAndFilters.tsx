@@ -41,7 +41,7 @@ const SearchAndFilters = ({ searchText, setText }: Props) => {
     setColumns(newColumns);
   };
   return (
-    <div className="flex gap-3 mt-6 lg:justify-between">
+    <div className="flex gap-3 lg:justify-between">
       <Input
         placeholder={t("searchAndFilters.inputPlaceholder")}
         containerClassName="w-full lg:max-w-96"

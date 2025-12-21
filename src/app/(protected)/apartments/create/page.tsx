@@ -60,9 +60,9 @@ const Page = () => {
   return (
     <form
       onSubmit={handleSubmit(handleCreateApartment)}
-      className="max-w-container-width m-auto pb-8 lg:pb-16 animate-fade-in"
+      className="max-w-container-width m-auto animate-fade-in"
     >
-      <div className="flex justify-between items-center mt-6">
+      <div className="flex justify-between items-center">
         <div className="flex items-center gap-4 font-medium text-xl">
           <Link href="/apartments">
             <Button variant="ghost" isIcon>

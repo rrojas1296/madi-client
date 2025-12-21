@@ -1,5 +1,12 @@
+"use client";
+import TenantsEmptyTable from "@/features/tenants/components/TenantsEmptyTable/TenantsEmptyTable";
+
 const Page = () => {
-  return <div>TenantsPage</div>;
+  return (
+    <div className="w-full h-full">
+      <TenantsEmptyTable />
+    </div>
+  );
 };
 
 export default Page;

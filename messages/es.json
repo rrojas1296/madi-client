@@ -556,5 +556,21 @@
       },
       "create": "Create Apartment"
     }
+  },
+  "Tenants": {
+    "table": {
+      "emptyState": {
+        "tenant": {
+          "title": "Aun no tienes inquilinos.",
+          "description": "Cuando registres tu primer inquilino, aquí podrás ver y administrar toda su información fácilmente.",
+          "button": "Crear inquilino"
+        },
+        "apartment": {
+          "title": "Aun no tienes departamento",
+          "description": "Agrega un departamento haciendo click en el buton debajo para registrar tu primer departamento.",
+          "button": "Crear departamento"
+        }
+      }
+    }
   }
 }
