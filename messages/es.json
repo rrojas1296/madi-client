@@ -197,6 +197,17 @@
       "subtitle": "Agrega un departamento haciendo click en el buton debajo",
       "button": "Agregar"
     },
+    "activeFilters": {
+      "label": "Filtros activos",
+      "greaterThan": "mayor a ",
+      "lessThan": "menor a ",
+      "status": {
+        "label": "Estado",
+        "available": "disponible",
+        "leased": "Alquilado",
+        "maintenance": "Mantenimiento"
+      }
+    },
     "snackbar": {
       "text": "items fueron seleccionados."
     },

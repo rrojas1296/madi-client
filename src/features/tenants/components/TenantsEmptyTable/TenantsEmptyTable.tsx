@@ -13,8 +13,7 @@ const TenantsEmptyTable = () => {
     search: "",
   });
 
-  const hasTenants = data?.apartments.length > 0;
-  const key = hasTenants ? "apartment" : "tenant";
+  const key = data?.apartments.length ? "tenant" : "apartment";
   return (
     <div className="h-full w-full grid place-items-center">
       <div className="flex flex-col items-center gap-4 w-full max-w-xs">

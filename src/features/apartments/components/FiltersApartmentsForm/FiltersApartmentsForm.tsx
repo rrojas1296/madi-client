@@ -9,39 +9,22 @@ import {
 } from "../../schemas/filterApartments.schema";
 import { useTranslations } from "next-intl";
 import FormField from "@/features/shared/components/FormField/FormField";
-import { useURLSearchParams } from "@/features/shared/hooks/useURLSearchParams";
 import { filtersToQueryParams } from "../../utils/filtersToQueryParams";
 import XIcon from "@/features/shared/components/Icons/XIcon";
 import { useRouter, useSearchParams } from "next/navigation";
-import { getDefaultFiltersValues } from "../../utils/getDefaultFiltersValues";
 import { useEffect } from "react";
-
-const undefinedFields = {
-  area: {
-    max: undefined,
-    min: undefined,
-  },
-  monthlyFee: {
-    max: undefined,
-    min: undefined,
-  },
-  rooms: {
-    max: undefined,
-    min: undefined,
-  },
-  status: undefined,
-  currency: undefined,
-  pets: false,
-  furnished: false,
-};
+import {
+  apartmentFiltersInitialState,
+  useApartmentFilters,
+} from "../../store/useFilters";
+import { getFiltersFromString } from "../../utils/getFiltersFromString";
 
 const FiltersApartmentsForm = () => {
   const { setOpen } = useSidebar();
   const t = useTranslations("Apartments");
-  const setParams = useURLSearchParams();
-  const p = useSearchParams();
+  const params = useSearchParams();
   const router = useRouter();
-  const defaultValues = getDefaultFiltersValues(p);
+  const { filters, setFilters } = useApartmentFilters();
 
   const {
     handleSubmit,
@@ -54,19 +37,23 @@ const FiltersApartmentsForm = () => {
   });
   const setFiltersHandler = (data: FiltersSchema) => {
     const params = filtersToQueryParams(data);
-    setParams(params);
+    router.push(`/apartments?${params.toString()}`);
     setOpen(false);
   };
 
   const resetHandler = () => {
     router.replace("/apartments");
     setOpen(false);
-    reset(undefinedFields);
+    reset(apartmentFiltersInitialState);
   };
 
   useEffect(() => {
-    reset(defaultValues);
-  }, []);
+    const s = params.toString();
+    const f = getFiltersFromString(s);
+    console.log({ f });
+    setFilters(f);
+    reset(f);
+  }, [params]);
 
   return (
     <form

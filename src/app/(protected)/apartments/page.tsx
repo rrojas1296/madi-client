@@ -16,11 +16,17 @@ import { useEffect, useState } from "react";
 import useApartmentsTable from "@/features/apartments/hooks/useApartmentsTable";
 import SnackbarTable from "@/features/apartments/components/SnackbarTable/SnackbarTable";
 import DeleteMultipleApartments from "@/features/apartments/components/DeleteMultipleApartments/DeleteMultipleApartments";
+import { getFiltersFromParams } from "@/features/apartments/utils/getFiltersFromParams";
+import XIcon from "@/features/shared/components/Icons/XIcon";
+import { filtersToQueryParams } from "@/features/apartments/utils/filtersToQueryParams";
+import { useURLSearchParams } from "@/features/shared/hooks/useURLSearchParams";
 
 const Page = () => {
   const t = useTranslations("Apartments");
   const params = useSearchParams();
+  const filters = getFiltersFromParams(params);
   const query = params.toString();
+  const setParams = useURLSearchParams();
   const [searchText, setSearchText] = useState("");
   const debouncedText = useDebounce(searchText, 300);
   const [pagination, setPagination] = useState<PaginationState>({
@@ -60,6 +66,28 @@ const Page = () => {
           <div className="grid gap-3 mt-6 md:grid-cols-2 lg:hidden">
             {data.apartments.map((apartment) => (
               <ApartmentMobileCard key={apartment.id} apartment={apartment} />
+            ))}
+          </div>
+          <div className="flex items-center gap-3 mt-4">
+            <span className="text-sm">{t("activeFilters.label")}</span>
+            {filters.status?.map((s) => (
+              <div
+                key={s}
+                className="text-xs bg-bg-2 border border-border-1 rounded-lg px-3 py-[6px] w-fit flex items-center gap-[10px]"
+              >
+                {t("activeFilters.status.label")}{" "}
+                {t(`activeFilters.status.${s.toLowerCase()}`)}
+                <XIcon
+                  onClick={() => {
+                    filters.status = filters.status.filter(
+                      (status) => status !== s,
+                    );
+                    const params = filtersToQueryParams(filters);
+                    setParams(params);
+                  }}
+                  className="w-5 h-5 text-text-2 stroke-current cursor-pointer hover:text-text-1 transition-colors"
+                />
+              </div>
             ))}
           </div>
           {data.pages > 0 && (

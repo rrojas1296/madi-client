@@ -4,7 +4,7 @@ import {
   ApartmentStatus,
 } from "../schemas/createApartment.schema";
 
-export const getDefaultFiltersValues = (filters: ReadonlyURLSearchParams) => {
+export const getFiltersFromParams = (filters: ReadonlyURLSearchParams) => {
   const status = filters.get("status")?.split(",") as ApartmentStatus[];
   const currency = filters.get("currency")?.split(",") as ApartmentCurrencies[];
 
