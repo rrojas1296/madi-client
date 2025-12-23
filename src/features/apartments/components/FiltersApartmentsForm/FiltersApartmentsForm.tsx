@@ -18,13 +18,14 @@ import {
   useApartmentFilters,
 } from "../../store/useFilters";
 import { getFiltersFromString } from "../../utils/getFiltersFromString";
+import { validateThereIsApartmentsFilters } from "../../utils/validateThereIsApartmentsFilters";
 
 const FiltersApartmentsForm = () => {
   const { setOpen } = useSidebar();
   const t = useTranslations("Apartments");
   const params = useSearchParams();
   const router = useRouter();
-  const { filters, setFilters } = useApartmentFilters();
+  const { setFilters } = useApartmentFilters();
 
   const {
     handleSubmit,
@@ -37,8 +38,8 @@ const FiltersApartmentsForm = () => {
   });
   const setFiltersHandler = (data: FiltersSchema) => {
     const params = filtersToQueryParams(data);
-    router.push(`/apartments?${params.toString()}`);
     setOpen(false);
+    router.push(`/apartments?${params.toString()}`);
   };
 
   const resetHandler = () => {
@@ -50,7 +51,6 @@ const FiltersApartmentsForm = () => {
   useEffect(() => {
     const s = params.toString();
     const f = getFiltersFromString(s);
-    console.log({ f });
     setFilters(f);
     reset(f);
   }, [params]);

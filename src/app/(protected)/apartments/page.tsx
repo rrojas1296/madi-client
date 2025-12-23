@@ -20,6 +20,7 @@ import { getFiltersFromParams } from "@/features/apartments/utils/getFiltersFrom
 import XIcon from "@/features/shared/components/Icons/XIcon";
 import { filtersToQueryParams } from "@/features/apartments/utils/filtersToQueryParams";
 import { useURLSearchParams } from "@/features/shared/hooks/useURLSearchParams";
+import ActiveFilters from "@/features/apartments/components/ActiveFilters/ActiveFilters";
 
 const Page = () => {
   const t = useTranslations("Apartments");
@@ -68,28 +69,7 @@ const Page = () => {
               <ApartmentMobileCard key={apartment.id} apartment={apartment} />
             ))}
           </div>
-          <div className="flex items-center gap-3 mt-4">
-            <span className="text-sm">{t("activeFilters.label")}</span>
-            {filters.status?.map((s) => (
-              <div
-                key={s}
-                className="text-xs bg-bg-2 border border-border-1 rounded-lg px-3 py-[6px] w-fit flex items-center gap-[10px]"
-              >
-                {t("activeFilters.status.label")}{" "}
-                {t(`activeFilters.status.${s.toLowerCase()}`)}
-                <XIcon
-                  onClick={() => {
-                    filters.status = filters.status.filter(
-                      (status) => status !== s,
-                    );
-                    const params = filtersToQueryParams(filters);
-                    setParams(params);
-                  }}
-                  className="w-5 h-5 text-text-2 stroke-current cursor-pointer hover:text-text-1 transition-colors"
-                />
-              </div>
-            ))}
-          </div>
+          <ActiveFilters />
           {data.pages > 0 && (
             <TableApartments
               totalPages={data.pages}

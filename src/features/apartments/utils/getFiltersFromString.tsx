@@ -2,9 +2,9 @@ import {
   ApartmentCurrencies,
   ApartmentStatus,
 } from "../schemas/createApartment.schema";
-import { ApartmentFilters } from "../store/useFilters";
+import { FiltersSchema } from "../schemas/filterApartments.schema";
 
-export const getFiltersFromString = (p: string): ApartmentFilters => {
+export const getFiltersFromString = (p: string): FiltersSchema => {
   const params = new URLSearchParams(p);
   return {
     status:

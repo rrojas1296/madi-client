@@ -202,10 +202,39 @@
       "greaterThan": "mayor a ",
       "lessThan": "menor a ",
       "status": {
-        "label": "Estado",
+        "label": "Estado ",
         "available": "disponible",
-        "leased": "Alquilado",
-        "maintenance": "Mantenimiento"
+        "leased": "alquilado",
+        "maintenance": "mantenimiento"
+      },
+      "currency": {
+        "label": "Moneda ",
+        "usd": "dolares",
+        "pen": "soles",
+        "eur": "euros"
+      },
+      "monthlyFee": {
+        "label": "Precio mensual ",
+        "greater": "mayor a ",
+        "less": "menor a "
+      },
+      "area": {
+        "label": "Area ",
+        "greater": "mayor a ",
+        "less": "menor a "
+      },
+      "rooms": {
+        "label": "Habitaciones ",
+        "greater": "mayor a ",
+        "less": "menor a "
+      },
+      "pets": {
+        "true": "Con mascotas",
+        "false": "Sin mascotas"
+      },
+      "furnished": {
+        "true": "Amoblado",
+        "false": "Sin amoblar"
       }
     },
     "snackbar": {
