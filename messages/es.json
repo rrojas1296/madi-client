@@ -611,6 +611,101 @@
           "button": "Crear departamento"
         }
       }
+    },
+    "create": {
+      "title": "Crear nuevo inquilino",
+      "button": "Crear",
+      "form": {
+        "basicInformation": {
+          "title": "Informacion basica",
+          "description": "Datos personales y de contacto del residente que ocupará el departamento.",
+          "fields": {
+            "name": {
+              "label": "Nombre",
+              "placeholder": "Juan",
+              "errors": {
+                "required": "Este campo es nesesario."
+              }
+            },
+            "lastName": {
+              "label": "Apellido",
+              "placeholder": "Rojas",
+              "errors": {
+                "required": "Este campo es nesesario."
+              }
+            },
+            "codePhone": {
+              "label": "Codigo",
+              "placeholder": "+51",
+              "errors": {
+                "required": "Seleccione un pais."
+              }
+            },
+            "primaryPhone": {
+              "placeholder": "999999999",
+              "label": "Celular",
+              "errors": {
+                "required": "Este campo es nesesario."
+              }
+            },
+            "email": {
+              "label": "Correo",
+              "placeholder": "correo@gmail",
+              "errors": {
+                "required": "Este campo es nesesario."
+              }
+            },
+            "documentType": {
+              "label": "Tipo de documento",
+              "placeholder": "DNI - Pasaporte",
+              "errors": {
+                "required": "Seleccione un tipo de documento."
+              },
+              "options": {
+                "DNI": "Dni",
+                "PASSPORT": "Pasaporte"
+              }
+            },
+            "numberDocument": {
+              "label": "Numero de documento",
+              "placeholder": "xxxxxxxx",
+              "errors": {
+                "required": "Ingrese su numero de documento."
+              }
+            },
+            "nationality": {
+              "label": "Pais",
+              "placeholder": "Seleccione un pais",
+              "errors": {
+                "required": "Seleccione su pais de origen."
+              },
+              "options": {
+                "PERU": "Peru",
+                "VENEZUELA": "Venezuela",
+                "ARGENTINA": "Argentina",
+                "CHILE": "Chile",
+                "COLOMBIA": "Colombia",
+                "MEXICO": "Mexico",
+                "OTHER": "Otro"
+              }
+            },
+            "birthDate": {
+              "label": "Fecha de nacimiento",
+              "placeholder": "dd/mm/aaaa",
+              "errors": {
+                "required": "Seleccione una fecha de nacimiento."
+              }
+            },
+            "emergencyPhone": {
+              "label": "Telefono de emergencia",
+              "placeholder": "999999999",
+              "errors": {
+                "required": "Este campo es nesesario."
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

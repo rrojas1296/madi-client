@@ -13,9 +13,11 @@ import { Control, Controller } from "react-hook-form";
 import Switch from "../Switch/Switch";
 import SelectMultiBadge from "../SelectMultiBadge/SelectMultiBadge";
 import InputRange from "../InputRange/InputRange";
+import DateInput from "../DateInput/DateInput";
+import InputPhone from "../InputPhone/InputPhone";
 
 interface Props extends ComponentProps<"input"> {
-  label: string | ReactNode;
+  label?: string | ReactNode;
   options?: IOption[];
   control?: Control<any>;
   required?: boolean;
@@ -52,6 +54,23 @@ const FormField = ({
             render={({ field }) => (
               <Switch setActive={field.onChange} active={field.value} />
             )}
+          />
+        );
+      case "phone":
+        return (
+          <Controller
+            name={name!}
+            control={control}
+            render={({ field }) => {
+              return (
+                <InputPhone
+                  placeholder={placeholder}
+                  setValue={field.onChange}
+                  value={field.value}
+                  error={error}
+                />
+              );
+            }}
           />
         );
       case "select-badge":
@@ -104,6 +123,20 @@ const FormField = ({
                   ))}
                 </SelectContent>
               </Select>
+            )}
+          />
+        );
+      case "date":
+        return (
+          <Controller
+            name={name!}
+            control={control}
+            render={({ field }) => (
+              <DateInput
+                value={field.value}
+                setValue={field.onChange}
+                error={error}
+              />
             )}
           />
         );

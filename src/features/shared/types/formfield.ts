@@ -10,15 +10,20 @@ type InputType =
   | "select"
   | "select-badge"
   | "switch"
+  | "phone"
   | "input-range";
 
 export interface IControl<T> {
   name: T;
-  label: string;
+  label?: string;
   required?: boolean;
+  labelNumber?: string;
+  labelCode?: string;
   placeholder?: string;
   placeholderMin?: string;
   placeholderMax?: string;
+  placeholderNumber?: string;
+  placeholderCode?: string;
   type: InputType;
   className?: string;
   isFloat?: boolean;

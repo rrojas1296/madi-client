@@ -106,7 +106,7 @@ const Page = () => {
                     control={control}
                     options={options}
                     required={ctrl.required}
-                    label={t(ctrl.label)}
+                    label={ctrl.label && t(ctrl.label)}
                     placeholder={ctrl.placeholder && t(ctrl.placeholder)}
                     error={error && t(error)}
                     {...register(ctrl.name, {
