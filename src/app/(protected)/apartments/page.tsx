@@ -16,18 +16,12 @@ import { useEffect, useState } from "react";
 import useApartmentsTable from "@/features/apartments/hooks/useApartmentsTable";
 import SnackbarTable from "@/features/apartments/components/SnackbarTable/SnackbarTable";
 import DeleteMultipleApartments from "@/features/apartments/components/DeleteMultipleApartments/DeleteMultipleApartments";
-import { getFiltersFromParams } from "@/features/apartments/utils/getFiltersFromParams";
-import XIcon from "@/features/shared/components/Icons/XIcon";
-import { filtersToQueryParams } from "@/features/apartments/utils/filtersToQueryParams";
-import { useURLSearchParams } from "@/features/shared/hooks/useURLSearchParams";
 import ActiveFilters from "@/features/apartments/components/ActiveFilters/ActiveFilters";
 
 const Page = () => {
   const t = useTranslations("Apartments");
   const params = useSearchParams();
-  const filters = getFiltersFromParams(params);
   const query = params.toString();
-  const setParams = useURLSearchParams();
   const [searchText, setSearchText] = useState("");
   const debouncedText = useDebounce(searchText, 300);
   const [pagination, setPagination] = useState<PaginationState>({

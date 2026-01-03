@@ -3,7 +3,7 @@ import TenantsEmptyTable from "@/features/tenants/components/TenantsEmptyTable/T
 
 const Page = () => {
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full animate-fade-in">
       <TenantsEmptyTable />
     </div>
   );

@@ -1,9 +1,18 @@
-import { ComponentProps, useState } from "react";
-import { cn } from "../../lib/shadcn";
-import { Popover, PopoverContent, PopoverTrigger } from "../shadcn/popover";
-import { countryCodes } from "@/features/constants/countryCodes";
+import { ComponentProps, useMemo, useState } from "react";
 import { ChevronDownIcon } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+
+import { cn } from "../../lib/shadcn";
+import { countryCodes } from "@/features/constants/countryCodes";
+
 import Button from "../Button/Button";
+import Input from "../Input/Input";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../shadcn/dropdown-menu";
 
 interface Props extends ComponentProps<"input"> {
   containerClassName?: string;
@@ -15,63 +24,95 @@ interface Props extends ComponentProps<"input"> {
 const InputPhone = ({
   containerClassName,
   error,
-  setValue,
   value,
+  setValue,
   ...other
 }: Props) => {
-  const [open, setOpen] = useState(false);
-  const flag = countryCodes.find(
-    (cc) => cc.code === value?.split(" ")[0],
-  )?.flag;
+  const locale = useLocale() as "en" | "es";
+  const t = useTranslations("Shared");
+  const [search, setSearch] = useState("");
+
+  const { code, phone } = useMemo(() => {
+    const [c = "", p = ""] = value.split(" ");
+    return { code: c, phone: p };
+  }, [value]);
+
+  const selectedCountry = useMemo(
+    () => countryCodes.find((cc) => cc.code === code),
+    [code],
+  );
+
+  const filteredCountries = useMemo(() => {
+    const q = search.toLowerCase();
+    if (!q) return countryCodes;
+
+    return countryCodes.filter((cc) =>
+      cc.country[locale].toLowerCase().includes(q),
+    );
+  }, [search, locale]);
+
   return (
     <div
       className={cn(
-        "flex overflow-hidden items-center border border-border-1 h-9 bg-bg-2 rounded-lg focus-within:ring-2 focus-within:ring-shadow/50 transition-all",
-        containerClassName,
+        "flex items-center h-9 overflow-hidden rounded-lg border border-border-1 bg-bg-2 transition-all",
+        "focus-within:ring-2 focus-within:ring-shadow/50",
         error && "border-danger focus-within:ring-danger/50",
+        containerClassName,
       )}
     >
-      <Popover open={open} modal={false}>
-        <PopoverTrigger asChild onClick={() => setOpen(!open)}>
-          <Button variant="ghost" className="w-fit bg-bg-2">
-            {flag}
-            <ChevronDownIcon className="w-5 h-5 text-text-2 stroke-current" />
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="outline"
+            className="gap-3 rounded-none px-4 w-fit bg-bg-2"
+          >
+            <span>{selectedCountry?.flag ?? "🌍"}</span>
+            <ChevronDownIcon className="h-5 w-5 text-text-2" />
           </Button>
-        </PopoverTrigger>
-        <PopoverContent
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent
           align="start"
-          className="max-h-60 overflow-y-auto w-72 px-0 custom-scroll py-2"
+          className="w-80 max-h-60 overflow-y-auto px-0 py-2 custom-scroll"
         >
-          {countryCodes.map((cc) => {
-            return (
-              <div
-                key={cc.code}
-                className="flex cursor-pointer justify-between py-2 px-4 rounded-md text-sm hover:bg-bg-1"
-                onClick={() => {
-                  const phone = value.split(" ")[1];
-                  setValue(`${cc.code} ${phone}`);
-                  setOpen(false);
-                }}
-              >
-                <p className="flex gap-2">
-                  <span>{cc.flag}</span> <span>{cc.country}</span>
-                </p>
-                <p>{cc.code}</p>
-              </div>
-            );
-          })}
-        </PopoverContent>
-      </Popover>
+          <div className="px-4 mb-2">
+            <Input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder={t("inputPhone.placeholder")}
+            />
+          </div>
+
+          {filteredCountries.length === 0 && (
+            <p className="px-4 py-2 text-sm text-text-2">
+              {t("inputPhone.noResults")}
+            </p>
+          )}
+
+          {filteredCountries.map((cc) => (
+            <DropdownMenuItem
+              key={cc.code}
+              className="flex cursor-pointer justify-between px-4 py-2 text-sm hover:bg-bg-1"
+              onClick={() => {
+                setValue(`${cc.code} ${phone}`);
+                setSearch("");
+              }}
+            >
+              <span className="flex gap-2">
+                <span>{cc.flag}</span>
+                <span>{cc.country[locale]}</span>
+              </span>
+              <span>{cc.code}</span>
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+
       <input
-        type="number"
-        className={cn(
-          "placeholder:text-text-2 flex-1 text-sm h-full outline-none w-full pr-4",
-        )}
-        onChange={(e) => {
-          const phone = e.target.value;
-          const code = value.split(" ")[0];
-          setValue(`${code} ${phone}`);
-        }}
+        type="tel"
+        value={phone}
+        onChange={(e) => setValue(`${code} ${e.target.value}`)}
+        className="flex-1 h-full px-4 text-sm outline-none placeholder:text-text-2"
         {...other}
       />
     </div>

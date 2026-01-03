@@ -135,6 +135,7 @@ const FormField = ({
               <DateInput
                 value={field.value}
                 setValue={field.onChange}
+                placeholder={placeholder}
                 error={error}
               />
             )}

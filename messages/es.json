@@ -1,4 +1,10 @@
 {
+  "Shared": {
+    "inputPhone": {
+      "noResults": "Sin resultados",
+      "placeholder": "Buscar"
+    }
+  },
   "Login": {
     "title": {
       "text": "Bienvenido de nuevo",
@@ -650,7 +656,7 @@
             },
             "email": {
               "label": "Correo",
-              "placeholder": "correo@gmail",
+              "placeholder": "correo@gmail.com",
               "errors": {
                 "required": "Este campo es nesesario."
               }

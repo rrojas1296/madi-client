@@ -1,19 +1,9 @@
-import { countryCodes } from "@/features/constants/countryCodes";
 import { IControl } from "@/features/shared/types/formfield";
 import z from "zod";
 
 enum DocumentType {
   DNI = "DNI",
   PASSPORT = "PASSPORT",
-}
-
-enum PhoneCodes {
-  PERU = "+51",
-  VENEZUELA = "+58",
-  ARGENTINA = "+54",
-  CHILE = "+56",
-  COLOMBIA = "+57",
-  MEXICO = "+52",
 }
 
 enum Nationality {
@@ -37,13 +27,10 @@ export const createTenantSchema = z.object({
     .string({
       error: "create.form.basicInformation.fields.primaryPhone.errors.required",
     })
-    .min(1, {
-      error: "create.form.basicInformation.fields.primaryPhone.errors.required",
-    })
     .refine(
       (value) => {
         const phone = value.split(" ")[1];
-        if (!phone) return false;
+        return phone?.length > 0;
       },
       {
         message:
@@ -184,7 +171,7 @@ const basicInformation: IControl<CreateTenantFields>[] = [
     label: "create.form.basicInformation.fields.emergencyPhone.label",
     type: "phone",
     name: "emergencyPhone",
-    required: true,
+    required: false,
   },
 ];
 

@@ -9,10 +9,12 @@ import {
 } from "@/features/tenants/schemas/createTenant.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 const Page = () => {
   const t = useTranslations("Tenants");
+  const router = useRouter();
   const {
     register,
     control,
@@ -32,9 +34,12 @@ const Page = () => {
     console.log({ data });
   };
   return (
-    <form onSubmit={handleSubmit(createTenantHandler)}>
+    <form
+      onSubmit={handleSubmit(createTenantHandler)}
+      className="animate-fade-in"
+    >
       <div className="flex gap-3 items-center">
-        <Button variant="ghost" isIcon>
+        <Button variant="ghost" onClick={() => router.push("/tenants")} isIcon>
           <ArrowLeftIcon className="stroke-current w-5 h-5 shrink-0" />
         </Button>
         <h1 className="font-medium text-xl">{t("create.title")}</h1>
