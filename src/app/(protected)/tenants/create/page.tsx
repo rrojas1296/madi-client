@@ -1,4 +1,5 @@
 "use client";
+import useGetApartmentsList from "@/features/apartments/hooks/useGetApartmentsList";
 import Button from "@/features/shared/components/Button/Button";
 import FormField from "@/features/shared/components/FormField/FormField";
 import ArrowLeftIcon from "@/features/shared/components/Icons/ArrowLeftIcon";
@@ -14,6 +15,8 @@ import { useForm } from "react-hook-form";
 
 const Page = () => {
   const t = useTranslations("Tenants");
+  const { data } = useGetApartmentsList();
+  const apartments = data?.data || [];
   const router = useRouter();
 
   const {
@@ -59,10 +62,16 @@ const Page = () => {
                   ({ name, type, options, required, label, placeholder }) => {
                     const error = errors[name]?.message;
 
-                    const opts = options?.map((o) => ({
-                      ...o,
-                      label: t(o.label),
-                    }));
+                    const opts =
+                      name === "apartment"
+                        ? apartments.map((a) => ({
+                            label: a.name,
+                            value: a.id,
+                          }))
+                        : options?.map((o) => ({
+                            ...o,
+                            label: t(o.label),
+                          }));
                     return (
                       <FormField
                         key={name}

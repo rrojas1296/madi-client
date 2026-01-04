@@ -1,4 +1,4 @@
-import useGetApartments from "@/features/hooks/useGetApartments";
+import useGetApartmentsList from "@/features/apartments/hooks/useGetApartmentsList";
 import Button from "@/features/shared/components/Button/Button";
 import UsersOutlinedIcon from "@/features/shared/components/Icons/UsersOutlinedIcon";
 import { useTranslations } from "next-intl";
@@ -6,15 +6,9 @@ import Link from "next/link";
 
 const TenantsEmptyTable = () => {
   const t = useTranslations("Tenants");
-  const { data } = useGetApartments({
-    pagination: {
-      pageIndex: 0,
-      pageSize: 10,
-    },
-    search: "",
-  });
+  const { data } = useGetApartmentsList();
 
-  const key = data?.apartments.length ? "tenant" : "apartment";
+  const key = data?.data.length ? "tenant" : "apartment";
   return (
     <div className="h-full w-full grid place-items-center">
       <div className="flex flex-col items-center gap-4 w-full max-w-xs">
