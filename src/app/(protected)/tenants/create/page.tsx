@@ -3,6 +3,7 @@ import useGetApartmentsList from "@/features/apartments/hooks/useGetApartmentsLi
 import Button from "@/features/shared/components/Button/Button";
 import FormField from "@/features/shared/components/FormField/FormField";
 import ArrowLeftIcon from "@/features/shared/components/Icons/ArrowLeftIcon";
+import useCreateTenant from "@/features/tenants/hooks/useCreateTenant";
 import {
   CreateTenantSchema,
   createTenantSchema,
@@ -16,6 +17,7 @@ import { useForm } from "react-hook-form";
 const Page = () => {
   const t = useTranslations("Tenants");
   const { data } = useGetApartmentsList();
+  const { mutate } = useCreateTenant();
   const apartments = data?.data || [];
   const router = useRouter();
 
@@ -32,9 +34,7 @@ const Page = () => {
     },
   });
 
-  const createTenantHandler = async (data: CreateTenantSchema) => {
-    console.log({ data });
-  };
+  const createTenantHandler = async (data: CreateTenantSchema) => mutate(data);
 
   return (
     <form

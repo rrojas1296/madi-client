@@ -4,4 +4,7 @@ export const ENDPOINTS = {
     getTable: "/apartments/table",
     getList: "/apartments/list",
   },
+  tenants: {
+    create: "/tenants/create",
+  },
 };
