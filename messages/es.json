@@ -710,6 +710,42 @@
               }
             }
           }
+        },
+        "contractInformation": {
+          "title": "Informacion de contrato",
+          "description": "Detalles del acuerdo de arrendamiento y condiciones del departamento.",
+          "fields": {
+            "entryDate": {
+              "label": "Fecha de ingreso",
+              "placeholder": "dd/mm/aaaa",
+              "errors": {
+                "required": "Seleccione una fecha de inicio."
+              }
+            },
+            "outDate": {
+              "label": "Fecha de salida",
+              "placeholder": "dd/mm/aaaa",
+              "errors": {
+                "required": "Seleccione una fecha de fin."
+              }
+            },
+            "apartment": {
+              "label": "Departamento",
+              "placeholder": "Seleccione un departamento",
+              "errors": {
+                "required": "Seleccione un departamento."
+              }
+            },
+            "paymentDay": {
+              "label": "Dia de pago",
+              "placeholder": "Seleccione un dia",
+              "errors": {
+                "required": "Seleccione un dia de pago.",
+                "min": "No debe ser menor a 1.",
+                "max": "No debe ser mayor a 31."
+              }
+            }
+          }
         }
       }
     }

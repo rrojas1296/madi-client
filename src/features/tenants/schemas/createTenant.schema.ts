@@ -58,6 +58,28 @@ export const createTenantSchema = z.object({
         "create.form.basicInformation.fields.emergencyPhone.errors.required",
     })
     .optional(),
+  entryDate: z.string({
+    error: "create.form.contractInformation.fields.entryDate.errors.required",
+  }),
+  outDate: z
+    .string({
+      error: "create.form.contractInformation.fields.outDate.errors.required",
+    })
+    .optional(),
+  apartment: z.uuid({
+    error: "create.form.contractInformation.fields.apartment.errors.required",
+  }),
+  paymentDay: z
+    .number({
+      error:
+        "create.form.contractInformation.fields.paymentDay.errors.required",
+    })
+    .min(1, {
+      error: "create.form.contractInformation.fields.paymentDay.errors.min",
+    })
+    .max(31, {
+      error: "create.form.contractInformation.fields.paymentDay.errors.max",
+    }),
 });
 
 export type CreateTenantSchema = z.infer<typeof createTenantSchema>;
@@ -175,11 +197,49 @@ const basicInformation: IControl<CreateTenantFields>[] = [
   },
 ];
 
+const contractInformation: IControl<CreateTenantFields>[] = [
+  {
+    label: "create.form.contractInformation.fields.entryDate.label",
+    placeholder: "create.form.contractInformation.fields.entryDate.placeholder",
+    type: "date",
+    name: "entryDate",
+    required: true,
+  },
+  {
+    label: "create.form.contractInformation.fields.outDate.label",
+    placeholder: "create.form.contractInformation.fields.outDate.placeholder",
+    type: "date",
+    name: "outDate",
+    required: false,
+  },
+  {
+    label: "create.form.contractInformation.fields.apartment.label",
+    placeholder: "create.form.contractInformation.fields.apartment.placeholder",
+    type: "select",
+    name: "apartment",
+    required: true,
+  },
+  {
+    label: "create.form.contractInformation.fields.paymentDay.label",
+    placeholder:
+      "create.form.contractInformation.fields.paymentDay.placeholder",
+    type: "number",
+    name: "paymentDay",
+    required: true,
+  },
+];
+
 export const createTenantSections = [
   {
     id: 1,
     title: "create.form.basicInformation.title",
     description: "create.form.basicInformation.description",
     controls: basicInformation,
+  },
+  {
+    id: 2,
+    title: "create.form.contractInformation.title",
+    description: "create.form.contractInformation.description",
+    controls: contractInformation,
   },
 ];

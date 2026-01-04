@@ -15,11 +15,11 @@ import { useForm } from "react-hook-form";
 const Page = () => {
   const t = useTranslations("Tenants");
   const router = useRouter();
+
   const {
     register,
     control,
     formState: { errors },
-    watch,
     handleSubmit,
   } = useForm({
     resolver: zodResolver(createTenantSchema),
@@ -28,11 +28,11 @@ const Page = () => {
       primaryPhone: "+51",
     },
   });
-  console.log({ form: watch(), errors });
 
-  const createTenantHandler = (data: CreateTenantSchema) => {
+  const createTenantHandler = async (data: CreateTenantSchema) => {
     console.log({ data });
   };
+
   return (
     <form
       onSubmit={handleSubmit(createTenantHandler)}
@@ -45,7 +45,7 @@ const Page = () => {
         <h1 className="font-medium text-xl">{t("create.title")}</h1>
       </div>
 
-      <div className="mt-8">
+      <div className="mt-8 grid gap-10">
         {createTenantSections.map((section) => {
           const { title, description, id, controls } = section;
           return (
@@ -73,16 +73,18 @@ const Page = () => {
                         options={opts}
                         placeholder={placeholder && t(placeholder)}
                         control={control}
-                        {...register(name)}
+                        {...register(name, {
+                          valueAsNumber: type === "number",
+                        })}
                       />
                     );
                   },
                 )}
-                <Button type="submit">Crear</Button>
               </div>
             </div>
           );
         })}
+        <Button type="submit">Crear</Button>
       </div>
     </form>
   );
