@@ -1,6 +1,6 @@
 import { ENDPOINTS } from "@/api/endpoints";
 import { instance } from "@/api/instance";
-import { ApiResponse } from "@/api/types";
+import { Response } from "@/api/types";
 import { IApartment } from "../types/apartments";
 
 interface GetApartmentsParams {
@@ -8,6 +8,14 @@ interface GetApartmentsParams {
   query?: string;
   page: number;
   limit: number;
+}
+
+interface ApartmentsList extends Response {
+  data: {
+    apartments: IApartment[];
+    total: number;
+    pages: number;
+  };
 }
 
 export const getApartments = async ({
@@ -20,9 +28,7 @@ export const getApartments = async ({
   if (query) {
     path += `?${query}`;
   }
-  const r = await instance.post<
-    ApiResponse<{ apartments: IApartment[]; total: number; pages: number }>
-  >(path, {
+  const r = await instance.post<ApartmentsList>(path, {
     search,
     page,
     limit,

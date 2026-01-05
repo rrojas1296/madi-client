@@ -6,9 +6,10 @@ import Link from "next/link";
 
 const TenantsEmptyTable = () => {
   const t = useTranslations("Tenants");
-  const { data } = useGetApartmentsList();
+  const { data: apartmentsData } = useGetApartmentsList();
 
-  const key = data?.data.length ? "tenant" : "apartment";
+  const key = apartmentsData?.apartments.length ? "tenant" : "apartment";
+
   return (
     <div className="h-full w-full grid place-items-center">
       <div className="flex flex-col items-center gap-4 w-full max-w-xs">

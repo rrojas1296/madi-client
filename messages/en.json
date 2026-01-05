@@ -1,6 +1,12 @@
 {
+  "Shared": {
+    "inputPhone": {
+      "noResults": "No results",
+      "placeholder": "Search"
+    }
+  },
   "Login": {
-          "title": {
+    "title": {
       "text": "Welcome back",
       "brand": "Madi",
       "description": "Sign in with your Google account"
@@ -26,7 +32,7 @@
       },
       "submit": "Continue",
       "register": {
-        "text": "Don’t have an account?",
+        "text": "Don't have an account? ",
         "link": "Sign up"
       }
     }
@@ -52,11 +58,11 @@
       },
       "submit": "Continue",
       "register": {
-        "text": "Already have an account?",
+        "text": "Already have an account? ",
         "link": "Sign in"
       },
       "errors": {
-        "email_in_use": "This email is already registered",
+        "email_in_use": "The email is already registered",
         "server_error": "The server is not responding"
       }
     }
@@ -79,7 +85,7 @@
   },
   "CreatePassword": {
     "title": "Set up your password",
-    "description": "Set a password you will use to access the application",
+    "description": "Set up a password you will use to sign in to the application",
     "fields": {
       "password": {
         "label": "Password",
@@ -98,20 +104,650 @@
     },
     "submit": "Register"
   },
+  "BottomNav": {
+    "sections": {
+      "dashboard": {
+        "label": "Dashboard",
+        "headerText": "Welcome"
+      },
+      "apartments": {
+        "label": "Properties",
+        "headerText": "Properties and apartments"
+      },
+      "tenants": {
+        "label": "Tenants",
+        "headerText": "Tenants"
+      },
+      "payments": {
+        "label": "Payments",
+        "headerText": "Payments"
+      },
+      "bookings": {
+        "label": "Bookings",
+        "headerText": "Bookings"
+      },
+      "settings": {
+        "label": "Settings",
+        "headerText": "Settings"
+      }
+    }
+  },
   "Sidebar": {
     "brand": "Madi",
     "sections": {
-      "dashboard": "Dashboard",
-      "apartments": "Apartments",
-      "tenants": "Tenants",
-      "payments": "Payments",
-      "bookings": "Bookings",
-      "settings": "Settings"
+      "dashboard": {
+        "label": "Dashboard",
+        "headerText": "Welcome"
+      },
+      "apartments": {
+        "label": "Apartments",
+        "headerText": "Properties and apartments"
+      },
+      "tenants": {
+        "label": "Tenants",
+        "headerText": "Tenants"
+      },
+      "payments": {
+        "label": "Payments",
+        "headerText": "Payments"
+      },
+      "bookings": {
+        "label": "Bookings",
+        "headerText": "Bookings"
+      },
+      "settings": {
+        "label": "Settings",
+        "headerText": "Settings"
+      }
     },
     "main": "General"
   },
   "Header": {
     "greeting": "Welcome ",
-    "brand": "Madi"
+    "brand": "Madi",
+    "actions": {
+      "exit": "Log out"
+    },
+    "sections": {
+      "dashboard": {
+        "label": "Dashboard",
+        "headerText": "Welcome"
+      },
+      "apartments": {
+        "label": "Apartments",
+        "headerText": "Properties and apartments"
+      },
+      "tenants": {
+        "label": "Tenants",
+        "headerText": "Tenants"
+      },
+      "payments": {
+        "label": "Payments",
+        "headerText": "Payments"
+      },
+      "bookings": {
+        "label": "Bookings",
+        "headerText": "Bookings"
+      },
+      "settings": {
+        "label": "Settings",
+        "headerText": "Settings"
+      }
+    }
+  },
+  "Apartments": {
+    "title": "Properties and apartments",
+    "subtitle": "A list of apartments and properties available to you",
+    "emptyTable": {
+      "title": "You haven't created any apartments yet.",
+      "description": "Create an apartment or property by clicking the button below to register your first apartment.",
+      "button": "Create apartment"
+    },
+    "activeFilters": {
+      "label": "Active filters",
+      "greaterThan": "greater than ",
+      "lessThan": "less than ",
+      "status": {
+        "label": "Status ",
+        "available": "available",
+        "leased": "leased",
+        "maintenance": "maintenance"
+      },
+      "currency": {
+        "label": "Currency ",
+        "usd": "dollars",
+        "pen": "soles",
+        "eur": "euros"
+      },
+      "monthlyFee": {
+        "label": "Monthly price ",
+        "greater": "greater than ",
+        "less": "less than "
+      },
+      "area": {
+        "label": "Area ",
+        "greater": "greater than ",
+        "less": "less than "
+      },
+      "rooms": {
+        "label": "Rooms ",
+        "greater": "greater than ",
+        "less": "less than "
+      },
+      "pets": {
+        "true": "With pets",
+        "false": "No pets"
+      },
+      "furnished": {
+        "true": "Furnished",
+        "false": "Unfurnished"
+      }
+    },
+    "snackbar": {
+      "text": "items were selected."
+    },
+    "deleteDialogs": {
+      "single": {
+        "title": "Delete apartment",
+        "description": "By deleting this apartment, related data such as contracts, tenants, and associated payments will also be removed.",
+        "cancel": "Cancel",
+        "delete": "Confirm"
+      },
+      "multiple": {
+        "title": "Confirm multiple deletion",
+        "description": "Confirm deletion of the selected apartments. This action will affect linked records within the condominium.",
+        "cancel": "Cancel",
+        "delete": "Confirm"
+      }
+    },
+    "apartmentCard": {
+      "status": {
+        "available": "Available",
+        "leased": "Leased",
+        "maintenance": "Under maintenance"
+      },
+      "items": {
+        "persons": "People",
+        "rooms": "Rooms",
+        "bathrooms": "Bathrooms"
+      }
+    },
+    "pagination": {
+      "pages": "Total pages: ",
+      "show": "Show"
+    },
+    "selectColumns": {
+      "title": "Columns",
+      "subtitle": "Select the columns you want to display",
+      "columns": {
+        "name": "Name",
+        "monthlyFee": "Monthly fee",
+        "status": "Status",
+        "rooms": "Rooms",
+        "floors": "Floors",
+        "furnished": "Furnished",
+        "address": "Address",
+        "currency": "Currency",
+        "persons": "Capacity",
+        "bathrooms": "Bathrooms",
+        "area": "Area",
+        "pets": "Pets"
+      }
+    },
+    "filters": {
+      "header": {
+        "title": "Filters",
+        "description": "Here you can manage the filters to apply to the apartments table"
+      },
+      "buttons": {
+        "reset": "Reset",
+        "apply": "Apply"
+      },
+      "status": {
+        "label": "Status",
+        "options": {
+          "available": "Available",
+          "leased": "Leased",
+          "maintenance": "Under maintenance"
+        }
+      },
+      "currency": {
+        "label": "Currency",
+        "options": {
+          "pen": "Soles",
+          "usd": "Dollars",
+          "eur": "Euros"
+        }
+      },
+      "monthlyFee": {
+        "label": "Monthly price",
+        "placeholderMin": "Min",
+        "placeholderMax": "Max",
+        "errors": {
+          "negative": "Enter a number greater than 0",
+          "invalidRange": "The maximum must be greater than the minimum"
+        }
+      },
+      "rooms": {
+        "label": "Rooms",
+        "placeholderMin": "Min",
+        "placeholderMax": "Max",
+        "errors": {
+          "negative": "Enter a number greater than 0",
+          "invalidRange": "The maximum must be greater than the minimum"
+        }
+      },
+      "area": {
+        "label": "Area (m²)",
+        "placeholderMin": "Min",
+        "placeholderMax": "Max",
+        "errors": {
+          "negative": "Enter a number greater than 0",
+          "invalidRange": "The maximum must be greater than the minimum"
+        }
+      },
+      "pets": {
+        "label": "Pets allowed",
+        "options": {
+          "true": "Yes",
+          "false": "No"
+        }
+      },
+      "furnished": {
+        "label": "Furnished apartment",
+        "options": {
+          "true": "Yes",
+          "false": "No"
+        }
+      }
+    },
+    "searchAndFilters": {
+      "inputPlaceholder": "Search for an apartment",
+      "filter": "Filters",
+      "columns": "Columns",
+      "export": "Export",
+      "add": "Create"
+    },
+    "table": {
+      "status": {
+        "available": "Available",
+        "leased": "Leased",
+        "maintenance": "Under maintenance"
+      },
+      "columns": {
+        "name": {
+          "header": "Name"
+        },
+        "persons": {
+          "header": "Capacity"
+        },
+        "address": {
+          "header": "Address"
+        },
+        "rooms": {
+          "header": "Rooms"
+        },
+        "floors": {
+          "header": "Floors"
+        },
+        "status": {
+          "header": "Status"
+        },
+        "furnished": {
+          "header": "Furnished",
+          "yes": "Yes",
+          "no": "No"
+        },
+        "pets": {
+          "header": "Pets allowed",
+          "yes": "Yes",
+          "no": "No"
+        },
+        "monthlyFee": {
+          "header": "Monthly fee"
+        },
+        "currency": {
+          "header": "Currency"
+        },
+        "bathrooms": {
+          "header": "Bathrooms"
+        },
+        "area": {
+          "header": "Area (m²)"
+        },
+        "createdAt": {
+          "header": "Created"
+        },
+        "updatedAt": {
+          "header": "Updated"
+        }
+      }
+    }
+  },
+  "CreateApartment": {
+    "title": "Create new apartment",
+    "headerButton": {
+      "create": "Create",
+      "edit": "Edit",
+      "back": "Back"
+    },
+    "form": {
+      "errors": {
+        "SERVER_ERROR": "Server error, please try again later.",
+        "ERR_NETWORK": "Server error, please try again later.",
+        "ERR_BAD_RESPONSE": "Server error, please try again later."
+      },
+      "messages": {
+        "SUCCESS": "Apartment successfully created."
+      },
+      "apartmentInformation": {
+        "title": "Apartment information",
+        "description": "Basic details about the apartment.",
+        "fields": {
+          "name": {
+            "label": "Name",
+            "placeholder": "Apartment 101",
+            "errors": {
+              "required": "This field is required."
+            }
+          },
+          "internalCode": {
+            "label": "Internal code",
+            "placeholder": "A-204",
+            "errors": {
+              "required": "This field is required."
+            }
+          },
+          "address": {
+            "label": "Address",
+            "placeholder": "Main Ave 101",
+            "errors": {
+              "required": "This field is required."
+            }
+          },
+          "floor": {
+            "label": "Floor",
+            "placeholder": "2",
+            "errors": {
+              "required": "This field is required.",
+              "min": "Must be a valid value."
+            }
+          },
+          "area": {
+            "label": "Area (m²)",
+            "placeholder": "80",
+            "errors": {
+              "required": "This field is required.",
+              "min": "Must be a valid value.",
+              "int": "The area must be an integer value."
+            }
+          },
+          "status": {
+            "label": "Status",
+            "placeholder": "Available / Leased / Maintenance",
+            "errors": {
+              "required": "This field is required."
+            },
+            "options": {
+              "available": "Available",
+              "leased": "Leased",
+              "maintenance": "Maintenance"
+            }
+          },
+          "parking": {
+            "label": "Parking",
+            "placeholder": "B-201",
+            "errors": {
+              "required": "This field is required"
+            }
+          }
+        }
+      },
+      "physicalDetails": {
+        "title": "Physical details",
+        "description": "Internal characteristics of the apartment, number of rooms, and overall condition.",
+        "fields": {
+          "persons": {
+            "label": "Capacity",
+            "placeholder": "4",
+            "errors": {
+              "required": "This field is required.",
+              "min": "Must be a valid value."
+            }
+          },
+          "rooms": {
+            "label": "Number of rooms",
+            "placeholder": "4",
+            "errors": {
+              "required": "This field is required.",
+              "min": "Must be a valid value."
+            }
+          },
+          "bathrooms": {
+            "label": "Number of bathrooms",
+            "placeholder": "2",
+            "errors": {
+              "required": "This field is required.",
+              "min": "Must be a valid value."
+            }
+          },
+          "floors": {
+            "label": "Number of floors",
+            "placeholder": "1",
+            "errors": {
+              "required": "This field is required.",
+              "min": "Must be a valid value."
+            }
+          },
+          "furnished": {
+            "label": "Furnished apartment"
+          },
+          "pets": {
+            "label": "Pets allowed"
+          },
+          "condition": {
+            "label": "Condition",
+            "placeholder": "E.g. new, good, maintenance",
+            "errors": {
+              "required": "This field is required."
+            },
+            "options": {
+              "new": "New",
+              "remodeled": "Remodeled",
+              "maintenance": "Under maintenance"
+            }
+          }
+        }
+      },
+      "financialInformation": {
+        "title": "Financial information",
+        "description": "Details about payments and taxes associated with the apartment.",
+        "fields": {
+          "monthlyFee": {
+            "label": "Monthly fee",
+            "placeholder": "1500",
+            "errors": {
+              "required": "This field is required.",
+              "min": "Must be a valid value."
+            }
+          },
+          "garanty": {
+            "label": "Security deposit",
+            "placeholder": "500",
+            "errors": {
+              "required": "This field is required.",
+              "min": "Must be a valid value."
+            }
+          },
+          "currency": {
+            "label": "Currency",
+            "placeholder": "USD / PEN / EUR",
+            "errors": {
+              "required": "This field is required."
+            },
+            "options": {
+              "pen": "PEN",
+              "usd": "USD",
+              "eur": "EUR"
+            }
+          },
+          "maintenanceFee": {
+            "label": "Maintenance fee",
+            "placeholder": "1000",
+            "errors": {
+              "required": "This field is required."
+            }
+          }
+        }
+      },
+      "create": "Create Apartment"
+    }
+  },
+  "Tenants": {
+    "table": {
+      "emptyState": {
+        "tenant": {
+          "title": "You don't have any tenants yet.",
+          "description": "When you register your first tenant, you will be able to see and manage all their information here.",
+          "button": "Create tenant"
+        },
+        "apartment": {
+          "title": "You don't have any apartments yet",
+          "description": "Add an apartment by clicking the button below to register your first apartment.",
+          "button": "Create apartment"
+        }
+      }
+    },
+    "create": {
+      "title": "Create new tenant",
+      "button": "Create",
+      "form": {
+        "basicInformation": {
+          "title": "Basic information",
+          "description": "Personal and contact details of the resident who will occupy the apartment.",
+          "fields": {
+            "name": {
+              "label": "First name",
+              "placeholder": "John",
+              "errors": {
+                "required": "This field is required."
+              }
+            },
+            "lastName": {
+              "label": "Last name",
+              "placeholder": "Smith",
+              "errors": {
+                "required": "This field is required."
+              }
+            },
+            "codePhone": {
+              "label": "Code",
+              "placeholder": "+51",
+              "errors": {
+                "required": "Select a country."
+              }
+            },
+            "primaryPhone": {
+              "placeholder": "999999999",
+              "label": "Mobile phone",
+              "errors": {
+                "required": "This field is required."
+              }
+            },
+            "email": {
+              "label": "Email",
+              "placeholder": "email@gmail.com",
+              "errors": {
+                "required": "This field is required."
+              }
+            },
+            "documentType": {
+              "label": "Document type",
+              "placeholder": "ID - Passport",
+              "errors": {
+                "required": "Select a document type."
+              },
+              "options": {
+                "DNI": "ID",
+                "PASSPORT": "Passport"
+              }
+            },
+            "numberDocument": {
+              "label": "Document number",
+              "placeholder": "xxxxxxxx",
+              "errors": {
+                "required": "Enter your document number."
+              }
+            },
+            "nationality": {
+              "label": "Country",
+              "placeholder": "Select a country",
+              "errors": {
+                "required": "Select your country of origin."
+              },
+              "options": {
+                "PERU": "Peru",
+                "VENEZUELA": "Venezuela",
+                "ARGENTINA": "Argentina",
+                "CHILE": "Chile",
+                "COLOMBIA": "Colombia",
+                "MEXICO": "Mexico",
+                "OTHER": "Other"
+              }
+            },
+            "birthDate": {
+              "label": "Date of birth",
+              "placeholder": "dd/mm/yyyy",
+              "errors": {
+                "required": "Select a date of birth."
+              }
+            },
+            "emergencyPhone": {
+              "label": "Emergency phone",
+              "placeholder": "999999999",
+              "errors": {
+                "required": "This field is required."
+              }
+            }
+          }
+        },
+        "contractInformation": {
+          "title": "Contract information",
+          "description": "Details of the lease agreement and apartment conditions.",
+          "fields": {
+            "entryDate": {
+              "label": "Move-in date",
+              "placeholder": "dd/mm/yyyy",
+              "errors": {
+                "required": "Select a start date."
+              }
+            },
+            "outDate": {
+              "label": "Move-out date",
+              "placeholder": "dd/mm/yyyy",
+              "errors": {
+                "required": "Select an end date."
+              }
+            },
+            "apartment": {
+              "label": "Apartment",
+              "placeholder": "Select an apartment",
+              "errors": {
+                "required": "Select an apartment."
+              }
+            },
+            "paymentDay": {
+              "label": "Payment day",
+              "placeholder": "Select a day",
+              "errors": {
+                "required": "Select a payment day.",
+                "min": "Must not be less than 1.",
+                "max": "Must not be greater than 31."
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

@@ -18,7 +18,6 @@ import {
   useApartmentFilters,
 } from "../../store/useFilters";
 import { getFiltersFromString } from "../../utils/getFiltersFromString";
-import { validateThereIsApartmentsFilters } from "../../utils/validateThereIsApartmentsFilters";
 
 const FiltersApartmentsForm = () => {
   const { setOpen } = useSidebar();
@@ -91,7 +90,7 @@ const FiltersApartmentsForm = () => {
             <FormField
               key={name}
               options={opts}
-              label={t(label)}
+              label={label && t(label)}
               placeholderMin={placeholderMin && t(placeholderMin)}
               placeholderMax={placeholderMax && t(placeholderMax)}
               error={error && t(error)}

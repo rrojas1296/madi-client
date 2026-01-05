@@ -1,10 +1,14 @@
 import { instance } from "@/api/instance";
 import { CreateTenantSchema } from "../schemas/createTenant.schema";
 import { ENDPOINTS } from "@/api/endpoints";
-import { ApiResponse } from "@/api/types";
+import { Response } from "@/api/types";
+
+interface CreateTenantResponse extends Response {
+  tenantId: string;
+}
 
 export const createTenantService = async (data: CreateTenantSchema) => {
-  const res = await instance.post<ApiResponse<string>>(
+  const res = await instance.post<CreateTenantResponse>(
     ENDPOINTS.tenants.create,
     data,
   );

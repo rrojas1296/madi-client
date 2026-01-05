@@ -18,7 +18,6 @@ const ApartmentsActiveFilters = () => {
     const f = getFiltersFromString(s);
     setFilters(f);
   }, []);
-  console.log({ filters });
 
   return (
     <div

@@ -6,5 +6,6 @@ export const ENDPOINTS = {
   },
   tenants: {
     create: "/tenants/create",
+    getList: "/tenants/list",
   },
 };

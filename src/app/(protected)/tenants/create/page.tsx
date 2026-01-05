@@ -3,6 +3,8 @@ import useGetApartmentsList from "@/features/apartments/hooks/useGetApartmentsLi
 import Button from "@/features/shared/components/Button/Button";
 import FormField from "@/features/shared/components/FormField/FormField";
 import ArrowLeftIcon from "@/features/shared/components/Icons/ArrowLeftIcon";
+import LoadingIcon from "@/features/shared/components/Icons/LoadingIcon";
+import SaveIcon from "@/features/shared/components/Icons/SaveIcon";
 import useCreateTenant from "@/features/tenants/hooks/useCreateTenant";
 import {
   CreateTenantSchema,
@@ -11,15 +13,14 @@ import {
 } from "@/features/tenants/schemas/createTenant.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 const Page = () => {
   const t = useTranslations("Tenants");
   const { data } = useGetApartmentsList();
-  const { mutate } = useCreateTenant();
-  const apartments = data?.data || [];
-  const router = useRouter();
+  const { mutate, isPending } = useCreateTenant();
+  const apartments = data?.apartments || [];
 
   const {
     register,
@@ -39,31 +40,46 @@ const Page = () => {
   return (
     <form
       onSubmit={handleSubmit(createTenantHandler)}
-      className="animate-fade-in"
+      className="max-w-container-width m-auto animate-fade-in"
     >
-      <div className="flex gap-3 items-center">
-        <Button variant="ghost" onClick={() => router.push("/tenants")} isIcon>
-          <ArrowLeftIcon className="stroke-current w-5 h-5 shrink-0" />
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-4 font-medium text-xl">
+          <Link href="/tenants">
+            <Button variant="ghost" isIcon>
+              <ArrowLeftIcon className="h-5 w-5 text-text-2 stroke-current shrink-0" />
+            </Button>
+          </Link>
+          <h1>{t("create.title")}</h1>
+        </div>
+        <Button type="submit" className="hidden lg:flex w-fit">
+          {isPending ? (
+            <LoadingIcon className="h-5 w-5 animate-spin text-text-3 stroke-current" />
+          ) : (
+            <SaveIcon className="w-5 h-5 text-text-3 stroke-current" />
+          )}
+          {t("create.button")}
         </Button>
-        <h1 className="font-medium text-xl">{t("create.title")}</h1>
       </div>
 
       <div className="mt-8 grid gap-10">
         {createTenantSections.map((section) => {
           const { title, description, id, controls } = section;
           return (
-            <div key={id}>
-              <div>
+            <div
+              key={id}
+              className="grid gap-6 md:grid-cols-2 lg:border lg:border-border-2 lg:rounded-md lg:p-6"
+            >
+              <div className="grid gap-1 md:col-span-2">
                 <h1 className="text-xl font-medium">{t(title)}</h1>
-                <p className="text-text-2 text-sm mt-1">{t(description)}</p>
+                <p className="text-text-2 text-sm">{t(description)}</p>
               </div>
-              <div className="flex flex-col gap-6 mt-5 md:grid md:grid-cols-2">
+              <div className="flex flex-col gap-6 md:grid md:col-span-2 md:grid-cols-2">
                 {controls.map(
                   ({ name, type, options, required, label, placeholder }) => {
                     const error = errors[name]?.message;
 
                     const opts =
-                      name === "apartment"
+                      name === "apartmentId"
                         ? apartments.map((a) => ({
                             label: a.name,
                             value: a.id,
@@ -93,7 +109,32 @@ const Page = () => {
             </div>
           );
         })}
-        <Button type="submit">Crear</Button>
+        <div className="hidden lg:flex justify-between items-center">
+          <div className="flex items-center gap-4 font-medium text-xl">
+            <Link href="/tenants">
+              <Button variant="ghost">
+                <ArrowLeftIcon className="h-5 w-5 text-text-2 stroke-current shrink-0" />
+                {t("create.back")}
+              </Button>
+            </Link>
+          </div>
+          <Button type="submit" className="hidden lg:flex w-fit">
+            {isPending ? (
+              <LoadingIcon className="h-5 w-5 animate-spin text-text-3 stroke-current" />
+            ) : (
+              <SaveIcon className="w-5 h-5 text-text-3 stroke-current" />
+            )}
+            {t("create.button")}
+          </Button>
+        </div>
+        <Button type="submit" className="lg:hidden">
+          {isPending ? (
+            <LoadingIcon className="h-5 w-5 animate-spin text-text-3 stroke-current" />
+          ) : (
+            <SaveIcon className="w-5 h-5 text-text-3 stroke-current" />
+          )}
+          {t("create.button")}
+        </Button>
       </div>
     </form>
   );

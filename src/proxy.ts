@@ -1,7 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "./middleware/auth";
 
-const privateRoutes: string[] = ["/dashboard", "/apartments"];
+const privateRoutes: string[] = [
+  "/dashboard",
+  "/apartments",
+  "/tenants",
+  "/payments",
+  "/bookings",
+  "/settings",
+];
 const publicRoutes: string[] = ["/login", "/register"];
 
 const proxy = async (req: NextRequest) => {
@@ -12,12 +19,9 @@ const proxy = async (req: NextRequest) => {
   const isPrivate = privateRoutes.some((pr) => pathname.startsWith(pr));
   const isPublic = publicRoutes.some((pr) => pathname.startsWith(pr));
 
-  if (isPrivate && isAuthenticated && res) {
-    return res;
-  }
+  if (isPrivate && isAuthenticated && res) return res;
   if (isPrivate && !isAuthenticated)
     return NextResponse.redirect(new URL("/login", req.url));
-
   if (isPublic && isAuthenticated)
     return NextResponse.redirect(new URL("/dashboard", req.url));
   return NextResponse.next();

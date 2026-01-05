@@ -66,7 +66,7 @@ export const createTenantSchema = z.object({
       error: "create.form.contractInformation.fields.outDate.errors.required",
     })
     .optional(),
-  apartment: z.uuid({
+  apartmentId: z.uuid({
     error: "create.form.contractInformation.fields.apartment.errors.required",
   }),
   paymentDay: z
@@ -216,7 +216,7 @@ const contractInformation: IControl<CreateTenantFields>[] = [
     label: "create.form.contractInformation.fields.apartment.label",
     placeholder: "create.form.contractInformation.fields.apartment.placeholder",
     type: "select",
-    name: "apartment",
+    name: "apartmentId",
     required: true,
   },
   {

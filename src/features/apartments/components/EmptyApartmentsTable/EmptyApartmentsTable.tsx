@@ -1,29 +1,25 @@
 import { useTranslations } from "next-intl";
-import BuildingVector from "../vectors/buildingVector";
 import Button from "@/features/shared/components/Button/Button";
-import PlusIcon from "@/features/shared/components/Icons/PlusIcon";
 import Link from "next/link";
+import BuildingOutlinedIcon from "@/features/shared/components/Icons/BuildingOutlinedIcon";
 
 const EmptyApartmentsTable = () => {
-  const t = useTranslations("Apartments.emptyTable");
+  const t = useTranslations("Apartments");
   return (
-    <div className="grid animate-fade-in place-items-center h-container-height lg:h-full overflow-hidden">
-      <div className="flex flex-col items-center gap-4 max-w-[300px] lg:max-w-[460px] w-full">
-        <BuildingVector className="max-w-52 lg:max-w-72" />
-        <h1 className="font-medium text-xl text-text-1 text-center">
-          {t("title")}
+    <div className="h-full w-full grid place-items-center">
+      <div className="flex flex-col items-center gap-4 w-full max-w-sm">
+        <div className="bg-bg-2 h-12 w-12 grid place-items-center rounded-md border border-border-2">
+          <BuildingOutlinedIcon className="w-8 h-8 stroke-current" />
+        </div>
+
+        <h1 className="font-medium text-xl text-center">
+          {t(`emptyTable.title`)}
         </h1>
-        <p className="font-medium text-sm text-text-2 w-11/12 lg:w-9/12 text-center">
-          {t("subtitle")}
+        <p className="text-sm text-center text-text-2">
+          {t(`emptyTable.description`)}
         </p>
         <Link href="/apartments/create">
-          <Button
-            variant="outline"
-            className="text-text-2 bg-bg-1 hover:bg-bg-2 w-fit px-6"
-          >
-            <PlusIcon className="stroke-current" />
-            {t("button")}
-          </Button>
+          <Button className="w-fit">{t(`emptyTable.button`)}</Button>{" "}
         </Link>
       </div>
     </div>

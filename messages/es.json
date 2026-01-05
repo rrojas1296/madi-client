@@ -199,9 +199,9 @@
     "title": "Propiedades y departamentos",
     "subtitle": "Una lista de los departamentos y propiedades a tu disposicion",
     "emptyTable": {
-      "title": "Aun no cuentas con ningun departamento o propiedad registrado",
-      "subtitle": "Agrega un departamento haciendo click en el buton debajo",
-      "button": "Agregar"
+      "title": "Aun no creaste algun departamentos.",
+      "description": "Crea un departamento o propiedad haciendo click en el botón debajo para registrar tu primer departamento.",
+      "button": "Crear departamento"
     },
     "activeFilters": {
       "label": "Filtros activos",
@@ -621,6 +621,7 @@
     "create": {
       "title": "Crear nuevo inquilino",
       "button": "Crear",
+      "back": "Atras",
       "form": {
         "basicInformation": {
           "title": "Informacion basica",
